@@ -94,15 +94,8 @@ Example:
 
 Example:
 This project is licensed under the MIT License. See the LICENSE file for details.
-<<<<<<< HEAD
 Hi, my name is Gagan and I love books.
-=======
-
-<<<<<<< HEAD
 Hi my name is Ken! I am excited to make a web app!
-=======
-
 ## Comments
 Glad to be working with the dream team.
->>>>>>> 79255b37d424ee56a64e52de437f556b101dee59
->>>>>>> b18f1af5b7d7e578a7da9b0270f50a4aa29dc564
+
