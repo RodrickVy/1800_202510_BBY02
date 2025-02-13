@@ -1,1 +1,15 @@
 
+.carousel-inner .carousel-item img {
+    width: 250px;
+    height: 350px;
+    object-fit: cover;
+}
+
+.btn-exit:hover {
+    background-color: #D0DDD7;
+    border-color:#D0DDD7; 
+}
+
+body {
+    font-family: 'Oswald', sans-serif;
+}
