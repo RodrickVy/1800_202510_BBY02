@@ -94,8 +94,3 @@ Example:
 
 Example:
 This project is licensed under the MIT License. See the LICENSE file for details.
-Hi, my name is Gagan and I love books.
-Hi my name is Ken! I am excited to make a web app!
-## Comments
-Glad to be working with the dream team.
-
