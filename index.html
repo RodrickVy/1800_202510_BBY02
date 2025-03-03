@@ -3,21 +3,20 @@
 
 <head>
     <title>Recreate</title>
-    <meta name="description" content="My 1800 App">
+    <meta name="description" content="A meetup app for sports enthusiasts.">
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap Library CSS CDN go here -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- Boostrap Library JS CDN  go here -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
-
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
     <!-- Other libraries go here -->
 
     <!-- Link to styles of your own -->
@@ -29,114 +28,160 @@
 </head>
 
 <body>
+<!-- Splash screen -->
+ <div id="splash_screen">
+    <img id="splash_logo" src="images/logo.jpg" alt="Recreate logo">
+ </div> 
 
-    <!------------------------------>
-    <!-- Your HTML Layout go here -->
-    <!------------------------------>
-    <!-- Stuff for body goes here -->
-    <nav class="navbar navbar-expand-lg" style="background-color: #D0DDD7;">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="./images/logo.jpg" height="36">
-                RECREA-8</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact Us</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            View More
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Privacy Policy</a></li>
-                            <li><a class="dropdown-item" href="#">Language Selector</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Forgot Password?</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
+ <!-- Intro slides -->
+  <section id="intro_screen">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        
+ 
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="d-block w-100" src="images/intro_screen_1.png" alt="First slide">
+            <h3 class="intro_title"> Find Your Team</h3>
+            <p class="intro_description">
+                Whether you're missing a player or looking to start fresh, we make it easy to find the right fit.
+            </p>
+
+        
+    
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="images/intro_screen_2.png" alt="First slide">
+            <h3 class="intro_title">Skill-Matched Teams</h3>
+            <p class="intro_description"> Whether you're a beginner or a pro, find a league that challenges and grows your abilities.  </p>
+
+       
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="images/intro_screen_3.png" alt="First slide">
+            <h3 class="intro_title">Dynamic Team Management</h3>
+            <p class="intro_description">Easily Manage and Adjust Your Team Handle team join requests, manage your roster, and adjust player statuses with ease.            </p>
+
+          </div>
+
+          <br>
+          <div class="indicator-bar">
+            <div id="intro_slide_slot_0" class="indicator-slot"></div>
+            <div id="intro_slide_slot_1" class="indicator-slot"></div>
+            <div id="intro_slide_slot_2" class="indicator-slot"></div>
         </div>
-    </nav>
-
-    <div class="px-4 py-5 my-5 text-center">
-        <img class="d-block mx-auto mb-4" src="./images/logo.jpg" alt="" width="80" height="60">
-        <h1 class="display-5 fw-bold">RECREA-8</h1>
-        <div class="col-lg-6 mx-auto">
-            <p class="lead mb-4">Create your recreation team!</p>
-            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                <button type="button" class="btn btn-success btn-lg px-4 gap-3">Login/Sign Up</button>
-                <button type="button" class="btn btn-outline-secondary btn-lg px-4 btn-exit">Exit</button>
-            </div>
+        
+          <br><br>
+          <div class="d-flex justify-content-center align-items-center">
+            
+            <button id="prev_btn" class="intro_btn  btn btn-dark  ">Previous</button>  
+      
+           <button id="next_btn" class="intro_btn btn btn-dark ">Next</button>
         </div>
-    </div>
-
-    <div class="container">
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
-                    aria-label="Slide 4"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
-                    aria-label="Slide 5"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="./images/volleyball.jpg" class="d-block w-100" alt="volleyball">
-                </div>
-                <div class="carousel-item">
-                    <img src="./images/basketball.jpg" class="d-block w-100" alt="basketball">
-                </div>
-                <div class="carousel-item">
-                    <img src="./images/soccer.jpg" class="d-block w-100" alt="soccer">
-                </div>
-                <div class="carousel-item">
-                    <img src="./images/gym.jpg" class="d-block w-100" alt="gym">
-                </div>
-                <div class="carousel-item">
-                    <img src="./images/team.jpg" class="d-block w-100" alt="team">
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-    </div>
-
-    <!---------------------------------------------->
-    <!-- Your own JavaScript functions go here    -->
-    <!---------------------------------------------->
+      </div>
+  </section>
 
     <!-- Link to scripts of your own -->
-    <!-- <script src="./scripts/script.js"></script> -->
+    <script  >
+        // All the dom elements are variables and placed in this constant object for more readablility. 
+
+const DOMElements = {
+    SplashScreen: document.getElementById("splash_screen"),
+    SplashLogo: document.getElementById("splash_logo"), 
+    IntroNextBtn: document.getElementById("next_btn"),
+    IntroPrevBtn:  document.getElementById("prev_btn"),
+    IntroCarouselSlide: $(".carousel"),
+  }
+  
+  //  Global css valeus changed by JS
+  const Brand = {
+      primary:"black",
+      accentColor: '#D0DDD7',
+  }
+  
+  // Shows the splash screen and hides it again after it's animation
+  function startSplashScreen() {
+      DOMElements.SplashScreen.style.display = "flex";
+  
+      DOMElements.SplashLogo.addEventListener("animationend",()=>{
+          DOMElements.SplashScreen.style.display = 'none';
+          startSlideShow();
+      })
+     
+  }
+  
+  
+  // Selects one slot and unselects the other ones
+  const ___selectSlot = (slot)=>{
+  
+      const _id=(index)=>{
+          return document.getElementById(`intro_slide_slot_${index}`)
+      }
+      _id(0).style.background = Brand.accentColor;
+      _id(1).style.background = Brand.accentColor;
+      _id(2).style.background = Brand.accentColor;  
+      _id(slot).style.background = Brand.primary; 
+         
+      
+  
+      
+  }
+  function startSlideShow(){
+      let currentPage = 0;
+      ___selectSlot(currentPage);
+    
+  
+      DOMElements.IntroNextBtn.addEventListener("click",()=>{
+          if(currentPage < 2){
+              DOMElements.IntroNextBtn.innerText = "Next";
+              DOMElements.IntroPrevBtn.style.display = "inline-block";
+              currentPage ++;
+              DOMElements.IntroCarouselSlide.carousel('next');
+              ___selectSlot(currentPage);
+          } 
+          
+          if(currentPage == 2){
+              DOMElements.IntroNextBtn.innerHTML = "<a href='./login.html' style='text-decoration:none;color:inherit;'>Get Started →</a>";
+          }
+        
+  
+      });
+      DOMElements.IntroPrevBtn.addEventListener("click",()=>{
+          if(currentPage > 0){
+              DOMElements.IntroNextBtn.innerText = "Next";
+              DOMElements.IntroPrevBtn.innerText = "Previous";
+              currentPage --;
+              DOMElements.IntroCarouselSlide.carousel('prev');
+              ___selectSlot(currentPage);
+          }
+          
+          if(currentPage == 0){
+              DOMElements.IntroPrevBtn.style.display = "none";
+  
+          }
+       
+        
+           
+     });
+  
+  
+  
+  
+  
+  
+  }
+  
+  
+
+  
+  // MAIN PROGRAM FLOW
+  
+  // showing splash screen
+  
+  startSplashScreen();
+  
+  
+  //sayHello();
+    </script>
 
 </body>
 
