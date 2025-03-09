@@ -56,3 +56,39 @@ function writeLeagues() {
         last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
     });
 }
+
+function displayCardsDynamically(collection) {
+    let cardTemplate = document.getElementById("leaguesCardTemplate");
+    db.collection(collection).get()
+        .then(allLeagues => {
+            //var i = 1;  //Optional: if you want to have a unique ID for each hike
+            allLeagues.forEach(doc => {
+                var title = doc.data().name;
+                var details = doc.data().details;
+                var leagueCode = doc.data().code;
+                var leagueCity = doc.data().city;
+                var leagueLevel = doc.data().level;
+                var website = doc.data().url;
+                let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
+
+                //update title and text and image
+                newcard.querySelector('.card-title').innerHTML = title;
+                newcard.querySelector('.card-url').innerHTML = `<a href="${website}" target="_blank">Visit Website</a>`;
+                newcard.querySelector('.card-text').innerHTML = details;
+                newcard.querySelector('.card-image').src = `./images/${leagueCode}.jpg`;
+                newcard.querySelector(".card").classList.add("league-card");
+
+                //Optional: give unique ids to all elements for future use
+                // newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
+                // newcard.querySelector('.card-text').setAttribute("id", "ctext" + i);
+                // newcard.querySelector('.card-image').setAttribute("id", "cimage" + i);
+
+                //attach to gallery, Example: "hikes-go-here"
+                document.getElementById(collection + "-go-here").appendChild(newcard);
+
+                //i++;   //Optional: iterate variable to serve as unique ID
+            })
+        })
+}
+
+displayCardsDynamically("leagues");  //input param is the name of the collection

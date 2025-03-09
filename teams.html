@@ -62,17 +62,29 @@
 
     <!-- Available Teams Card -->
     <div class="d-flex justify-content-center" style="margin-top: 50px; position: relative;">
-        <div class="card text-dark" style="background-color: #D0DDD7; width: 400px; height: 100px; position: relative;">
-            <h3 class="card-header d-flex justify-content-between align-items-center" id="availableteamsheader">
-                Available Teams
+        <div class="card text-dark" style="background-color: #D0DDD7; width: 400px; height: 600px; position: relative;">
+            <h3 class="card-header d-flex justify-content-between align-items-center" id="availableteamsHeader">
+                <span class="mx-auto">Available Teams</span> <!-- Center the text -->
                 <button class="btn btn-light border-0" id="addTeamBtn" style="font-size: 20px;">
                     <i class="fas fa-plus"></i>
                 </button>
             </h3>
-            <div class="card-body">
+            <div class="card-body" style="overflow-y: auto; height: calc(100% - 56px);">
+                <p style="font-size: 22px;">Net Ninjas</p>
+                <p style="font-size: 22px;">Spike Masters</p>
+                <p style="font-size: 22px;">Serve Aces</p>
+                <p style="font-size: 22px;">Block Party</p>
+                <p style="font-size: 22px;">Sandstorm Spikers</p>
+                <p style="font-size: 22px;">Set to Win</p>
+                <p style="font-size: 22px;">Power Servers</p>
+                <p style="font-size: 22px;">Court Crushers</p>
             </div>
+            
         </div>
     </div>
+    
+    
+    
 
     <footer class="footer"
         style="background-color: #D0DDD7; height: 80px; position: fixed; bottom: 0; width: 100%; left: 0;">
@@ -107,8 +119,8 @@
     <!---------------------------------------------->
 
     <!-- Link to scripts of your own -->
-    <script src="./scripts/script.js"></script>
     <script src="./scripts/firebaseAPI_TEAM99.js"></script>
+    <script src="./scripts/script.js"></script>
 
 </body>
 

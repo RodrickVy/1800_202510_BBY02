@@ -69,8 +69,35 @@
         </div>
     </div>
 
+    <!-- Templates for general use, not displayed -->
+    <template id="leaguesCardTemplate">
+        <div class="card py-2 mx-2" style="width: 18rem">
+            <img class="card-image card-img-top" src=" ..." alt="League Image" />
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-url">placeholder</p>
+                <br />
+                <p class="card-text">
+                    Some quick example text to build on the card title and make up the
+                    bulk of the card's content.
+                </p>
+                <a class="btn btn-primary card-href">Select</a>
+            </div>
+        </div>
+    </template>
 
-    <div class="d-flex justify-content-center" style="margin-top: 50px;">
+<!-- Available Leagues Card -->
+<div class="d-flex justify-content-center" style="margin-top: 50px;">
+    <div class="card text-dark available-leagues-card">
+        <h3 class="card-header text-center">Available Leagues</h3>
+        <div class="card-body leagues-container" id="leagues-go-here">
+            <!-- Cards will be dynamically inserted here -->
+        </div>
+    </div>
+</div>
+
+
+    <!--     <div class="d-flex justify-content-center" style="margin-top: 50px;">
         <div class="card text-dark" style="background-color: #D0DDD7; width: 400px; height: auto;">
             <h3 class="card-header" id="recreationalLeaguesheader">Recreational Leagues</h3>
             <div class="card-body">
@@ -107,7 +134,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <footer class="footer"
         style="background-color: #D0DDD7; height: 80px; position: fixed; bottom: 0; width: 100%; left: 0;">
@@ -142,9 +169,9 @@
     <!---------------------------------------------->
 
     <!-- Link to scripts of your own -->
+    <script src="./scripts/firebaseAPI_TEAM99.js"></script>
     <script src="./scripts/script.js"></script>
     <script src="./scripts/main.js"></script>
-    <script src="./scripts/firebaseAPI_TEAM99.js"></script>
 
 </body>
 

@@ -1,4 +1,4 @@
-function sayHello() {
+/* function sayHello() {
     
 }
 //sayHello();
@@ -43,4 +43,4 @@ window.onload = function() {
     // Ensure the header remains as "Skill Level" on load
     document.getElementById('skillLevelHeader').innerText = 'Skill Level';
 }
-
+ */
