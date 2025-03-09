@@ -1,0 +1,23 @@
+{
+  "name": "1800_202510_bby02",
+  "version": "1.0.0",
+  "description": "an app for sports enthusiasts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RodrickVy/1800_202510_BBY02.git"
+  },
+  "author": "Rodrick & Ken",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RodrickVy/1800_202510_BBY02/issues"
+  },
+  "homepage": "https://github.com/RodrickVy/1800_202510_BBY02#readme",
+  "dependencies": {
+    "firebase": "^11.4.0",
+    "firebase-tools": "^13.32.0"
+  }
+}
