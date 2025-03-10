@@ -18,7 +18,15 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 
-    <!-- Other libraries go here -->
+    <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
+    <!-------------------------------------------------------->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+    <!-- <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>-->
 
     <!-- Link to styles of your own -->
     <link rel="stylesheet" href="./styles/style.css">
@@ -52,45 +60,30 @@
         </div>
     </nav>
 
-    <div class="d-flex justify-content-center" style="margin-top: 50px;">
-        <div class="card text-dark" style="background-color: #D0DDD7; width: 400px; height: auto;">
-            <h1 class="card-header text-center" style="border: none; margin: 0; padding: 30px 0;">Urban Rec</h1>
-            <div class="card-body text-center">
-                <p style="font-size: 21px; font-weight: bold; text-align: left;">
-                    <i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i>Richmond
-                </p>
+    <!-- Available Teams Card -->
+    <div class="d-flex justify-content-center" style="margin-top: 50px; position: relative;">
+        <div class="card text-dark" style="background-color: #D0DDD7; width: 400px; height: 600px; position: relative;">
+            <h3 class="card-header d-flex justify-content-between align-items-center" id="availableteamsHeader">
+                <span class="mx-auto">Available Teams</span> <!-- Center the text -->
+                <button class="btn btn-light border-0" id="addTeamBtn" style="font-size: 20px;">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </h3>
+            <div class="card-body" style="overflow-y: auto; height: calc(100% - 56px);">
+                <p style="font-size: 22px;">Net Ninjas</p>
+                <p style="font-size: 22px;">Spike Masters</p>
+                <p style="font-size: 22px;">Serve Aces</p>
+                <p style="font-size: 22px;">Block Party</p>
+                <p style="font-size: 22px;">Sandstorm Spikers</p>
+                <p style="font-size: 22px;">Set to Win</p>
+                <p style="font-size: 22px;">Power Servers</p>
+                <p style="font-size: 22px;">Court Crushers</p>
             </div>
+            
         </div>
     </div>
-    <div class="d-flex justify-content-center" style="margin-top: 50px;">
-        <div class="card text-dark" style="background-color: #D0DDD7; width: 400px; height: auto;">
-            <h3 class="card-header" id="skillLevelHeader">Skill Level</h3> <!-- Updated ID here -->
-            <div class="card-body">
-                <div class="list-group">
-                    <!-- Skill Level A -->
-                    <a class="list-group-item list-group-item-action"
-                       style="background-color: #D0DDD7; border: none; text-align: left; font-weight: bold; font-size: 21px; display: flex; justify-content: space-between; align-items: center;">
-                        <span><i class="fas fa-medal" style="margin-right: 8px;"></i> Recreational</span>
-                        <i class="far fa-star star" onclick="toggleStar(this, 'Recreational')" id="starRecreational"></i>
-                    </a>
-                    
-                    <!-- Skill Level B -->
-                    <a class="list-group-item list-group-item-action"
-                       style="background-color: #D0DDD7; border: none; text-align: left; font-weight: bold; font-size: 21px; display: flex; justify-content: space-between; align-items: center;">
-                        <span><i class="fas fa-medal" style="margin-right: 8px;"></i> Intermediate</span>
-                        <i class="far fa-star star" onclick="toggleStar(this, 'Intermediate')" id="starIntermediate"></i>
-                    </a>
-                    
-                    <!-- Skill Level C -->
-                    <a class="list-group-item list-group-item-action"
-                       style="background-color: #D0DDD7; border: none; text-align: left; font-weight: bold; font-size: 21px; display: flex; justify-content: space-between; align-items: center;">
-                        <span><i class="fas fa-medal" style="margin-right: 8px;"></i> Intermediate Plus</span>
-                        <i class="far fa-star star" onclick="toggleStar(this, 'Intermediate Plus')" id="starIntermediatePlus"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+    
+    
     
 
     <footer class="footer"
@@ -107,10 +100,11 @@
                     <a href="league.html" class="text-dark"
                         style="flex: 1; display: flex; justify-content: center; text-decoration: none;">
                         <i class="fas fa-trophy" style="font-size: 24px;"></i>
-                        <a href="#" class="text-dark"
+                        <a href="settings.html" class="text-dark"
                             style="flex: 1; display: flex; justify-content: center; text-decoration: none;">
                             <i class="fas fa-cog" style="font-size: 24px;"></i>
                         </a>
+
                         <a href="#" class="text-dark"
                             style="flex: 1; display: flex; justify-content: center; text-decoration: none;">
                             <i class="fas fa-user" style="font-size: 24px;"></i>
@@ -125,8 +119,8 @@
     <!---------------------------------------------->
 
     <!-- Link to scripts of your own -->
-    <script src="./scripts/script.js"></script>
     <script src="./scripts/firebaseAPI_TEAM99.js"></script>
+    <script src="./scripts/script.js"></script>
 
 </body>
 
