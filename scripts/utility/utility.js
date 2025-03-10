@@ -36,7 +36,6 @@ const elementExists = (id)=> {
 }
 
 
-
 /**
  * Places the given HTML into the element with the specified ID. 
  * First checks to see if the element exists, and if it does not exist, 

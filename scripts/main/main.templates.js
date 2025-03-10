@@ -4,7 +4,7 @@ window.onload = ()=>{
 
 
      Account.addListener("mainPageAppBar",(userData)=>{
-        loadTemplate("appBarPlaceholder",`  <nav class="navbar navbar-expand-lg" style="background-color: #D0DDD7; height: 10vh; min-width: 100%;">
+        loadTemplate("appBarPlaceholder",`<nav class="navbar navbar-expand-lg" style="background-color: #D0DDD7; height: 10vh; min-width: 100%;">
             <div class="container-fluid d-flex justify-content-between align-items-center px-3" style="height: 100%;">
                 <a href="./profile.html" style="text-decoration:none; cursor:pointer;" class="d-flex flex-column align-items-center"  >
                     <div class="rounded-circle  d-flex align-items-center justify-content-center"
@@ -21,6 +21,7 @@ window.onload = ()=>{
      });
 
     loadTemplate("bottomNavPlaceholder",`
+            <br><br><br><br><br>
            <footer class="footer"
         style="background-color: #D0DDD7; height: 80px; position: fixed; bottom: 0; width: 100%; left: 0;">
         <div class="container d-flex justify-content-between align-items-center" style="height: 100%;">

@@ -59,7 +59,7 @@ function writeLeagues() {
 
 function displayCardsDynamically(collection) {
     let cardTemplate = document.getElementById("leaguesCardTemplate");
-    db.collection(collection).get()
+    Account.fs.collection(collection).get()
         .then(allLeagues => {
             //var i = 1;  //Optional: if you want to have a unique ID for each hike
             allLeagues.forEach(doc => {

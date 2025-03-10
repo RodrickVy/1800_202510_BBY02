@@ -72,12 +72,12 @@ class RecreateUser {
         json = JSON.parse(JSON.stringify(json));
 
         console.log(json['id'])
-        
+
         return new RecreateUser(
             json['id'],
             json['name'],
-            json['email'] ,
-            json['bio'] ,
+            json['email'],
+            json['bio'],
             json['profileUrl'] || '',
             json['role'] || 'player',
             json['friends'] || [],
@@ -119,31 +119,17 @@ class RecreateUser {
         };
     }
 
-
-    /**
-     * Determines if the user is authenticated by checking if the id of this user is valid.
-     *
-     * @returns {boolean} True if the user's id is empty or only whitespace; false otherwise.
-     */
-    isAuthenticated() {
-        return this.id !== undefined && this.id.trim().length > 8;
-    }
-
-
 }
 
 
 /**
  * Account
- * Handles all authentication, account managment logic and maintains a userAccount object of the current authenticated user (accessible anywhere as Account.userAccount).
+ * Handles all authentication, account management logic and maintains a userAccount object of the current authenticated user (accessible anywhere as Account.userAccount).
  * @author Rodrick
  */
-
-
 class Account {
 
-// A modifiable list of listener functions that are invoked when auth state changes only use the Account.addListener() and .removeListener() methods to modify it. 
-
+    // A modifiable list of listener functions that are invoked when auth state changes only use the Account.addListener() and .removeListener() methods to modify it.
     static __authListeners = new Map();
 
 
@@ -181,7 +167,7 @@ class Account {
                 const docExists = (await Account.documentExists('users', user.uid) == true);
 
 
-                if (docExists == false)   {
+                if (docExists == false) {
                     Account.createUserInFirestore(user, {});
 
                 }
@@ -197,8 +183,7 @@ class Account {
             } else {
                 checkGuardedRoutes(false, ___PAGES.signin, ___PAGES.main);
             }
- 
-           
+
 
         });
     }
@@ -408,7 +393,7 @@ class Account {
         const userData = userSnapshot.data();
 
         // Convert the plain object to a User instance using your model
-        return new  RecreateUser(userData);
+        return new RecreateUser(userData);
     }
 
 
