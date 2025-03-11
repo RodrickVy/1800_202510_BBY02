@@ -60,40 +60,50 @@
         </div>
     </nav>
 
-    <!-- My Team Card -->
-    <div class="d-flex justify-content-center" style="margin-top: 50px; position: relative;">
-        <div class="card text-dark" style="background-color: #D0DDD7; width: 400px; height: 200px; position: relative;">
-            <h3 class="card-header d-flex justify-content-between align-items-center" id="myTeamHeader">
-                <span class="mx-auto">My Team</span>
-                <a href="./add-team.html" class="btn btn-light border-0" id="addTeamBtn" style="font-size: 20px;">
-                    <i class="fas fa-plus"></i>
-                </a>
-            </h3>
-            <div class="card-body" style="overflow-y: auto; height: calc(100% - 56px);">
-                <p style="font-size: 22px;">Team Allstars</p>
+    <div class="container mt-5">
+        <h2>Create New Team</h2>
+        <form>
+          <!-- Team Name -->
+          <div class="form-group">
+            <label for="teamName">Team Name</label>
+            <input type="text" class="form-control" id="teamName" placeholder="Enter team name" required>
+          </div> <br>
+          <!-- Team Description -->
+          <div class="form-group">
+            <label for="teamDescription">Team Description</label>
+            <textarea class="form-control" id="teamDescription" rows="3" placeholder="Enter team description" required></textarea>
+          </div> <br> <br>
+          <!-- Skill Level (Range Selector) -->
+          <div class="form-group">
+            <label for="skillLevel">Skill Level (1-10)</label>
+            <input type="range" class="form-control-range" id="skillLevel" min="1" max="10" value="5">
+          </div> <br> <br>
+          <!-- Add Player by Email -->
+          <div class="form-group">
+            <label for="playerEmail">Add Player by Email</label>
+            <div class="input-group">
+              <input type="email" class="form-control" id="playerEmail" placeholder="Enter player's email">
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="button" id="addPlayerBtn">Add</button>
+              </div>
             </div>
-        </div>
-    </div>
-
-    <!-- Available Teams Card -->
-    <div class="d-flex justify-content-center" style="margin-top: 50px; position: relative;">
-        <div class="card text-dark" style="background-color: #D0DDD7; width: 400px; height: 400px; position: relative;">
-            <h3 class="card-header d-flex justify-content-between align-items-center" id="availableteamsHeader">
-                <span class="mx-auto">Available Teams</span>
-            </h3>
-            <div class="card-body" style="overflow-y: auto; height: calc(100% - 56px);">
-                <p style="font-size: 22px;">Net Ninjas</p>
-                <p style="font-size: 22px;">Spike Masters</p>
-                <p style="font-size: 22px;">Serve Aces</p>
-                <p style="font-size: 22px;">Block Party</p>
-                <p style="font-size: 22px;">Sandstorm Spikers</p>
-                <p style="font-size: 22px;">Set to Win</p>
-                <p style="font-size: 22px;">Power Servers</p>
-                <p style="font-size: 22px;">Court Crushers</p>
-            </div>
-
-        </div>
-    </div>
+          </div> <br> <br>
+          <!-- League Selection -->
+          <div class="form-group">
+            <label for="leagueSelect">Select League</label>
+            <select class="form-control" id="leagueSelect">
+              <option value="">Select a league</option>
+              <option value="league1">League 1</option>
+              <option value="league2">League 2</option>
+              <option value="league3">League 3</option>
+            </select>
+          </div>
+          <br> <br>
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-success">Create Team</button>
+        </form>
+      </div>
+      <br> <br> <br> <br>
 
     <footer class="footer"
         style="background-color: #D0DDD7; height: 80px; position: fixed; bottom: 0; width: 100%; left: 0;">
