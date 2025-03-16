@@ -63,6 +63,7 @@ function displayCardsDynamically(collection) {
         .then(allLeagues => {
             //var i = 1;  //Optional: if you want to have a unique ID for each hike
             allLeagues.forEach(doc => {
+                var docID = doc.id;
                 var title = doc.data().name;
                 var details = doc.data().details;
                 var leagueCode = doc.data().code;
@@ -77,6 +78,7 @@ function displayCardsDynamically(collection) {
                 newcard.querySelector('.card-text').innerHTML = details;
                 newcard.querySelector('.card-image').src = `./images/${leagueCode}.jpg`;
                 newcard.querySelector(".card").classList.add("league-card");
+                newcard.querySelector('a').href = "league.html?docID="+docID;
 
                 //Optional: give unique ids to all elements for future use
                 // newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);

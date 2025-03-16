@@ -60,52 +60,35 @@
         </div>
     </nav>
 
-    <!-- Settings Card -->
+    <!-- Games Card -->
     <div class="d-flex justify-content-center" style="margin-top: 50px; position: relative;">
-        <div class="card text-dark" style="background-color: #D0DDD7; width: 400px; height: 100px; position: relative;">
+        <div class="card text-dark" style="background-color: #D0DDD7; width: 400px; height: auto; position: relative;">
             <h3 class="card-header text-center" id="settingsHeader">
-                Settings
+                Volleyball Games
             </h3>
             <div class="card-body">
+                <ul class="list-group">
+                    <li class="list-group-item" style="background-color: #D0DDD7; border: none;">🏐 Spike Masters vs Net Ninjas - Tuesday 6:30 PM</li>
+                    <li class="list-group-item" style="background-color: #D0DDD7; border: none;">🏐 Block Busters vs Serve Aces - Wednesday 7:00 PM</li>
+                    <li class="list-group-item" style="background-color: #D0DDD7; border: none;">🏐 Volley Vipers vs Set Crushers - Friday 8:00 PM</li>
+                    <li class="list-group-item" style="background-color: #D0DDD7; border: none;">🏐 Smash Bros vs Jumping Giants - Saturday 4:00 PM</li>
+                </ul>
             </div>
         </div>
-    </div>  
+    </div>
+    
+    
 
-    <footer class="footer"
-        style="background-color: #D0DDD7; height: 80px; position: fixed; bottom: 0; width: 100%; left: 0;">
-        <div class="container d-flex justify-content-between align-items-center" style="height: 100%;">
-            <div class="footer-icons d-flex justify-content-between" style="width: 100%; text-align: center;">
-                <a href="main.html" class="text-dark"
-                    style="flex: 1; display: flex; justify-content: center; text-decoration: none;">
-                    <i class="fas fa-home" style="font-size: 24px;"></i>
-                </a>
-                <a href="teams.html" class="text-dark"
-                    style="flex: 1; display: flex; justify-content: center; text-decoration: none;">
-                    <i class="fas fa-users" style="font-size: 24px;"></i>
-                    <a href="league.html" class="text-dark"
-                        style="flex: 1; display: flex; justify-content: center; text-decoration: none;">
-                        <i class="fas fa-trophy" style="font-size: 24px;"></i>
-                        <a href="settings.html" class="text-dark"
-                            style="flex: 1; display: flex; justify-content: center; text-decoration: none;">
-                            <i class="fas fa-cog" style="font-size: 24px;"></i>
-                        </a>
-
-                        <a href="#" class="text-dark"
-                            style="flex: 1; display: flex; justify-content: center; text-decoration: none;">
-                            <i class="fas fa-user" style="font-size: 24px;"></i>
-                        </a>
-            </div>
-        </div>
-    </footer>
-
+    <div id="bottomNavPlaceholder"></div>
 
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
 
     <!-- Link to scripts of your own -->
-    <script src="./scripts/firebaseAPI_TEAM99.js"></script>
-    <script src="./scripts/script.js"></script>
+    <script src="./scripts/utility/utility.js"></script>
+    <script src="./scripts/account/account.service.js"></script>
+    <script src="./scripts/main/main.templates.js"></script>
 
 </body>
 
