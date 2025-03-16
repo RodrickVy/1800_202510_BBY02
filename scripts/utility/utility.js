@@ -1,7 +1,9 @@
+import DataStore from "./database.service.js";
+
 const ___PAGES = {
   signin: 'signin',
   signup: 'signup',
-  profile: 'profile',
+  account: 'main',
   settings: 'settings',
   leagues: 'leagues',
   main: 'main'
@@ -19,7 +21,7 @@ const _AUTHGOURDEDROUTES = [
  ___PAGES.settings,
    ___PAGES.leagues,
  ___PAGES.main,
- ___PAGES.profile
+ ___PAGES.account
 ];
 
 

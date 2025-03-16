@@ -6,7 +6,7 @@ window.onload = ()=>{
      Account.addListener("mainPageAppBar",(userData)=>{
         loadTemplate("appBarPlaceholder",`<nav class="navbar navbar-expand-lg" style="background-color: #D0DDD7; height: 10vh; min-width: 100%;">
             <div class="container-fluid d-flex justify-content-between align-items-center px-3" style="height: 100%;">
-                <a href="./profile.html" style="text-decoration:none; cursor:pointer;" class="d-flex flex-column align-items-center"  >
+                <a href="./account.html" style="text-decoration:none; cursor:pointer;" class="d-flex flex-column align-items-center"  >
                     <div class="rounded-circle  d-flex align-items-center justify-content-center"
                         style="background:green;width: 50px; height: 50px;">
                         <div style="color:white; font-weight:bold;padding:10px">${getInitials(userData.name)}</div>
@@ -41,7 +41,7 @@ window.onload = ()=>{
                 <i class="fas fa-cog" style="font-size: 24px;"></i>
                 </a>
 
-                <a href="./profile.html" class="text-dark"
+                <a href="./account.html" class="text-dark"
                 style="flex: 1; display: flex; justify-content: center; text-decoration: none;">
                 <i class="fas fa-user" style="font-size: 24px;"></i>
                 </a>
