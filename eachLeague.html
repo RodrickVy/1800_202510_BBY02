@@ -60,41 +60,45 @@
     </div>
 </nav>
 
-<!-- Current Leagues Card -->
-<div class="d-flex justify-content-center" style="margin-top: 50px;">
-    <div class="card text-dark" style="background-color: #D0DDD7; width: 400px; height: 100px;">
-        <h3 class="card-header" id="currentLeaguesHeader">Current Leagues</h3>
-        <div class="card-body">
+<div class="container">
+    <br>
+    <h1><span id="LeagueName">League Name</span></h1>
+    <br>
+    <form>
+        <!-- City Selection -->
+        <div class="form-group">
+            <label for="city">Select City</label>
+            <select class="form-control" id="city">
+                <option>Burnaby</option>
+                <option>Coquitlam</option>
+                <option>Delta</option>
+                <option>Langley</option>
+                <option>Richmond</option>
+                <option>Surrey</option>
+                <option>UBC</option>
+                <option>Vancouver</option>
+            </select>
         </div>
-    </div>
+        <br>
+        <!-- Skill Level Selection -->
+        <div class="form-group">
+            <label for="skillLevel">Select Skill Level</label>
+            <select class="form-control" id="skillLevel">
+                <option>Recreational</option>
+                <option>Intermediate</option>
+                <option>Intermediate Plus</option>
+                <option>Advanced</option>
+            </select>
+        </div>
+        <br>
+        <!-- Submit Button -->
+        <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-lg btn-primary pull-right"
+                onclick="selectLeague()">Select</button>
+        </div>
+    </form>
 </div>
 
-<!-- Templates for general use, not displayed -->
-<template id="leaguesCardTemplate">
-    <div class="card py-2 mx-2" style="width: 18rem">
-        <img class="card-image card-img-top" src=" ..." alt="League Image"/>
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-url">placeholder</p>
-            <br/>
-            <p class="card-text">
-                Some quick example text to build on the card title and make up the
-                bulk of the card's content.
-            </p>
-            <button class="btn btn-primary card-href" onclick="saveLeagueDocumentIDAndRedirect()">Select</button>
-        </div>
-    </div>
-</template>
-
-<!-- Available Leagues Card -->
-<div class="d-flex justify-content-center" style="margin-top: 50px;">
-    <div class="card text-dark available-leagues-card">
-        <h3 class="card-header text-center">Available Leagues</h3>
-        <div class="card-body leagues-container" id="leagues-go-here">
-            <!-- Cards will be dynamically inserted here -->
-        </div>
-    </div>
-</div>
 
 <div id="bottomNavPlaceholder"></div>
 
@@ -108,7 +112,8 @@
 <script src="./scripts/utility/utility.js"></script>
 <script src="./scripts/account/account.service.js"></script>
 <script src="./scripts/main/main.templates.js"></script>
-<script src="./scripts/league.js"></script>
+<!-- <script src="./scripts/league.js"></script> -->
+<script src="./scripts/eachLeague.js"></script>
 
 </body>
 
