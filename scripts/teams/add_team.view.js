@@ -125,7 +125,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
 
 
-            createTeamBtn.addEventListener('click', (event) => {
+            createTeamBtn.addEventListener('click', (event) => { 
+                console.log("Create button clicked")
                 TeamsService.createTeam({
                     id: generateUniqueId(),
                     name: teamName.value,
@@ -137,9 +138,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                     teamBoard: [],
                     teamTrophies: [],
 
-                });
+                }).then((_)=>{
+                    navigateToRoute(___PAGES.teams);
+                })
 
-                navigateToRoute(___PAGES.teams);
+                
 
             });
 

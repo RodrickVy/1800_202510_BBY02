@@ -4,8 +4,10 @@ const ___PAGES = {
     account: 'account',
     settings: 'settings',
     teams: 'teams',
-    leagues: 'leagues',
-    main: 'main', addTeam: 'add-team',
+    leagues: 'league',
+    main: 'main', 
+    addTeam: 'add-team',
+    eachLeague:'eachLeague'
 };
 
 
@@ -286,3 +288,13 @@ class StorageService {
 
 }
 
+
+
+
+
+function toTitleCase(text){
+
+    return text.split(" ").map(word => {
+       return  word.split("")[0].toUpperCase() + word.toLowerCase().substring(1);
+    }).join(" ");
+}

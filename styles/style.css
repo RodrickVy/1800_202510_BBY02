@@ -200,7 +200,6 @@ body {
  }
 
  .routeItem{
-
      text-align: center;
      display: flex;
      flex-direction: column;
@@ -208,4 +207,8 @@ body {
      justify-content: center;
      font-weight: lighter;
      text-decoration: none;
+ }
+
+ .routeItem i{
+    font-size: 20px;
  }
