@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Add Team</title>
+    <title>Leagues</title>
     <meta name="comp1800 template" content="My 1800 App">
 
     <!-- Required meta tags -->
@@ -24,9 +24,9 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"/>
     <!-- <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>-->
 
@@ -45,67 +45,77 @@
 <!-- Your HTML Layout go here -->
 <!------------------------------>
 <!-- Stuff for body goes here -->
-<div id="appBarPlaceholder"></div>
+<nav class="navbar navbar-expand-lg" style="background-color: #D0DDD7; height: 80px;">
+    <div class="container d-flex justify-content-center">
+        <div class="input-group d-flex justify-content-center">
+            <div class="input-group-prepend">
+                    <span class="input-group-text bg-transparent border-0" style="height: 38px;">
+                        <i class="fas fa-search" style="font-size: 20px;"></i>
+                    </span>
+            </div>
 
-<div class="container mt-5">
-    <h2>Create New Team</h2>
+            <form class="form-inline d-flex">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                       style="width: 250px; height: 38px;">
+            </form>
+        </div>
+    </div>
+</nav>
 
-        <!-- Team Name -->
+<div class="container">
+    <br>
+    <h1><span id="LeagueName">League Name</span></h1>
+    <br>
+    <form>
+        <!-- City Selection -->
         <div class="form-group">
-            <label for="teamName">Team Name</label>
-            <input type="text" class="form-control" id="teamName" placeholder="Enter team name" required>
+            <label for="city">Select City</label>
+            <select class="form-control" id="city">
+                <option>Burnaby</option>
+                <option>Coquitlam</option>
+                <option>Delta</option>
+                <option>Langley</option>
+                <option>Richmond</option>
+                <option>Surrey</option>
+                <option>UBC</option>
+                <option>Vancouver</option>
+            </select>
         </div>
         <br>
-
+        <!-- Skill Level Selection -->
         <div class="form-group">
-            <label for="leagueSelect">Select League</label>
-            <select class="form-control" id="leagueSelect">
-                <option value="">Select a league</option>
-                <option value="league1">League 1</option>
-                <option value="league2">League 2</option>
-                <option value="league3">League 3</option>
+            <label for="skillLevel">Select Skill Level</label>
+            <select class="form-control" id="skillLevel">
+                <option>Recreational</option>
+                <option>Intermediate</option>
+                <option>Intermediate Plus</option>
+                <option>Advanced</option>
             </select>
         </div>
-        <br> <br>
-        <!-- Team Description -->
-        <div class="form-group">
-            <label for="teamDescription">Team Description</label>
-            <textarea class="form-control" id="teamDescription" rows="3" placeholder="Enter team description"
-                      required></textarea>
-        </div>
-        <br> <br>
-        <div class="form-group">
-            <label for="levelInLeague">Level In League</label>
-            <select class="form-control" id="levelInLeague">
-                <option value="">Select a league</option>
-                <option value="league1">League 1</option>
-                <option value="league2">League 2</option>
-                <option value="league3">League 3</option>
-            </select>
-        </div>
-
-<br>
+        <br>
         <!-- Submit Button -->
-        <button  id='createTeamBtn' class="btn btn-success">Create Team</button>
-
+        <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-lg btn-primary pull-right"
+                onclick="selectLeague()">Select</button>
+        </div>
+    </form>
 </div>
-<br> <br> <br> <br>
+
 
 <div id="bottomNavPlaceholder"></div>
-
 
 <!---------------------------------------------->
 <!-- Your own JavaScript functions go here    -->
 <!---------------------------------------------->
 
-
+<!-- Link to scripts of your own -->
+<!-- <script src="./scripts/firebaseAPI_TEAM99.js"></script> -->
+ 
 <script src="./scripts/utility/utility.js"></script>
 <script src="./scripts/account/account.service.js"></script>
 <script src="./scripts/main/main.templates.js"></script>
-<script src="./scripts/teams/teams.service.js"></script>
-<script src="./scripts/teams/teams.template.js"></script>
-<script src="./scripts/teams/add_team.view.js"></script>
-<script src="./scripts/league/leagues.service.js"></script>
+<!-- <script src="./scripts/league.js"></script> -->
+<script src="./scripts/eachLeague.js"></script>
 
 </body>
 

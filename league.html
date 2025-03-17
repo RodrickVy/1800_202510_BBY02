@@ -24,7 +24,9 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"/>
     <!-- <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>-->
 
@@ -43,23 +45,7 @@
 <!-- Your HTML Layout go here -->
 <!------------------------------>
 <!-- Stuff for body goes here -->
-<nav class="navbar navbar-expand-lg" style="background-color: #D0DDD7; height: 80px;">
-    <div class="container d-flex justify-content-center">
-        <div class="input-group d-flex justify-content-center">
-            <div class="input-group-prepend">
-                    <span class="input-group-text bg-transparent border-0" style="height: 38px;">
-                        <i class="fas fa-search" style="font-size: 20px;"></i>
-                    </span>
-            </div>
-
-            <form class="form-inline d-flex">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
-                       style="width: 250px; height: 38px;">
-            </form>
-        </div>
-    </div>
-</nav>
-
+<div id="appBarPlaceholder"></div>
 <!-- Current Leagues Card -->
 <div class="d-flex justify-content-center" style="margin-top: 50px;">
     <div class="card text-dark" style="background-color: #D0DDD7; width: 400px; height: 100px;">
@@ -69,100 +55,17 @@
     </div>
 </div>
 
-<!-- Templates for general use, not displayed -->
-<template id="leaguesCardTemplate">
-    <div class="card py-2 mx-2" style="width: 18rem">
-        <img class="card-image card-img-top" src=" ..." alt="League Image"/>
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-url">placeholder</p>
-            <br/>
-            <p class="card-text">
-                Some quick example text to build on the card title and make up the
-                bulk of the card's content.
-            </p>
-            <a class="btn btn-primary card-href">Select</a>
-        </div>
-    </div>
-</template>
+
 
 <!-- Available Leagues Card -->
 <div class="d-flex justify-content-center" style="margin-top: 50px;">
     <div class="card text-dark available-leagues-card">
         <h3 class="card-header text-center">Available Leagues</h3>
-        <div class="card-body leagues-container" id="leagues-go-here">
+        <div class="card-body leagues-container" id="leaguesTemplate">
             <!-- Cards will be dynamically inserted here -->
         </div>
     </div>
 </div>
-
-
-<!--     <div class="d-flex justify-content-center" style="margin-top: 50px;">
-    <div class="card text-dark" style="background-color: #D0DDD7; width: 400px; height: auto;">
-        <h3 class="card-header" id="recreationalLeaguesheader">Recreational Leagues</h3>
-        <div class="card-body">
-            <div class="list-group">
-                <a href="urbanrec.html" class="list-group-item list-group-item-action"
-                    style="background-color: #D0DDD7; border: none; text-align: left; font-weight: bold; font-size: 21px;">
-                    <i class="fas fa-volleyball-ball" style="margin-right: 8px;"></i>Urban Rec
-                </a>
-                <a href="page2.html" class="list-group-item list-group-item-action"
-                    style="background-color: #D0DDD7; border: none; text-align: left; font-weight: bold; font-size: 21px;">
-                    <i class="fas fa-volleyball-ball" style="margin-right: 8px;"></i>Vancouver Volleyball League
-                </a>
-                <a href="page3.html" class="list-group-item list-group-item-action"
-                    style="background-color: #D0DDD7; border: none; text-align: left; font-weight: bold; font-size: 21px;">
-                    <i class="fas fa-volleyball-ball" style="margin-right: 8px;"></i>Vancouver Beach Volleyball
-                    League
-                </a>
-                <a href="page4.html" class="list-group-item list-group-item-action"
-                    style="background-color: #D0DDD7; border: none; text-align: left; font-weight: bold; font-size: 21px;">
-                    <i class="fas fa-volleyball-ball" style="margin-right: 8px;"></i>Volleyball BC
-                </a>
-                <a href="page5.html" class="list-group-item list-group-item-action"
-                    style="background-color: #D0DDD7; border: none; text-align: left; font-weight: bold; font-size: 21px;">
-                    <i class="fas fa-volleyball-ball" style="margin-right: 8px;"></i>No Frills Volleyball
-                </a>
-                <a href="page7.html" class="list-group-item list-group-item-action"
-                    style="background-color: #D0DDD7; border: none; text-align: left; font-weight: bold; font-size: 21px;">
-                    <i class="fas fa-volleyball-ball" style="margin-right: 8px;"></i>Dunbar Volleyball League
-                </a>
-                <a href="page8.html" class="list-group-item list-group-item-action"
-                    style="background-color: #D0DDD7; border: none; text-align: left; font-weight: bold; font-size: 21px;">
-                    <i class="fas fa-volleyball-ball" style="margin-right: 8px;"></i>Cambie Volleyball League
-                </a>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-<!-- <footer class="footer"
-        style="background-color: #D0DDD7; height: 80px; position: fixed; bottom: 0; width: 100%; left: 0;">
-    <div class="container d-flex justify-content-between align-items-center" style="height: 100%;">
-        <div class="footer-icons d-flex justify-content-between" style="width: 100%; text-align: center;">
-            <a href="main.html" class="text-dark"
-               style="flex: 1; display: flex; justify-content: center; text-decoration: none;">
-                <i class="fas fa-home" style="font-size: 24px;"></i>
-            </a>
-            <a href="teams.html" class="text-dark"
-               style="flex: 1; display: flex; justify-content: center; text-decoration: none;">
-                <i class="fas fa-users" style="font-size: 24px;"></i>
-                <a href="league.html" class="text-dark"
-                   style="flex: 1; display: flex; justify-content: center; text-decoration: none;">
-                    <i class="fas fa-trophy" style="font-size: 24px;"></i>
-                    <a href="settings.html" class="text-dark"
-                       style="flex: 1; display: flex; justify-content: center; text-decoration: none;">
-                        <i class="fas fa-cog" style="font-size: 24px;"></i>
-                    </a>
-
-                    <a href="#" class="text-dark"
-                       style="flex: 1; display: flex; justify-content: center; text-decoration: none;">
-                        <i class="fas fa-user" style="font-size: 24px;"></i>
-                    </a>
-        </div>
-    </div>
-</footer> -->
-
 
 <div id="bottomNavPlaceholder"></div>
 
@@ -176,7 +79,8 @@
 <script src="./scripts/utility/utility.js"></script>
 <script src="./scripts/account/account.service.js"></script>
 <script src="./scripts/main/main.templates.js"></script>
-<script src="scripts/league/league.js"></script>
+<script src="./scripts/league/leagues.service.js"></script>
+<script src="./scripts/league/league.template.js"></script>
 
 </body>
 

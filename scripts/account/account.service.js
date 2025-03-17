@@ -39,7 +39,12 @@ class RecreateUser {
                     gamesSubbed = [],
                     skillLevel = [],
                     badges = [],
-                    phoneNumber = ''
+                    phoneNumber = '',
+                    gender = '',
+                    city = '',
+                    age = '',
+                    lastLogin = '',
+                    createdOn = '',
                 } = {}) {
         this.id = id;
         this.name = name;
@@ -57,6 +62,11 @@ class RecreateUser {
         this.skillLevel = skillLevel;
         this.badges = badges;
         this.phoneNumber = phoneNumber;
+        this.gender = gender;
+        this.city = city;
+        this.age = age;
+        this.lastLogin = lastLogin;
+        this.createdOn = createdOn;
     }
 
     /**
@@ -64,7 +74,7 @@ class RecreateUser {
      * Explicitly extracts each property from the JSON.
      *
      * @param {Object|string} json - The JSON object (or string) with user properties.
-     * @returns {User} A new User instance.
+     * @returns {RecreateUser} A new User instance.
      */
     static fromJson(json) {
         // If json is a string, parse it.
@@ -74,22 +84,29 @@ class RecreateUser {
         console.log(json['id'])
 
         return new RecreateUser(
-            json['id'],
-            json['name'],
-            json['email'],
-            json['bio'],
-            json['profileUrl'] || '',
-            json['role'] || 'player',
-            json['friends'] || [],
-            json['sport'] || '',
-            json['league'] || '',
-            json['preferences'] || {},
-            json['teamsCreated'] || [],
-            json['teamsJoined'] || [],
-            json['gamesSubbed'] || [],
-            json['skillLevel'] || [],
-            json['badges'] || [],
-            json['phoneNumber'] || ''
+            {
+                id: json['id'],
+                name: json['name'],
+                email: json['email'],
+                bio: json['bio'],
+                profileUrl: json['profileUrl'] || '',
+                role: json['role'] || 'player',
+                friends: json['friends'] || [],
+                sport: json['sport'] || '',
+                league: json['league'] || '',
+                preferences: json['preferences'] || {},
+                teamsCreated: json['teamsCreated'] || [],
+                teamsJoined: json['teamsJoined'] || [],
+                gamesSubbed: json['gamesSubbed'] || [],
+                skillLevel: json['skillLevel'] || [],
+                badges: json['badges'] || [],
+                phoneNumber: json['phoneNumber'] || '',
+                gender: json['gender'] || '',
+                city: json['city'] || '',
+                age: json['age'] || '',
+                createdOn: json['createdOn'] || [],
+                lastLogin: json['lastLogin'] || [],
+            }
         );
     }
 
@@ -115,7 +132,12 @@ class RecreateUser {
             gamesSubbed: this.gamesSubbed,
             skillLevel: this.skillLevel,
             badges: this.badges,
-            phoneNumber: this.phoneNumber
+            phoneNumber: this.phoneNumber,
+            gender: this.gender,
+            city: this.city,
+            age: this.age,
+            createdOn: this.createdOn,
+            lastLogin: this.lastLogin,
         };
     }
 
@@ -148,6 +170,7 @@ class Account {
     static app = firebase.initializeApp(Account.firebaseConfig);
     static auth = firebase.auth();
     static fs = firebase.firestore();
+    static st = firebase.storage();
 
 
     static userAccount = new RecreateUser();
@@ -159,16 +182,19 @@ class Account {
      * For example, it runs whenever a user signs in or signs out.
      */
     static initializeAuthStateListener = () => {
+
+
         // Replace 'firebase.auth()' with your auth instance if needed
-        firebase.auth().onAuthStateChanged(async (user) => {
+        Account.auth.onAuthStateChanged(async (user) => {
             if (user) {
 
 
-                const docExists = (await Account.documentExists('users', user.uid) == true);
+                const docExists = (await Account.documentExists('users', user.uid) === true);
 
 
-                if (docExists == false) {
+                if (docExists === false) {
                     Account.createUserInFirestore(user, {});
+
 
                 }
 
@@ -208,7 +234,15 @@ class Account {
                 userCredential.user.updateProfile({
                     displayName: name
                 }).then(() => {
-                    Account.createUserInFirestore(userCredential.user, customData);
+                    const timestamp = new Date().toISOString().split('T')[0];
+                    console.log("Id" + userCredential.user.uid + "Last login : " + timestamp)
+                    Account.updateUser(userCredential.user.uid, (user) => {
+                        return {
+                            lastLogin: timestamp,
+                            createdOn: timestamp,
+                        }
+
+                    })
                 })
 
 
@@ -234,7 +268,19 @@ class Account {
     static async signIn(email, password, onSuccess, onError) {
         Account.auth.signInWithEmailAndPassword(email, password)
             .then((userCredential) => {
-                onSuccess(userCredential.user);
+
+
+                const timestamp = new Date().toISOString().split('T')[0];
+                console.log("Id" + userCredential.user.uid + "Last login : " + timestamp)
+                Account.updateUser(userCredential.user.uid, (user) => {
+                    return {
+                        lastLogin: timestamp,
+                        createdOn: timestamp,
+                    }
+
+                }).then(() => {
+                    onSuccess(userCredential.user);
+                })
 
 
             })
@@ -303,6 +349,8 @@ class Account {
             gamesSubbed: [],
             skillLevel: [],
             badges: [],
+            lastLogin: customData.lastLogin,
+            createdOn: customData.createdOn,
 
         };
 
@@ -412,6 +460,48 @@ class Account {
         return docSnapshot.exists;
     }
 
+
+    /**
+     * Sends a password reset email to the user.
+     *
+     * @param {string} email - The user's email address.
+     * @param onSuccess
+     * @param onError
+     * @returns {Promise<void>} - Resolves if the email is sent successfully, rejects on error.
+     */
+    static sendPasswordResetEmail(email, onSuccess, onError) {
+        return Account.auth.sendPasswordResetEmail(email)
+            .then(() => {
+                console.log("Password reset email sent successfully.");
+                onSuccess(email);
+            })
+            .catch(error => {
+                console.error("Error sending password reset email:", error);
+                onError("Error sending password reset email: " + error);
+            });
+    }
+
+
+    /**
+     * Deletes a user from Firebase Authentication.
+     *
+     * @param {string} userId - The user's unique ID.
+     * */
+    static deleteUser(userId) {
+        return Account.auth.getUser(userId)
+            .then(userRecord => {
+                Account.fs.collection('users').doc(userId).delete();
+
+                Account.auth.deleteUser(userRecord.uid);
+                checkGuardedRoutes(false)
+            })
+            .then(() => {
+                console.log("User deleted successfully.");
+            })
+            .catch(error => {
+                console.error("Error deleting user:", error);
+            });
+    }
 
 }
 

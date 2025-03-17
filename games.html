@@ -45,48 +45,43 @@
     <!-- Your HTML Layout go here -->
     <!------------------------------>
     <!-- Stuff for body goes here -->
-    <div id="appBarPlaceholder"></div>
-    <!-- My Team Card -->
-    <div class="d-flex justify-content-center" style="margin-top: 50px; position: relative;">
-        <div class="card text-dark" style="background-color: #D0DDD7; width: 400px;  ">
-            <h3 class="card-header d-flex justify-content-between align-items-center" id="myTeamHeader">
-                <span class="mx-auto">My Team</span>
-                <a href="./add-team.html" class="btn btn-light border-0" id="addTeamBtn" style="font-size: 20px;">
-                    <i class="fas fa-plus"></i>
-                </a>
-            </h3>
-            <div   id="myTeamsContainer"  >
+    <nav class="navbar navbar-expand-lg" style="background-color: #D0DDD7; height: 80px;">
+        <div class="container d-flex justify-content-center">
+            <div class="input-group d-flex justify-content-center">
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-transparent border-0" style="height: 38px;">
+                        <i class="fas fa-search" style="font-size: 20px;"></i>
+                    </span>
+                </div>
 
+                <form class="form-inline d-flex">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                        style="width: 250px; height: 38px;">
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Games Card -->
+    <div class="d-flex justify-content-center" style="margin-top: 50px; position: relative;">
+        <div class="card text-dark" style="background-color: #D0DDD7; width: 400px; height: auto; position: relative;">
+            <h3 class="card-header text-center" id="settingsHeader">
+                Volleyball Games
+            </h3>
+            <div class="card-body">
+                <ul class="list-group">
+                    <li class="list-group-item" style="background-color: #D0DDD7; border: none;">🏐 Spike Masters vs Net Ninjas - Tuesday 6:30 PM</li>
+                    <li class="list-group-item" style="background-color: #D0DDD7; border: none;">🏐 Block Busters vs Serve Aces - Wednesday 7:00 PM</li>
+                    <li class="list-group-item" style="background-color: #D0DDD7; border: none;">🏐 Volley Vipers vs Set Crushers - Friday 8:00 PM</li>
+                    <li class="list-group-item" style="background-color: #D0DDD7; border: none;">🏐 Smash Bros vs Jumping Giants - Saturday 4:00 PM</li>
+                </ul>
             </div>
         </div>
     </div>
-
-    <!-- Available Teams Card -->
-    <div class="d-flex justify-content-center" style="margin-top: 50px; position: relative;">
-        <div class="card text-dark" style="background-color: #D0DDD7; width: 400px;">
-            <h3 class="card-header d-flex justify-content-between align-items-center" id="availableteamsHeader">
-                <span class="mx-auto">Available Teams</span>
-            </h3>
-            <div id="teamsContainer" class="card-body" style="overflow-y: auto; height: calc(100% - 56px);">
-                <p style="font-size: 22px;">Net Ninjas</p>
-                <p style="font-size: 22px;">Spike Masters</p>
-                <p style="font-size: 22px;">Serve Aces</p>
-                <p style="font-size: 22px;">Block Party</p>
-                <p style="font-size: 22px;">Sandstorm Spikers</p>
-                <p style="font-size: 22px;">Set to Win</p>
-                <p style="font-size: 22px;">Power Servers</p>
-                <p style="font-size: 22px;">Court Crushers</p>
-            </div>
-
-        </div>
-    </div>
-
 
 
 
     <div id="bottomNavPlaceholder"></div>
-
-
 
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
@@ -96,10 +91,6 @@
     <script src="./scripts/utility/utility.js"></script>
     <script src="./scripts/account/account.service.js"></script>
     <script src="./scripts/main/main.templates.js"></script>
-    <script src="./scripts/teams/teams.service.js"></script>
-    <script src="./scripts/teams/teams.template.js"></script>
-    <script src="./scripts/league/leagues.service.js"></script>
-
 
 </body>
 

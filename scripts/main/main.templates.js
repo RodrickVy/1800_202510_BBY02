@@ -25,32 +25,36 @@ window.onload = ()=>{
            <footer class="footer"
         style="background-color: #D0DDD7; height: 80px; position: fixed; bottom: 0; width: 100%; left: 0;">
         <div class="container d-flex justify-content-between align-items-center" style="height: 100%;">
-            <div class="footer-icons d-flex justify-content-between" style="width: 100%; text-align: center;">
-                <a href="main.html" class="text-dark"
-                style="flex: 1; display: flex; justify-content: center; text-decoration: none;">
-                <i class="fas fa-home" style="font-size: 24px;"></i>
+            <div class="footer-icons d-flex justify-content-between" style="width: 100%; padding-top:15px; text-align: center;">
+                <a href="main.html" class="text-dark routeItem" >
+                <i class="fas fa-home" ></i>
+                <p>  Home</p>
                 </a>
-                <a href="teams.html" class="text-dark"
-                style="flex: 1; display: flex; justify-content: center; text-decoration: none;">
-                <i class="fas fa-users" style="font-size: 24px;"></i>
-                <a href="league.html" class="text-dark"
-                style="flex: 1; display: flex; justify-content: center; text-decoration: none;">
-                <i class="fas fa-trophy" style="font-size: 24px;"></i>
-                <a href="settings.html" class="text-dark"
-                style="flex: 1; display: flex; justify-content: center; text-decoration: none;">
-                <i class="fas fa-cog" style="font-size: 24px;"></i>
+                <a href="teams.html" class="text-dark routeItem" >
+                <i class="fas fa-users" ></i>
+                <p>Teams</p>
                 </a>
+                
+                
+                <a href="league.html" class="text-dark routeItem" >
+                <i class="fas fa-trophy" ></i>
+                <p>Leagues</p>
+                </a>
+<!--                <a href="settings.html" class="text-dark"-->
+<!--                style="flex: 1; display: flex; justify-content: center; text-decoration: none;">-->
+<!--                <i class="fas fa-cog" ></i>-->
+<!--                </a>-->
 
-                <a href="./account.html" class="text-dark"
-                style="flex: 1; display: flex; justify-content: center; text-decoration: none;">
-                <i class="fas fa-user" style="font-size: 24px;"></i>
+                <a href="./account.html" class="text-dark routeItem" >
+                <i class="fas fa-user" ></i>
+                 <p >Account</p>
                 </a>
             </div>
         </div>
     </footer>
         
         `,()=>{
-        
+
     // Start running the carousel
     const carousel =  $(".carousel");
 
@@ -60,11 +64,11 @@ window.onload = ()=>{
     });
 
 
-    
-    
+
+
 
 }
 
 
- 
+
 

@@ -190,3 +190,22 @@ body {
     font-weight: bold;
     margin: 0 auto 1rem;
   }
+
+
+
+
+ .alignLeft{
+     text-align: left;
+     width:100%;
+ }
+
+ .routeItem{
+
+     text-align: center;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     font-weight: lighter;
+     text-decoration: none;
+ }
