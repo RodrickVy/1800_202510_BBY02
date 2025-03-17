@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () =>  {
         <img class="card-image card-img-top" src="images/${league.code}.jpg" alt="League Image"/>
         <div class="card-body">
             <h5 class="card-title">${league.name}</h5>
-             <p class="card-subtitle">${league.city}</p>
+
              <br>
             <a class="card-url">${league.url}</a>
             <br/>

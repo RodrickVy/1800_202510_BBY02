@@ -38,6 +38,7 @@ window.onload = ()=>{
                 
                 <a href="league.html" class="text-dark routeItem" >
                 <i class="fas fa-trophy" ></i>
+               
                 <p>Leagues</p>
                 </a>
 <!--                <a href="settings.html" class="text-dark"-->
