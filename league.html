@@ -11,12 +11,12 @@
 
     <!-- Bootstrap Library CSS CDN go here -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <!-- Boostrap Library JS CDN  go here -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-            crossorigin="anonymous"></script>
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 
     <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
     <!-------------------------------------------------------->
@@ -24,10 +24,10 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"/>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
     <!-- <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>-->
 
     <!-- Link to styles of your own -->
@@ -41,45 +41,45 @@
 
 <body>
 
-<!------------------------------>
-<!-- Your HTML Layout go here -->
-<!------------------------------>
-<!-- Stuff for body goes here -->
-<div id="appBarPlaceholder"></div>
-<!-- Current Leagues Card -->
-<div class="d-flex justify-content-center" style="margin-top: 50px;">
-    <div class="card text-dark" style="background-color: #D0DDD7; width: 400px; ">
-        <h3 class="card-header" id="currentLeaguesHeader">Current Leagues</h3>
-        <div class="card-body" id="userLeaguesContainer">
+    <!------------------------------>
+    <!-- Your HTML Layout go here -->
+    <!------------------------------>
+    <!-- Stuff for body goes here -->
+    <div id="appBarPlaceholder"></div>
+    <!-- Current Leagues Card -->
+    <div class="d-flex justify-content-center" style="margin-top: 50px;">
+        <div class="card text-dark" style="background-color: #D0DDD7; width: 400px; ">
+            <h3 class="card-header" id="currentLeaguesHeader">Current Leagues</h3>
+            <div class="card-body" id="userLeaguesContainer">
+            </div>
         </div>
     </div>
-</div>
 
-<!-- Available Leagues Card -->
-<div class="d-flex justify-content-center" style="margin-top: 50px;">
-    <div class="card text-dark available-leagues-card">
-        <h3 class="card-header text-center">Available Leagues</h3>
-        <div class="card-body leagues-container" id="leaguesTemplate">
-            <!-- Cards will be dynamically inserted here -->
+    <!-- Available Leagues Card -->
+    <div class="d-flex justify-content-center" style="margin-top: 50px;">
+        <div class="card text-dark available-leagues-card">
+            <h3 class="card-header text-center">Available Leagues</h3>
+            <div class="card-body leagues-container" id="leaguesTemplate">
+                <!-- Cards will be dynamically inserted here -->
+            </div>
         </div>
     </div>
-</div>
 
-<div id="bottomNavPlaceholder"></div>
+    <div id="bottomNavPlaceholder"></div>
 
-<!---------------------------------------------->
-<!-- Your own JavaScript functions go here    -->
-<!---------------------------------------------->
+    <!---------------------------------------------->
+    <!-- Your own JavaScript functions go here    -->
+    <!---------------------------------------------->
 
-<!-- Link to scripts of your own -->
-<!-- <script src="./scripts/firebaseAPI_TEAM99.js"></script> -->
- 
-<script src="./scripts/utility/utility.js"></script>
-<script src="./scripts/account/account.service.js"></script>
-<script src="./scripts/main/main.templates.js"></script>
-<script src="./scripts/league/leagues.service.js"></script>
-<script src="./scripts/league/league.template.js"></script>
-<script src="./scripts/league/leagues.view.js"></script>
+    <!-- Link to scripts of your own -->
+    <!-- <script src="./scripts/firebaseAPI_TEAM99.js"></script> -->
+
+    <script src="./scripts/utility/utility.js"></script>
+    <script src="./scripts/account/account.service.js"></script>
+    <script src="./scripts/main/main.templates.js"></script>
+    <script src="./scripts/league/leagues.service.js"></script>
+    <script src="./scripts/league/league.template.js"></script>
+    <script src="./scripts/league/leagues.view.js"></script>
 
 </body>
 

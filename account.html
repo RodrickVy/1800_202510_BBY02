@@ -7,10 +7,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-            crossorigin="anonymous"></script>
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,222 +22,233 @@
 <body>
 
 
-<div class="container my-5">
-    <div class="card shadow-none mx-auto" style="max-width: 500px;">
-        <div class="card-body text-center">
-            <!-- Account circle with user's initials -->
-            <div class="account-circle" id="accountCircle">AS</div>
-            <!-- User name -->
-            <h5 class="card-title" id="userName">Alice Smith</h5>
-            <!-- User email -->
-            <p class="card-text" id="userEmail">alice@example.com</p>
-            <br>
+    <div class="container my-5">
+        <div class="card shadow-none mx-auto" style="max-width: 500px;">
+            <div class="card-body text-center">
+                <!-- Account circle with user's initials -->
+                <div class="account-circle" id="accountCircle">AS</div>
+                <!-- User name -->
+                <h5 class="card-title" id="userName">Alice Smith</h5>
+                <!-- User email -->
+                <p class="card-text" id="userEmail">alice@example.com</p>
+                <br>
 
 
-            <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center" data-bs-toggle="collapse"
-                     data-bs-target="#collapseOne">
-                    <div>
-                        <span class="card-icon"></span>
-                        <strong>Profile</strong>
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne">
+                        <div>
+                            <span class="card-icon"></span>
+                            <strong>Profile</strong>
+                        </div>
+                        <span class="arrow-icon">&#9654;</span>
                     </div>
-                    <span class="arrow-icon">&#9654;</span>
-                </div>
-                <div id="collapseOne" class="collapse show" data-bs-parent="#accordionExample">
-                    <div class="card-body">
+                    <div id="collapseOne" class="collapse show" data-bs-parent="#accordionExample">
+                        <div class="card-body">
 
-                        <!-- Name Input -->
-                        <div class="mb-3">
-                            <label for="imageInput" class="form-label alignLeft">Profile Photo:</label>
-                            <input type="file" accept="image/png, image/jpeg, image/jpg" class="form-control" id="imageInput" >
-                        </div>
+                            <!-- Name Input -->
+                            <div class="mb-3">
+                                <label for="imageInput" class="form-label alignLeft">Profile Photo:</label>
+                                <input type="file" accept="image/png, image/jpeg, image/jpg" class="form-control"
+                                    id="imageInput">
+                            </div>
 
-                        <!-- Name Input -->
-                        <div class="mb-3">
-                            <label for="userNameInput" class="form-label alignLeft">Name:</label>
-                            <input type="text" class="form-control" id="userNameInput" placeholder="Enter your name">
-                        </div>
+                            <!-- Name Input -->
+                            <div class="mb-3">
+                                <label for="userNameInput" class="form-label alignLeft">Name:</label>
+                                <input type="text" class="form-control" id="userNameInput"
+                                    placeholder="Enter your name">
+                            </div>
 
-                        <!-- Phone Number Input -->
-                        <div class="mb-3">
-                            <label for="userPhone" class="form-label alignLeft">Phone Number:</label>
-                            <input type="tel" class="form-control" id="userPhone" placeholder="e.g., (123) 456-7890">
-                        </div>
+                            <!-- Phone Number Input -->
+                            <div class="mb-3">
+                                <label for="userPhone" class="form-label alignLeft">Phone Number:</label>
+                                <input type="tel" class="form-control" id="userPhone"
+                                    placeholder="e.g., (123) 456-7890">
+                            </div>
 
-                        <!-- Role Select -->
-                        <div class="mb-3">
-                            <label for="roleSelect" class="form-label alignLeft">Role:</label>
-                            <select class="form-select" id="roleSelect">
-                                <option value="captain">Captain</option>
-                                <option value="substitute">Substitute</option>
-                            </select>
-                        </div>
+                            <!-- Role Select -->
+                            <div class="mb-3">
+                                <label for="roleSelect" class="form-label alignLeft">Role:</label>
+                                <select class="form-select" id="roleSelect">
+                                    <option value="captain">Captain</option>
+                                    <option value="substitute">Substitute</option>
+                                </select>
+                            </div>
 
-                        <!-- Gender Select -->
-                        <div class="mb-3">
-                            <label for="genderSelect" class="form-label alignLeft">Gender:</label>
-                            <select class="form-select" id="genderSelect">
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                                <option value="prefer_not_say">Prefer not to say</option>
-                            </select>
-                        </div>
+                            <!-- Gender Select -->
+                            <div class="mb-3">
+                                <label for="genderSelect" class="form-label alignLeft">Gender:</label>
+                                <select class="form-select" id="genderSelect">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="prefer_not_say">Prefer not to say</option>
+                                </select>
+                            </div>
 
-                        <!-- City Select -->
-                        <div class="mb-3">
-                            <label for="citySelect" class="form-label alignLeft">City:</label>
-                            <select class="form-select" id="citySelect">
-                                <option value="abbotsford">Abbotsford</option>
-                                <option value="burnaby">Burnaby</option>
-                                <option value="campbell_river">Campbell River</option>
-                                <option value="chilliwack">Chilliwack</option>
-                                <option value="coquitlam">Coquitlam</option>
-                                <option value="delta">Delta</option>
-                                <option value="kamloops">Kamloops</option>
-                                <option value="kelowna">Kelowna</option>
-                                <option value="langley">Langley</option>
-                                <option value="maple_ridge">Maple Ridge</option>
-                                <option value="nanaimo">Nanaimo</option>
-                                <option value="new_westminster">New Westminster</option>
-                                <option value="north_vancouver">North Vancouver</option>
-                                <option value="penticton">Penticton</option>
-                                <option value="port_coquitlam">Port Coquitlam</option>
-                                <option value="prince_george">Prince George</option>
-                                <option value="richmond">Richmond</option>
-                                <option value="saanich">Saanich</option>
-                                <option value="surrey">Surrey</option>
-                                <option value="vancouver">Vancouver</option>
-                                <option value="vernon">Vernon</option>
-                                <option value="victoria">Victoria</option>
-                                <option value="west_kelowna">West Kelowna</option>
-                                <option value="west_vancouver">West Vancouver</option>
-                                <option value="whistler">Whistler</option>
-                            </select>
-                        </div>
+                            <!-- City Select -->
+                            <div class="mb-3">
+                                <label for="citySelect" class="form-label alignLeft">City:</label>
+                                <select class="form-select" id="citySelect">
+                                    <option value="abbotsford">Abbotsford</option>
+                                    <option value="burnaby">Burnaby</option>
+                                    <option value="campbell_river">Campbell River</option>
+                                    <option value="chilliwack">Chilliwack</option>
+                                    <option value="coquitlam">Coquitlam</option>
+                                    <option value="delta">Delta</option>
+                                    <option value="kamloops">Kamloops</option>
+                                    <option value="kelowna">Kelowna</option>
+                                    <option value="langley">Langley</option>
+                                    <option value="maple_ridge">Maple Ridge</option>
+                                    <option value="nanaimo">Nanaimo</option>
+                                    <option value="new_westminster">New Westminster</option>
+                                    <option value="north_vancouver">North Vancouver</option>
+                                    <option value="penticton">Penticton</option>
+                                    <option value="port_coquitlam">Port Coquitlam</option>
+                                    <option value="prince_george">Prince George</option>
+                                    <option value="richmond">Richmond</option>
+                                    <option value="saanich">Saanich</option>
+                                    <option value="surrey">Surrey</option>
+                                    <option value="vancouver">Vancouver</option>
+                                    <option value="vernon">Vernon</option>
+                                    <option value="victoria">Victoria</option>
+                                    <option value="west_kelowna">West Kelowna</option>
+                                    <option value="west_vancouver">West Vancouver</option>
+                                    <option value="whistler">Whistler</option>
+                                </select>
+                            </div>
 
-                        <!-- Bio Textarea -->
-                        <div class="mb-3">
-                            <label for="bioEditor" class="form-label alignLeft">Bio:</label>
-                            <textarea id="bioEditor" class="form-control" rows="6" placeholder="Tell us about yourself..."></textarea>
-                        </div>
+                            <!-- Bio Textarea -->
+                            <div class="mb-3">
+                                <label for="bioEditor" class="form-label alignLeft">Bio:</label>
+                                <textarea id="bioEditor" class="form-control" rows="6"
+                                    placeholder="Tell us about yourself..."></textarea>
+                            </div>
 
-                        <!-- Skill Level Slider -->
-                        <div class="mb-3">
-                            <label for="userRating" class="form-label fw-bold alignLeft">Rate Your Skill Level: <span id="ratingValue" class="text-primary">5</span>/10</label>
-                            <input type="range" class="form-range" min="1" max="10" step="1" id="userRating" value="5">
+                            <!-- Skill Level Slider -->
+                            <div class="mb-3">
+                                <label for="userRating" class="form-label fw-bold alignLeft">Rate Your Skill Level:
+                                    <span id="ratingValue" class="text-primary">5</span>/10</label>
+                                <input type="range" class="form-range" min="1" max="10" step="1" id="userRating"
+                                    value="5">
+                            </div>
+                            <hr>
+                            <!-- Save button -->
+                            <button id="saveButton" class="btn btn-disabled mt-3 w-100">Save</button>
                         </div>
-                        <hr>
-                        <!-- Save button -->
-                        <button id="saveButton" class="btn btn-disabled mt-3 w-100">Save</button>
                     </div>
                 </div>
+
+                <br>
+
+
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo">
+                        <div>
+                            <span class="card-icon"></span>
+                            <strong>Settings</strong>
+                        </div>
+                        <span class="arrow-icon">&#9654;</span>
+                    </div>
+
+                    <div id="collapseTwo" class="collapse  " data-bs-parent="#collapseTwo">
+                        <div class="card-body">
+
+                            <!-- Name Input -->
+                            <div class="mb-3">
+                                <label for="lastLoginText" class="form-label alignLeft">Last Login:</label>
+                                <input type="text" disabled class="form-control" id="lastLoginText">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="createdOnText" class="form-label alignLeft">Created on:</label>
+                                <input type="text" disabled class="form-control" id="createdOnText">
+                            </div>
+
+                            <!-- Name Input -->
+                            <div class="mb-3">
+                                <label for="userEmailViewOnly" class="form-label alignLeft">Reset Password:</label>
+                                <input type="text" disabled class="form-control" id="userEmailViewOnly"
+                                    placeholder="hjack@gmail.com">
+                                <br>
+                                <button type="button" class="btn btn-secondary w-100" id="resetPasswordBtn">Send Reset
+                                    Email</button>
+
+                            </div>
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center" data-bs-toggle="collapse"
+                        data-bs-target="#collapse3">
+                        <div>
+                            <span class="card-icon"></span>
+                            <strong>Advanced</strong>
+                        </div>
+                        <span class="arrow-icon">&#9654;</span>
+                    </div>
+
+                    <div id="collapse3" class="collapse " data-bs-parent="#collapse3">
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label for="deleteAccountBtn" class="form-label text-danger alignLeft">Delete
+                                    Account:</label>
+                                <p class="text-center fst-italic text-sm-center"> This action is can't be undone, click
+                                    to confirm.</p>
+                                <button type="button" class="btn btn-danger w-100" id="deleteAccountBtn">Delete
+                                    Account</button>
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <br><br>
+                <!-- Logout button -->
+                <button class="btn btn-danger" id="logoutBtn">Log Out</button>
             </div>
-
-            <br>
-
-
-            <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center" data-bs-toggle="collapse"
-                     data-bs-target="#collapseTwo">
-                    <div>
-                        <span class="card-icon"></span>
-                        <strong>Settings</strong>
-                    </div>
-                    <span class="arrow-icon">&#9654;</span>
-                </div>
-
-                <div id="collapseTwo" class="collapse  " data-bs-parent="#collapseTwo">
-                    <div class="card-body">
-
-                        <!-- Name Input -->
-                        <div class="mb-3">
-                            <label for="lastLoginText" class="form-label alignLeft">Last Login:</label>
-                            <input type="text" disabled  class="form-control"  id="lastLoginText">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="createdOnText" class="form-label alignLeft">Created on:</label>
-                            <input type="text" disabled  class="form-control"  id="createdOnText">
-                        </div>
-
-                        <!-- Name Input -->
-                        <div class="mb-3">
-                            <label for="userEmailViewOnly" class="form-label alignLeft">Reset Password:</label>
-                            <input type="text" disabled class="form-control" id="userEmailViewOnly" placeholder="hjack@gmail.com">
-                            <br>
-                            <button  type="button" class="btn btn-secondary w-100" id="resetPasswordBtn">Send Reset Email</button>
-
-                        </div>
-
-
-
-
-
-                    </div>
-                </div>
-            </div>
-
-            <br>
-
-            <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center" data-bs-toggle="collapse"
-                     data-bs-target="#collapse3">
-                    <div>
-                        <span class="card-icon"></span>
-                        <strong>Advanced</strong>
-                    </div>
-                    <span class="arrow-icon">&#9654;</span>
-                </div>
-
-                <div id="collapse3" class="collapse " data-bs-parent="#collapse3">
-                    <div class="card-body">
-                        <div class="mb-3">
-                            <label for="deleteAccountBtn" class="form-label text-danger alignLeft">Delete Account:</label>
-                            <p class="text-center fst-italic text-sm-center"> This action is can't be undone,click to confirm.</p>
-                            <button  type="button" class="btn btn-danger w-100" id="deleteAccountBtn">Delete Account</button>
-
-                        </div>
-
-
-
-                    </div>
-                </div>
-            </div>
-
-
-            <br><br>
-            <!-- Logout button -->
-            <button class="btn btn-danger" id="logoutBtn">Log Out</button>
         </div>
     </div>
-</div>
 
 
-<div id="bottomNavPlaceholder"></div>
+    <div id="bottomNavPlaceholder"></div>
 
 
-<!-- Firebase 8 Library related CSS, JS, JQuery go here -->
-<!-------------------------------------------------------->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-<script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"/>
-<!-- <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>-->
+    <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
+    <!-------------------------------------------------------->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+    <!-- <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>-->
 
 
-<!---------------------------------------------->
-<!-- Your own JavaScript functions go here    -->
-<!---------------------------------------------->
+    <!---------------------------------------------->
+    <!-- Your own JavaScript functions go here    -->
+    <!---------------------------------------------->
 
-<!-- Link to scripts of your own -->
-<script src="./scripts/utility/utility.js"></script>
-<script src="./scripts/account/account.service.js"></script>
-<script src="./scripts/main/main.templates.js"></script>
-<script src="./scripts/account/profile.view.js"></script>
+    <!-- Link to scripts of your own -->
+    <script src="./scripts/utility/utility.js"></script>
+    <script src="./scripts/account/account.service.js"></script>
+    <script src="./scripts/main/main.templates.js"></script>
+    <script src="./scripts/account/profile.view.js"></script>
 </body>
 
 </html>
