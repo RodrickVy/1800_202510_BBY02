@@ -22,13 +22,11 @@ Account.addListener('leauguesPages', async (user)=>{
                  <p class="card-text">
                     ${toTitleCase(user.skillLevel)}
                  </p>
-       
              </div>
          </div>
             </div>
                `);
         }
-
     })
 
     if(currentLeague === null){

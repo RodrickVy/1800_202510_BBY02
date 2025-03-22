@@ -1,9 +1,9 @@
 // Loads the common HTML in the sign in, signup and forgot-password pages. 
 
-window.onload = ()=>{
+window.onload = () => {
 
 
-    loadTemplate("navPlaceholder",` <nav class="navbar navbar-expand-lg shadow-sm" style="background-color: #ffffff;">
+    loadTemplate("navPlaceholder", ` <nav class="navbar navbar-expand-lg shadow-sm" style="background-color: #ffffff;">
         <div class="container-fluid">
             <a class="navbar-brand" href="./index.html">
                 <img src="./images/logo.jpg" height="36">RECREA-8</a>
@@ -36,8 +36,8 @@ window.onload = ()=>{
 
             </div>
         </div>
-    </nav>`,()=>{});
-    loadTemplate("carouselPlaceholder",`
+    </nav>`, () => { });
+    loadTemplate("carouselPlaceholder", `
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
@@ -76,22 +76,22 @@ window.onload = ()=>{
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
-    </div>`,()=>{
-        
-    // Start running the carousel
-    const carousel =  $(".carousel");
+    </div>`, () => {
 
-    setInterval(function () {
-        carousel.carousel("next");
-    }, 2200);
+        // Start running the carousel
+        const carousel = $(".carousel");
+
+        setInterval(function () {
+            carousel.carousel("next");
+        }, 2200);
     });
 
 
-    
-    
+
+
 
 }
 
 
- 
+
 

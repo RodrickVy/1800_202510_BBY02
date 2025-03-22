@@ -191,9 +191,6 @@ body {
     margin: 0 auto 1rem;
   }
 
-
-
-
  .alignLeft{
      text-align: left;
      width:100%;
@@ -212,3 +209,20 @@ body {
  .routeItem i{
     font-size: 20px;
  }
+
+ .btn-custom {
+    background-color: #B7B7B7;
+    border-color: #BED1CF;
+    color: white;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-custom:hover {
+    background-color: #686D76; /* Dark grey on hover */
+    border-color: #BED1CF; /* Keep the same border color */
+    color: white;
+}
+
+.card-custom {
+    background-color: #D3D3D3;
+}
