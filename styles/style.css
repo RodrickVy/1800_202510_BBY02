@@ -1,7 +1,6 @@
-body{
+body {
     overflow-y: scroll;
 }
-
 
 
 /* Splash Screen */
@@ -121,7 +120,7 @@ body {
 }
 
 .card-image {
-    width: 100%;  /* Makes the image fill the card's width */
+    width: 100%; /* Makes the image fill the card's width */
     height: 200px; /* Set a fixed height */
     object-fit: contain; /* Ensures the image covers the area without distortion */
     border-radius: 8px; /* Optional: adds rounded corners */
@@ -163,21 +162,21 @@ body {
 }
 
 #currentLeaguesHeader, #recentGameHeader, #upcomingGameHeader {
-    text-align: center; 
+    text-align: center;
 }
 
 .card .btn.card-href {
     background-color: #8BB7D9;
-    color: white;           
-    border: none;      
+    color: white;
+    border: none;
 }
 
 .card .btn.card-href:hover {
-    background-color: #7BB9D7; 
+    background-color: #7BB9D7;
 }
 
- /* Styles for the account circle */
- .account-circle {
+/* Styles for the account circle */
+.account-circle {
     width: 100px;
     height: 100px;
     background-color: #6c757d;
@@ -189,28 +188,24 @@ body {
     font-size: 2rem;
     font-weight: bold;
     margin: 0 auto 1rem;
-  }
+}
 
 
+.alignLeft {
+    text-align: left;
+    width: 100%;
+}
 
+.routeItem {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: lighter;
+    text-decoration: none;
+}
 
- .alignLeft{
-     text-align: left;
-     width:100%;
- }
-
- .routeItem{
-
-     text-align: center;
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     justify-content: center;
-     font-weight: lighter;
-     text-decoration: none;
- }
-
-
- .routeitem i{
-     font-size: 50px;
- }
+.routeItem i {
+    font-size: 20px;
+}

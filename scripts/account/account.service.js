@@ -181,11 +181,12 @@ class Account {
      * This function listens for changes in the current authentication state.
      * For example, it runs whenever a user signs in or signs out.
      */
-    static initializeAuthStateListener = () => {
-
-
+    static initializeAuthStateListener = async () => {
+ 
+ 
         // Replace 'firebase.auth()' with your auth instance if needed
         Account.auth.onAuthStateChanged(async (user) => {
+            console.log("Auth state change!!! ")
             if (user) {
 
 
@@ -193,16 +194,26 @@ class Account {
 
 
                 if (docExists === false) {
-                    Account.createUserInFirestore(user, {});
+
+                    const timestamp = new Date().toISOString().split('T')[0];
+            
+                    Account.createUserInFirestore(user, {
+                        lastLogin: timestamp,
+                        createdOn: timestamp,
+                        phoneNumber:'',
+                        
+                    });
 
 
                 }
 
                 let ___accountData = (await Account.loadUserData(user.uid));
                 checkGuardedRoutes(true, ___PAGES.signin, ___PAGES.main);
-                console.log(___accountData.id)
-
+       
                 Account.userAccount = ___accountData;
+
+              
+
                 Account.__authListeners.forEach((callBack, _) => {
                     callBack(Account.userAccount);
                 });
@@ -236,13 +247,14 @@ class Account {
                 }).then(() => {
                     const timestamp = new Date().toISOString().split('T')[0];
                     console.log("Id" + userCredential.user.uid + "Last login : " + timestamp)
-                    Account.updateUser(userCredential.user.uid, (user) => {
-                        return {
-                            lastLogin: timestamp,
-                            createdOn: timestamp,
-                        }
 
-                    })
+                    Account.createUserInFirestore(user, {
+                        ...customData,
+                        lastLogin: timestamp,
+                        createdOn: timestamp,
+                        
+                    });
+                    
                 })
 
 
@@ -488,15 +500,10 @@ class Account {
      * @param {string} userId - The user's unique ID.
      * */
     static deleteUser(userId) {
-        return Account.auth.getUser(userId)
-            .then(userRecord => {
-                Account.fs.collection('users').doc(userId).delete();
-
-                Account.auth.deleteUser(userRecord.uid);
-                checkGuardedRoutes(false)
-            })
+        return Account.auth.currentUser.delete()
             .then(() => {
                 console.log("User deleted successfully.");
+                Account.fs.collection("users").doc(userId).delete()
             })
             .catch(error => {
                 console.error("Error deleting user:", error);

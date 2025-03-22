@@ -71,14 +71,7 @@
         <div class="form-group">
             <label for="city">Select City</label>
             <select class="form-control" id="city">
-                <option>Burnaby</option>
-                <option>Coquitlam</option>
-                <option>Delta</option>
-                <option>Langley</option>
-                <option>Richmond</option>
-                <option>Surrey</option>
-                <option>UBC</option>
-                <option>Vancouver</option>
+                 
             </select>
         </div>
         <br>
@@ -86,17 +79,13 @@
         <div class="form-group">
             <label for="skillLevel">Select Skill Level</label>
             <select class="form-control" id="skillLevel">
-                <option>Recreational</option>
-                <option>Intermediate</option>
-                <option>Intermediate Plus</option>
-                <option>Advanced</option>
+              
             </select>
         </div>
         <br>
         <!-- Submit Button -->
         <div class="d-flex justify-content-end">
-            <button type="button" class="btn btn-lg btn-primary pull-right"
-                onclick="selectLeague()">Select</button>
+            <button type="button" id="selectLeagueBtn" class="btn btn-lg btn-primary pull-right" >Select</button>
         </div>
     </form>
 </div>
@@ -115,7 +104,10 @@
 <script src="./scripts/account/account.service.js"></script>
 <script src="./scripts/main/main.templates.js"></script>
 <!-- <script src="./scripts/league.js"></script> -->
-<script src="./scripts/eachLeague.js"></script>
+<script src="./scripts/league/eachLeague.view.js"></script>
+<script src="./scripts/league/leagues.service.js"></script>
+<script src="./scripts/league/league.template.js"></script> 
+ 
 
 </body>
 

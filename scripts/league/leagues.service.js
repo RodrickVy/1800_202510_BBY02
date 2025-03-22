@@ -37,7 +37,7 @@ class LeaguesService {
             {
                 code: "LEAGUE2",
                 name: "TFC Volleyball",
-                city: "Burnaby",
+                city: ["Burnaby"],
                 level: ["B", "A", "A+", "AA"],
                 details: "Creators of the reverse Co-ED 4's format",
                 url: "https://tfcvolleyball.com/indoor-leagues/",
@@ -55,7 +55,7 @@ class LeaguesService {
             {
                 code: "LEAGUE4",
                 name: "Neighbours & Friends Volleyball League",
-                city: "Vancouver",
+                city: ["Vancouver"],
                 level: ["recreational", "recreational plus", "intermediate", "intermediate plus", "advanced"],
                 details: "Formerly known as No Frills Volleyball League",
                 url: "https://www.nfvl.ca/leagues/custom_page.cfm?clientID=2768&leagueID=6972&pageID=15869",
@@ -64,7 +64,7 @@ class LeaguesService {
             {
                 code: "LEAGUE5",
                 name: "Cambie Sports Volleyball League",
-                city: "Vancouver",
+                city: ["Vancouver"],
                 level: ["recreational", "intermediate", "advanced"],
                 details: "Outdoor and indoor volleyball league at Cambie Community Centre",
                 url: "https://www.cambiesports.com/leagues/",
@@ -73,7 +73,7 @@ class LeaguesService {
             {
                 code: "LEAGUE6",
                 name: "Surrey Volleyball League",
-                city: "Surrey",
+                city: ["Surrey"],
                 level: ["recreational", "intermediate", "upper-intermediate", "competitive"],
                 details: "Platform for indoor volleyball only in Surrey",
                 url: "https://www.surreyvolleyball.ca/",
