@@ -70,8 +70,8 @@ project-name/
 - Image of Moscrop Secondary Gym obtained from URL: https://www.studyinburnaby.ca/school/moscrop-secondary-school/
 - Image of Cambie Community Centre obtained from URL: https://www.mapquest.com/ca/british-columbia/cambie-community-centre-456541330
 - Image of Hastings Community Centre obtained from URL: https://hastingscc.ca/?p=27
-
-
+- Images from Stock Photos obtained from URL: https://www.istockphoto.com/search/2/image-film?family=creative&phrase=volleyball
+- Images from Stock Volleyball Silouhette photos obtained from URL: https://stock.adobe.com/ca/search/images?k=volleyball+silhouette
 
 ---
 

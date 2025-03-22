@@ -3,8 +3,8 @@ window.onload = () => {
 
     loadTemplate("navPlaceholder", ` <nav class="navbar navbar-expand-lg shadow-sm" style="background-color: #ffffff;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="./index.html">
-                <img src="./images/logo.jpg" height="36">RECREA-8</a>
+            <a class="navbar-brand" href="./index.html" style="font-size: 32px;">
+                <img src="./images/logo.jpg" height="75">RECREA-8</a>
             <button style="margin: 5px;" class="navbar-toggler " type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -31,7 +31,6 @@ window.onload = () => {
                         </ul>
                     </li>
                 </ul>
-
             </div>
         </div>
     </nav>`, () => { });
@@ -85,6 +84,39 @@ window.onload = () => {
     });
 }
 
+loadTemplate("shadowPhotoPlaceholder", `
+    <div id="photoContainer" class="photo-container" style="width: 50%; max-width: 300px; height: 450px; overflow: hidden; position: relative; padding-top: 20px; margin: 0 auto;">
+        <div class="photo-item active">
+            <img src="./images/shadow1.jpg" class="d-block w-100" alt="shadow1" style="width: 300px; height: 400px; object-fit: cover;">
+        </div>
+        <div class="photo-item">
+            <img src="./images/shadow2.jpg" class="d-block w-100" alt="shadow2" style="width: 300px; height: 400px; object-fit: contain;">
+        </div>
+        <div class="photo-item">
+            <img src="./images/shadow3.jpg" class="d-block w-100" alt="shadow3" style="width: 150px; height: 325px; object-fit: cover;">
+        </div>
+        <div class="photo-item">
+            <img src="./images/shadow4.jpg" class="d-block w-100" alt="shadow4" style="width: 240px; height: 350px; object-fit: cover;">
+        </div>
+    </div>
+`, () => {
 
+    // Custom fading transition setup
+    const photos = $(".photo-item");
+    let currentIndex = 0;
 
+    // Initially hide all images except the first one
+    $(".photo-item").hide();
+    $(photos[currentIndex]).show();  // Show the first image
 
+    // Set the interval for the fading transition
+    setInterval(() => {
+        // Fade out the current image
+        $(photos[currentIndex]).fadeOut(1000, () => {
+            // Move to the next image in the array
+            currentIndex = (currentIndex + 1) % photos.length;
+            // Fade in the next image
+            $(photos[currentIndex]).fadeIn(1000);
+        });
+    }, 2200);
+});
