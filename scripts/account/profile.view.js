@@ -1,7 +1,21 @@
 Account.addListener("profileView", (user) => {
-    loadText("accountCircle",getInitials(user.name));
-    loadText("userName",user.name);
-    loadText("userEmail",user.email);
+    const accountCircle =  document.getElementById('accountCircle');
+    const accountImageCircle =  document.getElementById('imageCircle');
+    const imgCircleImg =  document.getElementById('imgCircleImg');
+    if(user.profileUrl.length > 3){
+
+        imgCircleImg.src = user.profileUrl;
+        accountImageCircle.style.display = 'block';
+        accountCircle.style.display = 'none';
+        //loadTemplate("accountCircle", `<div style="width;100%;height:100%,border-radius:10rem;background-image:url('${user.profileUrl}.png')" ></div>`);
+    }else{
+        accountCircle.style.display = 'block';
+        accountImageCircle.style.display = 'none';
+        loadText("accountCircle", getInitials(user.name));
+    }
+
+    loadText("userName", user.name);
+    loadText("userEmail", user.email);
     loadValue("bioEditor", user.bio);
     loadValue('userNameInput', user.name)
     loadValue('userPhone', user.phoneNumber);
@@ -19,7 +33,7 @@ const logoutBtn = document.getElementById("logoutBtn");
 const userNameInput = document.getElementById("userNameInput");
 const userPhoneInput = document.getElementById("userPhone");
 const userGender = document.getElementById("genderSelect");
-const roleInput = document.getElementById("roleSelect");
+
 const cityInput = document.getElementById("citySelect");
 const bioInput = document.getElementById("bioEditor");
 const userRating = document.getElementById("userRating");
@@ -32,20 +46,20 @@ logoutBtn.addEventListener("click", () => {
 })
 
 passwordResetBtn.addEventListener("click", () => {
-    Account.sendPasswordResetEmail(Account.userAccount.email,(email)=>{
-        alert(' A password reset email has been sent to email : '+email);
-    },(error)=>{
+    Account.sendPasswordResetEmail(Account.userAccount.email, (email) => {
+        alert(' A password reset email has been sent to email : ' + email);
+    }, (error) => {
         alert(error);
     })
 })
 
 deleteButton.addEventListener("click", () => {
-   const accountPass = prompt("Are you sure you want to delete your account? This action cannot be undone. Enter your password to confirm.");
-   Account.signIn(Account.userAccount.email,accountPass,()=>{
-       Account.deleteUser(Account.userAccount.id);
-   }, (e)=>{
-       alert("The password you entered is incorrect, pls try again:  "+e);
-   })
+    const accountPass = prompt("Are you sure you want to delete your account? This action cannot be undone. Enter your password to confirm.");
+    Account.signIn(Account.userAccount.email, accountPass, () => {
+        Account.deleteUser(Account.userAccount.id);
+    }, (e) => {
+        alert("The password you entered is incorrect, pls try again:  " + e);
+    })
 })
 
 function enableSaveOnInputChange() {
@@ -53,7 +67,6 @@ function enableSaveOnInputChange() {
         userNameInput,
         userPhoneInput,
         userGender,
-        roleInput,
         cityInput,
         bioInput,
         userRating
@@ -76,7 +89,7 @@ saveButton.addEventListener('click', () => {
             name: userNameInput.value,
             phoneNumber: userPhoneInput.value,
             gender: userGender.value,
-            role: roleInput.value,
+
             city: cityInput.value,
             bio: bioInput.value,
             skillLevel: userRating.value
@@ -86,15 +99,19 @@ saveButton.addEventListener('click', () => {
     })
 });
 
-imageInput.addEventListener('change', () => {
-    StorageService.uploadFile(imageInput.value,imageInput.value, (data) => {
-        Account.updateUser(Account.userAccount.id, (user) => {
-            return {
-                profileUrl: user.profileUrl,
-            }
-        }).then(() => {
-            saveButton.setAttribute('class', "btn btn-success w-100 m-2");
-        });
+imageInput.addEventListener('change', async (event) => {
+
+    const file = event.target.files[0];
+    console.log(imageInput.value);
+    const data = await StorageService.uploadMedia(file, Account.userAccount.id+"profile", 'media');
+    saveButton.setAttribute('class', "btn btn-success w-100 m-2");
+    await Account.updateUser(Account.userAccount.id, (user) => {
+
+        return {
+            profileUrl: data.downloadUrl,
+        }
+    }).then(()=>{
+        window.location.reload();
     })
 })
 const ratingSlider = document.getElementById('userRating');

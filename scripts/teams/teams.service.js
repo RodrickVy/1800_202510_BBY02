@@ -11,7 +11,7 @@
  * - teamBoard: An array of messages or updates related to the team.
  * - teamBanner: URL of the team’s banner image.
  * - teamTrophies: List of team trophies or achievements.
- * - teamGallery: List of images representing the team.
+ * - teamBanner: List of images representing the team.
  */
 class RecreateTeam {
     constructor({
@@ -24,7 +24,7 @@ class RecreateTeam {
                     teamBoard = [],
                     recLeague = '',
                     teamTrophies = [],
-                    teamGallery = []
+                    teamBanner = []
                 } = {}) {
         this.id = id;
         this.name = name;
@@ -35,7 +35,7 @@ class RecreateTeam {
         this.teamBoard = teamBoard;
         this.recLeague = recLeague;
         this.teamTrophies = teamTrophies;
-        this.teamGallery = teamGallery;
+        this.teamBanner = teamBanner;
     }
 
     static fromJson(json) {
@@ -54,7 +54,7 @@ class RecreateTeam {
             teamBoard: this.teamBoard,
             recLeague: this.recLeague,
             teamTrophies: this.teamTrophies,
-            teamGallery: this.teamGallery,
+            teamBanner: this.teamBanner,
         };
     }
 }

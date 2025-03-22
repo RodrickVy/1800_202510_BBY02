@@ -12,6 +12,10 @@ const ___PAGES = {
 };
 
 
+const DFEAULTS ={
+    teamBanner : 'https://images.pexels.com/photos/3067870/pexels-photo-3067870.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+}
+
 // If we are on these pages and the user is authenticated go to the main page
 
 const __NOAUTHADVANCEROUTES = [
@@ -241,54 +245,6 @@ function listenToIfExists(id, trigger, callback) {
     }
 }
 
-// storage.service.js
-
-/**
- * StorageService class provides CRUD operations for Firebase Storage.
- */
-class StorageService {
-
-
-    /**
-     * Uploads a file to Firebase Storage.
-     *
-     * @param {File} file - The file object to upload.
-     * @param {string} path - The storage path to upload the file to.
-     * @param {function(string)} callback - A callback function that receives the file's download URL.
-     */
-    static uploadFile(file, path, callback) {
-        const storageRef = Account.st.ref(path);
-        Account.st.ref(path).put(file).then(snapshot => {
-            snapshot.ref.getDownloadURL().then(downloadURL => {
-                callback(downloadURL);
-            });
-        }).catch(error => {
-            console.error("Error uploading file:", error);
-            callback(error);
-        });
-    }
-
-    /**
-     * Retrieves a download URL for a file at the given path.
-     *
-     * @param {string} path - The storage path of the file.
-     * @returns {Promise<string>} - Promise resolving to the download URL.
-     */
-    static getFileUrl(path) {
-        return Account.st.ref(path).getDownloadURL();
-    }
-
-    /**
-     * Deletes a file from Firebase Storage.
-     *
-     * @param {string} path - The storage path of the file to delete.
-     * @returns {Promise<void>} - Promise that resolves when the file is deleted.
-     */
-    static deleteFile(path) {
-        return Account.st.ref(path).delete();
-    }
-
-}
 
 function toTitleCase(text) {
 
@@ -304,4 +260,92 @@ function toTitleCase(text) {
 * */
 function createTimeStamp(){
    return new Date().toISOString().split('T')[0];
+}
+
+
+
+
+// Media Model
+class Media {
+    constructor({ downloadUrl = '', mediaId = '' , storageUrl = '', uploaderId = '' } = {}) {
+        this.downloadUrl = downloadUrl;
+        this.storageUrl = storageUrl;
+        this.uploaderId = uploaderId;
+        this.mediaId = mediaId;
+    }
+
+    static fromJson(json) {
+        return new Media({
+            downloadUrl: json['downloadUrl'],
+            storageUrl: json['storageUrl'],
+            uploaderId: json['uploaderId'],
+            mediaId: json['mediaId'],
+        });
+    }
+
+    toJson() {
+        return {
+            downloadUrl: this.downloadUrl,
+            storageUrl: this.storageUrl,
+            uploaderId: this.uploaderId,
+            mediaId: this.mediaId,
+        };
+    }
+}
+
+// StorageService Class
+class StorageService {
+
+    // Uploads media to Firebase Storage and creates a corresponding document in Firestore.
+    static async uploadMedia(file, storagePath, firestoreCollection = 'media') {
+
+        try {
+            const storageRef = Account.st.ref("/"+storagePath);
+            const snapshot = await storageRef.put(file);
+            const mediaId = generateUniqueId();
+            // Getting the downloadable URL
+            const downloadUrl = await snapshot.ref.getDownloadURL();
+
+            // Creating media representation
+            const mediaDoc = Account.fs.collection(firestoreCollection).doc(mediaId);
+
+            const mediaData = new Media({
+                downloadUrl: downloadUrl,
+                storageUrl: snapshot.ref.fullPath,
+                uploaderId: Account.userAccount.id,
+                mediaId: mediaId,
+            });
+
+            await mediaDoc.set(mediaData.toJson());
+
+            console.log('Media uploaded and Firestore document created:', mediaData);
+
+            return mediaData;
+
+        } catch (error) {
+            console.error('Error uploading media:', error);
+            throw error;
+        }
+    }
+
+    // Retrieves a Media document from Firestore by ID
+    static async getMedia(mediaId, firestoreCollection = 'media') {
+        try {
+            const mediaDocRef = Account.fs.collection(firestoreCollection).doc(mediaId);
+            const snapshot = await mediaDocRef.get();
+
+            if (!snapshot.exists) {
+                throw new Error('Media not found');
+            }
+
+            const mediaData = Media.fromJson(snapshot.data());
+            console.log('Media retrieved:', mediaData);
+
+            return mediaData;
+
+        } catch (error) {
+            console.error('Error retrieving media:', error);
+            throw error;
+        }
+    }
 }

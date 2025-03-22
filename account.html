@@ -26,6 +26,10 @@
         <div class="card shadow-none mx-auto" style="max-width: 500px;">
             <div class="card-body text-center">
                 <!-- Account circle with user's initials -->
+                <div   style="display: none" class="account-img-circle"  id="imageCircle">
+                    <img id="imgCircleImg" src=""    alt="account profile">
+                </div>
+
                 <div class="account-circle" id="accountCircle">AS</div>
                 <!-- User name -->
                 <h5 class="card-title" id="userName">Alice Smith</h5>
@@ -47,7 +51,7 @@
                             <!-- Name Input -->
                             <div class="mb-3">
                                 <label for="imageInput" class="form-label alignLeft">Profile Photo:</label>
-                                <input type="file" accept="image/png, image/jpeg, image/jpg" class="form-control"
+                                <input type="file" accept="image/png" class="form-control"
                                     id="imageInput">
                             </div>
                             <!-- Name Input -->
@@ -62,14 +66,7 @@
                                 <input type="tel" class="form-control" id="userPhone"
                                     placeholder="e.g., (123) 456-7890">
                             </div>
-                            <!-- Role Select -->
-                            <div class="mb-3">
-                                <label for="roleSelect" class="form-label alignLeft">Role:</label>
-                                <select class="form-select" id="roleSelect">
-                                    <option value="captain">Captain</option>
-                                    <option value="substitute">Substitute</option>
-                                </select>
-                            </div>
+
                             <!-- Gender Select -->
                             <div class="mb-3">
                                 <label for="genderSelect" class="form-label alignLeft">Gender:</label>

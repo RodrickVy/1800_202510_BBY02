@@ -7,13 +7,21 @@ document.addEventListener('DOMContentLoaded', async () => {
         const teamDescription = document.getElementById("teamDescription");
         const levelInLeague = document.getElementById("levelInLeague");
         const editTeamBtn = document.getElementById("updateTeamBtn");
+        const teamBanner = document.getElementById("teamBanner");
+        const teamBannerInput = document.getElementById("teamBannerInput");
         const editTeam = localStorage.getItem('teamToEdit');
         const leagues = await LeaguesService.getAllLeagues();
+
 
 
         const teamToEdit = TeamsService.userOwnedTeams.find((team) => team.id === editTeam);
         console.log(teamToEdit);
         if (teamToEdit !== undefined) {
+
+
+
+
+            teamBanner.src = teamToEdit.teamBanner;
 
 
             function updateLeagueSelection() {
@@ -27,6 +35,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         leaguesAsOptions += '<option value="' + league.code + '">' + league.name + '</option>';
 
                     })
+
                     loadTemplate('leagueSelect', leaguesAsOptions);
                     loadValue('leagueSelect', teamToEdit.recLeague);
                 }
@@ -78,6 +87,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     description: teamDescription.value,
                     leagueLevel: levelInLeague.value,
                     recLeague: leagueSelect.value,
+                    teamBanner: teamToEdit.teamBanner.length <1 ? DFEAULTS.teamBanner :teamToEdit.teamBanner,
 
                 }).then(() => {
                     localStorage.setItem('teamToEdit', '');
@@ -85,6 +95,22 @@ document.addEventListener('DOMContentLoaded', async () => {
                 });
 
             });
+            teamBannerInput.addEventListener('change', async (event) => {
+
+                const file = event.target.files[0];
+
+                const data = await StorageService.uploadMedia(file, user.uid+"_team_"+teamToEdit.id, 'media');
+                 TeamsService.updateTeam(teamToEdit.id, {
+                    name: teamName.value,
+                    description: teamDescription.value,
+                    leagueLevel: levelInLeague.value,
+                    recLeague: leagueSelect.value,
+                    teamBanner: data.downloadUrl,
+
+                }).then(() => {
+                     window.location.reload();
+                });
+            })
         } else {
             navigateToRoute(___PAGES.teams);
         }
