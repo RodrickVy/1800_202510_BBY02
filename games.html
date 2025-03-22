@@ -24,9 +24,9 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
     <!-- <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>-->
 
@@ -40,27 +40,11 @@
 </head>
 
 <body>
-
     <!------------------------------>
     <!-- Your HTML Layout go here -->
     <!------------------------------>
     <!-- Stuff for body goes here -->
-    <nav class="navbar navbar-expand-lg" style="background-color: #D0DDD7; height: 80px;">
-        <div class="container d-flex justify-content-center">
-            <div class="input-group d-flex justify-content-center">
-                <div class="input-group-prepend">
-                    <span class="input-group-text bg-transparent border-0" style="height: 38px;">
-                        <i class="fas fa-search" style="font-size: 20px;"></i>
-                    </span>
-                </div>
-
-                <form class="form-inline d-flex">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
-                        style="width: 250px; height: 38px;">
-                </form>
-            </div>
-        </div>
-    </nav>
+    <div id="appBarPlaceholder"></div>
 
     <!-- Games Card -->
     <div class="d-flex justify-content-center" style="margin-top: 50px; position: relative;">
@@ -70,17 +54,19 @@
             </h3>
             <div class="card-body">
                 <ul class="list-group">
-                    <li class="list-group-item" style="background-color: #D0DDD7; border: none;">🏐 Spike Masters vs Net Ninjas - Tuesday 6:30 PM</li>
-                    <li class="list-group-item" style="background-color: #D0DDD7; border: none;">🏐 Block Busters vs Serve Aces - Wednesday 7:00 PM</li>
-                    <li class="list-group-item" style="background-color: #D0DDD7; border: none;">🏐 Volley Vipers vs Set Crushers - Friday 8:00 PM</li>
-                    <li class="list-group-item" style="background-color: #D0DDD7; border: none;">🏐 Smash Bros vs Jumping Giants - Saturday 4:00 PM</li>
+                    <li class="list-group-item" style="background-color: #D0DDD7; border: none;">🏐 Spike Masters vs Net
+                        Ninjas - Tuesday 6:30 PM</li>
+                    <li class="list-group-item" style="background-color: #D0DDD7; border: none;">🏐 Block Busters vs
+                        Serve Aces - Wednesday 7:00 PM</li>
+                    <li class="list-group-item" style="background-color: #D0DDD7; border: none;">🏐 Volley Vipers vs Set
+                        Crushers - Friday 8:00 PM</li>
+                    <li class="list-group-item" style="background-color: #D0DDD7; border: none;">🏐 Smash Bros vs
+                        Jumping Giants - Saturday 4:00 PM</li>
                 </ul>
             </div>
         </div>
     </div>
-
-
-
+    
     <div id="bottomNavPlaceholder"></div>
 
     <!---------------------------------------------->

@@ -13,9 +13,7 @@ Account.addListener("profileView", (user) => {
     loadValue('lastLoginText', user.lastLogin);
     loadValue('createdOnText', user.createdOn);
     loadValue('userEmailViewOnly', user.email);
-
 });
-
 
 const logoutBtn = document.getElementById("logoutBtn");
 const userNameInput = document.getElementById("userNameInput");
@@ -33,7 +31,6 @@ logoutBtn.addEventListener("click", () => {
     Account.logout();
 })
 
-
 passwordResetBtn.addEventListener("click", () => {
     Account.sendPasswordResetEmail(Account.userAccount.email,(email)=>{
         alert(' A password reset email has been sent to email : '+email);
@@ -42,7 +39,6 @@ passwordResetBtn.addEventListener("click", () => {
     })
 })
 
-
 deleteButton.addEventListener("click", () => {
    const accountPass = prompt("Are you sure you want to delete your account? This action cannot be undone. Enter your password to confirm.");
    Account.signIn(Account.userAccount.email,accountPass,()=>{
@@ -50,7 +46,6 @@ deleteButton.addEventListener("click", () => {
    }, (e)=>{
        alert("The password you entered is incorrect, pls try again:  "+e);
    })
-
 })
 
 function enableSaveOnInputChange() {
@@ -64,7 +59,6 @@ function enableSaveOnInputChange() {
         userRating
     ];
 
-
     inputs.forEach(input => {
         input.addEventListener('input', () => {
             saveButton.setAttribute('class', "btn btn-warning w-100 m-2");
@@ -74,7 +68,6 @@ function enableSaveOnInputChange() {
 
 // Initialize event listeners
 enableSaveOnInputChange();
-
 
 // When the save button is clicked, log the content and reset the background.
 saveButton.addEventListener('click', () => {
@@ -87,12 +80,10 @@ saveButton.addEventListener('click', () => {
             city: cityInput.value,
             bio: bioInput.value,
             skillLevel: userRating.value
-
         }
     }).then(() => {
         saveButton.setAttribute('class', "btn btn-disabled w-100 m-2");
     })
-
 });
 
 imageInput.addEventListener('change', () => {

@@ -18,7 +18,7 @@ class RecreateTeam {
                     id = '',
                     name = '',
                     description = '',
-                    skillLevel = 0,
+                    leagueLevel = 0,
                     creatorId = '',
                     games = [],
                     teamBoard = [],
@@ -29,7 +29,7 @@ class RecreateTeam {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.skillLevel = skillLevel;
+        this.leagueLevel = leagueLevel;
         this.creatorId = creatorId;
         this.games = games;
         this.teamBoard = teamBoard;
@@ -48,7 +48,7 @@ class RecreateTeam {
             id: this.id,
             name: this.name,
             description: this.description,
-            skillLevel: this.skillLevel,
+            leagueLevel: this.leagueLevel,
             creatorId: this.creatorId,
             games: this.games,
             teamBoard: this.teamBoard,
@@ -65,23 +65,9 @@ class RecreateTeam {
  */
 class TeamsService {
     static teamsCollection = Account.fs.collection("teams");
+    static teams = [];
+    static userOwnedTeams = [];
 
-    /**
-     * Verifies if the current user's role is 'captain'. If not, prompts them to change their role.
-     * @returns {Promise<boolean>} - Resolves to true if the user is a captain, false otherwise.
-     */
-    static async verifyCaptainRole() {
-        if (Account.userAccount.role !== 'captain') {
-            const confirmChange = confirm("You need to be a captain to create a team. Do you want to change your role?");
-            if (confirmChange) {
-                await Account.updateUser(Account.userAccount.id, (user) => ({ role: 'captain' }));
-                Account.userAccount.role = 'captain';
-                return true;
-            }
-            return false;
-        }
-        return true;
-    }
 
     /**
      * Creates a new team and adds it to the teams collection.
@@ -89,8 +75,6 @@ class TeamsService {
      * @returns {Promise<string>} - The ID of the newly created team.
      */
     static async createTeam(teamData) {
-        const isCaptain = await TeamsService.verifyCaptainRole();
-
 
         const newTeamRef = TeamsService.teamsCollection.doc(teamData.id);
         const team = new RecreateTeam({
@@ -98,14 +82,12 @@ class TeamsService {
             ...teamData,
             creatorId: Account.userAccount.id
         });
-
         await newTeamRef.set(team.toJson());
         await Account.updateUser(Account.userAccount.id, (user) => ({
             teamsCreated: [...user.teamsCreated, newTeamRef.id]
         }));
 
-        console.log("Created new team"+ newTeamRef);
-        return newTeamRef.id;
+        await TeamsService.getAllTeams();
     }
 
     /**
@@ -114,9 +96,11 @@ class TeamsService {
      */
     static async getAllTeams() {
         const teamsSnapshot = await TeamsService.teamsCollection.get();
-        return teamsSnapshot.docs.map(doc => RecreateTeam.fromJson(doc.data()));
-    }
+        const _teamsList =  teamsSnapshot.docs.map(doc => RecreateTeam.fromJson(doc.data()));
+        TeamsService.teams = _teamsList;
+        TeamsService.userOwnedTeams = _teamsList.filter((team)=>team.creatorId === Account.userAccount.id);
 
+    }
 
     /**
      * Updates an existing team in Firestore.
@@ -126,11 +110,12 @@ class TeamsService {
      */
     static async updateTeam(teamId, updateData) {
         const teamRef = TeamsService.teamsCollection.doc(teamId);
-        try {
-            await teamRef.update(updateData);
-            console.log(`Team ${teamId} updated successfully.`);
-        } catch (error) {
-            console.error("Error updating team:", error);
-        }
+        await teamRef.update(updateData).then(  ()=>{
+            console.log('Updated team');
+             this.getAllTeams();
+        }).catch((err)=>{
+
+        })
+
     }
 }

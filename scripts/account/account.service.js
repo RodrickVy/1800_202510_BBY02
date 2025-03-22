@@ -10,7 +10,6 @@
  * - email: User's email address.
  * - bio: Short biography.
  * - profileUrl: URL to the user's profile image.
- * - role: One of 'player', 'sub', or 'creator'.
  * - friends: Array of friend IDs (or objects).
  * - sport: The sport the user is interested in.
  * - league: The league the user follows or plays in.
@@ -29,7 +28,6 @@ class RecreateUser {
                     email = '',
                     bio = '',
                     profileUrl = '',
-                    role = 'player', // Default role is 'player'
                     friends = [],
                     sport = '',
                     league = '',
@@ -51,7 +49,7 @@ class RecreateUser {
         this.email = email;
         this.bio = bio;
         this.profileUrl = profileUrl;
-        this.role = role;
+
         this.friends = friends;
         this.sport = sport;
         this.league = league;
@@ -78,11 +76,8 @@ class RecreateUser {
      */
     static fromJson(json) {
         // If json is a string, parse it.
-
         json = JSON.parse(JSON.stringify(json));
-
         console.log(json['id'])
-
         return new RecreateUser(
             {
                 id: json['id'],
@@ -90,7 +85,7 @@ class RecreateUser {
                 email: json['email'],
                 bio: json['bio'],
                 profileUrl: json['profileUrl'] || '',
-                role: json['role'] || 'player',
+
                 friends: json['friends'] || [],
                 sport: json['sport'] || '',
                 league: json['league'] || '',
@@ -122,7 +117,6 @@ class RecreateUser {
             email: this.email,
             bio: this.bio,
             profileUrl: this.profileUrl,
-            role: this.role,
             friends: this.friends,
             sport: this.sport,
             league: this.league,
@@ -140,9 +134,7 @@ class RecreateUser {
             lastLogin: this.lastLogin,
         };
     }
-
 }
-
 
 /**
  * Account
@@ -150,10 +142,8 @@ class RecreateUser {
  * @author Rodrick
  */
 class Account {
-
     // A modifiable list of listener functions that are invoked when auth state changes only use the Account.addListener() and .removeListener() methods to modify it.
     static __authListeners = new Map();
-
 
     // Your web app's Firebase configuration
     static firebaseConfig = {
@@ -171,10 +161,7 @@ class Account {
     static auth = firebase.auth();
     static fs = firebase.firestore();
     static st = firebase.storage();
-
-
     static userAccount = new RecreateUser();
-
 
     /**
      * Initializes the Firebase Auth state listener.
@@ -182,46 +169,31 @@ class Account {
      * For example, it runs whenever a user signs in or signs out.
      */
     static initializeAuthStateListener = async () => {
- 
- 
         // Replace 'firebase.auth()' with your auth instance if needed
         Account.auth.onAuthStateChanged(async (user) => {
-            console.log("Auth state change!!! ")
             if (user) {
+                const userDocumentExistsInDatabase = (await Account.documentExists('users', user.uid) === true);
+                if (userDocumentExistsInDatabase) {
+                    await Account.updateUser(user.uid, (user) => {
+                        return {
+                            lastLogin: createTimeStamp(),
+                        }
 
-
-                const docExists = (await Account.documentExists('users', user.uid) === true);
-
-
-                if (docExists === false) {
-
-                    const timestamp = new Date().toISOString().split('T')[0];
-            
-                    Account.createUserInFirestore(user, {
-                        lastLogin: timestamp,
-                        createdOn: timestamp,
-                        phoneNumber:'',
-                        
+                    })
+                } else {
+                    await Account.createUserInFirestore(user, {
+                        lastLogin: createTimeStamp(),
+                        createdOn: createTimeStamp()
                     });
-
-
                 }
-
-                let ___accountData = (await Account.loadUserData(user.uid));
-                checkGuardedRoutes(true, ___PAGES.signin, ___PAGES.main);
-       
-                Account.userAccount = ___accountData;
-
-              
-
+                Account.userAccount = (await Account.loadUserData(user.uid));
                 Account.__authListeners.forEach((callBack, _) => {
                     callBack(Account.userAccount);
                 });
+                checkGuardedRoutes(true, ___PAGES.signin, ___PAGES.main);
             } else {
                 checkGuardedRoutes(false, ___PAGES.signin, ___PAGES.main);
             }
-
-
         });
     }
 
@@ -233,31 +205,15 @@ class Account {
      * @param name
      * @param email
      * @param password
-     * @param customData
      * @param onSuccess
      * @param onError
      */
-    static async signUp(name, email, password, customData, onSuccess, onError) {
+    static async signUp(name, email, password, onSuccess, onError) {
         Account.auth.createUserWithEmailAndPassword(email, password)
             .then((userCredential) => {
-
-                // User created, now update the profile with the name
                 userCredential.user.updateProfile({
                     displayName: name
-                }).then(() => {
-                    const timestamp = new Date().toISOString().split('T')[0];
-                    console.log("Id" + userCredential.user.uid + "Last login : " + timestamp)
-
-                    Account.createUserInFirestore(user, {
-                        ...customData,
-                        lastLogin: timestamp,
-                        createdOn: timestamp,
-                        
-                    });
-                    
-                })
-
-
+                });
             })
             .then((userCredential) => {
                 onSuccess(userCredential.user)
@@ -280,27 +236,12 @@ class Account {
     static async signIn(email, password, onSuccess, onError) {
         Account.auth.signInWithEmailAndPassword(email, password)
             .then((userCredential) => {
-
-
-                const timestamp = new Date().toISOString().split('T')[0];
-                console.log("Id" + userCredential.user.uid + "Last login : " + timestamp)
-                Account.updateUser(userCredential.user.uid, (user) => {
-                    return {
-                        lastLogin: timestamp,
-                        createdOn: timestamp,
-                    }
-
-                }).then(() => {
-                    onSuccess(userCredential.user);
-                })
-
-
+                onSuccess(userCredential.user);
             })
             .catch((error) => {
                 onError(error.message);
             });
     }
-
 
     /**
      * Adds a given callback function to the __listeners object under the specified key.
@@ -312,7 +253,6 @@ class Account {
     static addListener(key, fn) {
         Account.__authListeners.set(key, fn);
     }
-
 
     /**
      * Removes the given callback function from the __listeners object under the specified key.
@@ -328,7 +268,6 @@ class Account {
         Account.__authListeners.delete(key);
     }
 
-
     /**
      * Creates a user object in Firebase Firestore firebase auth userCredential
      * Generates a unique user ID and uses it as the document ID.
@@ -340,10 +279,7 @@ class Account {
     static async createUserInFirestore(user, customData) {
         const db = Account.fs;
         const userId = user.uid;
-
         const userDocRef = Account.fs.collection("users").doc(userId);
-
-
         const ____userData = {
             id: userId,
             name: user.displayName,
@@ -351,7 +287,6 @@ class Account {
             phoneNumber: user.phoneNumber,
             bio: "",
             profileUrl: customData.profileUrl ?? '',
-            role: customData.role || 'player',
             friends: [],
             sport: 'volleyball',
             league: '',
@@ -363,11 +298,8 @@ class Account {
             badges: [],
             lastLogin: customData.lastLogin,
             createdOn: customData.createdOn,
-
         };
-
         console.log(____userData);
-
         try {
             await userDocRef.set(____userData);
             console.log(`User created successfully with id: ${userId}`);
@@ -377,7 +309,6 @@ class Account {
             throw error;
         }
     }
-
 
     /**
      * Updates a Firestore user document based on a callback that modifies the current user data.
@@ -401,61 +332,42 @@ class Account {
         const db = Account.fs;
         console.log(userId);
         const userDocRef = db.collection("users").doc(userId);
-
-
         // Pass the current data to the callback to obtain the update object.
         const updatedData = updateCallback(Account.userAccount);
-
         // Update the Firestore user document with the returned object.
         await userDocRef.update(updatedData);
-
         return updatedData;
     }
-
 
     /**
      * Logs out the current user using Firebase Authentication.
      */
     static logout() {
-        firebase.auth().signOut()
-            .then(() => {
-                console.log("User logged out successfully.");
-                // Optionally, redirect the user to a login page or homepage:
-                // window.location.href = '/login.html';
-            })
-            .catch((error) => {
-                console.error("Error logging out:", error);
-            });
+        Account.auth.signOut();
     }
-
 
     /**
      * Loads user data from Firestore, converts it to a User instance, and returns it.
      *
      * @param {string} userId - The unique identifier for the user.
-     * @returns {Promise<User>} A promise that resolves to a User instance.
+     * @param doesntExistCallBack
+     * @returns {Promise<RecreateUser>} A promise that resolves to a User instance.
      */
     static async loadUserData(userId, doesntExistCallBack = (() => {
     })) {
-
         // Reference the user document in the "users" collection
         const userDocRef = Account.fs.collection("users").doc(userId);
-
         // Retrieve the document snapshot
         const userSnapshot = await userDocRef.get();
-
         // If the document doesn't exist, throw an error
         if (!userSnapshot.exists) {
             doesntExistCallBack();
         }
-
         // Get the plain user data from the snapshot
         const userData = userSnapshot.data();
-
         // Convert the plain object to a User instance using your model
         return new RecreateUser(userData);
     }
-
 
     /**
      * Checks if a document with the given id exists in the specified Firestore collection.
@@ -465,13 +377,11 @@ class Account {
      * @returns {Promise<boolean>} - A promise that resolves to true if the document exists, false otherwise.
      */
     static async documentExists(collectionName, docId) {
-
         const docRef = Account.fs.collection(collectionName).doc(docId);
         const docSnapshot = await docRef.get();
         console.log("I think doc exists : " + docSnapshot.exists)
         return docSnapshot.exists;
     }
-
 
     /**
      * Sends a password reset email to the user.
@@ -493,7 +403,6 @@ class Account {
             });
     }
 
-
     /**
      * Deletes a user from Firebase Authentication.
      *
@@ -509,20 +418,6 @@ class Account {
                 console.error("Error deleting user:", error);
             });
     }
-
 }
 
-
 Account.initializeAuthStateListener();
-
-
-//checkGuardedRoutes(!Account.userAccount.isAuthenticated(),___PAGES.signin,___PAGES.main);
-
-
-
-
-
-
-
-
-

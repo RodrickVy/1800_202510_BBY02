@@ -5,19 +5,20 @@ const ___PAGES = {
     settings: 'settings',
     teams: 'teams',
     leagues: 'league',
-    main: 'main', 
+    main: 'main',
     addTeam: 'add-team',
-    eachLeague:'eachLeague'
+    eachLeague: 'eachLeague',
+    editTeam: 'edit-team'
 };
 
 
-// If we are on these pages and the user is authenticated go to the main page 
+// If we are on these pages and the user is authenticated go to the main page
 
 const __NOAUTHADVANCEROUTES = [
     ___PAGES.signin,
     ___PAGES.signup
 ]
-// If we are on any of these pages and the user is not authenticated go to sign in. 
+// If we are on any of these pages and the user is not authenticated go to sign in.
 const _AUTHGOURDEDROUTES = [
     ___PAGES.settings,
     ___PAGES.leagues,
@@ -25,6 +26,7 @@ const _AUTHGOURDEDROUTES = [
     ___PAGES.account,
     ___PAGES.teams,
     ___PAGES.addTeam,
+    ___PAGES.editTeam,
 ];
 
 
@@ -230,15 +232,15 @@ function checkGuardedRoutes(isAuthenticated, needAuthRoute = ___PAGES.signin, au
 }
 
 
-
-function listenToIfExists (id, trigger,callback){
-    if(elementExists(id)){
+function listenToIfExists(id, trigger, callback) {
+    if (elementExists(id)) {
         document.getElementById(id).addEventListener(trigger, (event) => {
             callback(event);
         });
 
     }
 }
+
 // storage.service.js
 
 /**
@@ -288,13 +290,18 @@ class StorageService {
 
 }
 
-
-
-
-
-function toTitleCase(text){
+function toTitleCase(text) {
 
     return text.split(" ").map(word => {
-       return  word.split("")[0].toUpperCase() + word.toLowerCase().substring(1);
+        return word.split("")[0].toUpperCase() + word.toLowerCase().substring(1);
     }).join(" ");
+}
+
+
+/**
+* Generates a timestamp of the current time.
+* @returns {string} the formated time
+* */
+function createTimeStamp(){
+   return new Date().toISOString().split('T')[0];
 }

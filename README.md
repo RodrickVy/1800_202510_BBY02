@@ -64,11 +64,14 @@ project-name/
 ---
 
 ## Acknowledgments
-
-Example:
-- Weather data sourced from [OpenWeatherMap](https://openweathermap.org/).
 - Code snippets for ___ algoirthm were adapted from resources such as [Stack Overflow](https://stackoverflow.com/) and [MDN Web Docs](https://developer.mozilla.org/).
 - Icons sourced from [FontAwesome](https://fontawesome.com/) and images from [Unsplash](https://unsplash.com/).
+- Image of Richmond Oval obtained from URL: https://www.centaurproducts.com/project/richmond-olympic-oval/
+- Image of Moscrop Secondary Gym obtained from URL: https://www.studyinburnaby.ca/school/moscrop-secondary-school/
+- Image of Cambie Community Centre obtained from URL: https://www.mapquest.com/ca/british-columbia/cambie-community-centre-456541330
+- Image of Hastings Community Centre obtained from URL: https://hastingscc.ca/?p=27
+
+
 
 ---
 

@@ -5,18 +5,11 @@ document.getElementById('signUpBtn').addEventListener("click", () => {
     const password = document.getElementById('password').value;
     const roleSelect = document.getElementById("roleSelect").value;
 
-    console.log(email)
-    Account.signUp(userName, email, password, {
-        role: roleSelect
-    }, () => {
+
+    Account.signUp(userName, email, password, () => {
         navigateToRoute('./main.html');
 
     }, (error) => {
         alert(error)
     });
 })
-
-
-
-
-
