@@ -2,20 +2,34 @@
 window.onload = () => {
 
     Account.addListener("mainPageAppBar", (userData) => {
+
+        function loadUserProfileIcon(userData) {
+            if (userData.profileUrl.length > 2) {
+                return `<div  class="rounded-circle  d-flex align-items-center justify-content-center"
+                                                     style="background:green;width: 50px; overflow:clip;height: 50px;">
+                    <img alt='user profile icon' src='${userData.profileUrl}' style="width: 80px"> 
+                </div> `;
+            } else {
+                return `<div class="rounded-circle  d-flex align-items-center justify-content-center"
+                     style="background:green;width: 50px; height: 50px;">
+                    <div style="color:white; font-weight:bold;padding:10px">${getInitials(userData.name)}</div>
+                </div>`;
+            }
+
+        }
+
         loadTemplate("appBarPlaceholder", `<nav class="navbar navbar-expand-lg" style="background-color: #D0DDD7; height: 10vh; min-width: 100%;">
             <div class="container-fluid d-flex justify-content-between align-items-center px-3" style="height: 100%;">
                 <a href="./account.html" style="text-decoration:none; cursor:pointer;" class="d-flex flex-column align-items-center"  >
-                    <div class="rounded-circle  d-flex align-items-center justify-content-center"
-                        style="background:green;width: 50px; height: 50px;">
-                        <div style="color:white; font-weight:bold;padding:10px">${getInitials(userData.name)}</div>
-                    </div>
+                   ${loadUserProfileIcon(userData)}
                 </a>
                
                 <div >
                     <i class="fas fa-envelope" style="font-size: 50px; cursor: pointer;"></i>
                 </div>
             </div>
-        </nav>`, () => { });
+        </nav>`, () => {
+        });
     });
 
     loadTemplate("bottomNavPlaceholder", `

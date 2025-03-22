@@ -49,14 +49,24 @@
 
 <div class="d-flex justify-content-center" style="margin-top: 50px; position: relative;">
     <div class="card text-dark" style="background-color: #D0DDD7; width: 400px; height: auto; position: relative;">
-        <div class="card-header text-center">
-            <h2>Edit Team Details</h2>
+        <div  class="card-header " style="padding:0;">
+            <div style="width:100%;max-height:100px;overflow: clip"  >
+                <img id='teamBanner' alt='team banner' src="" style="width:100%;">
+            </div>
+
+            <h2 style="padding: 6px">Edit Team Details</h2>
         </div>
         <div class="card-body">
             <!-- Team Name -->
             <div class="form-group">
                 <label for="teamName">Team Name</label>
                 <input type="text" class="form-control" id="teamName" placeholder="Enter team name" required>
+            </div>
+            <br>
+            <div class="mb-3">
+                <label for="teamBannerInput" class="form-label alignLeft"> Team Photo Banner</label>
+                <input type="file" accept="image/png" class="form-control"
+                       id="teamBannerInput">
             </div>
             <br>
             <!-- Select League -->
