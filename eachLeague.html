@@ -47,34 +47,37 @@
     <!-- Stuff for body goes here -->
     <div id="appBarPlaceholder"></div>
 
-    <div class="container">
-        <br>
-        <h1><span id="LeagueName">League Name</span></h1>
-        <br>
-        <form>
-            <!-- City Selection -->
-            <div class="form-group">
-                <label for="city">Select City</label>
-                <select class="form-control" id="city">
-
-                </select>
+    <div class="d-flex justify-content-center" style="margin-top: 50px; position: relative;">
+        <div class="card text-dark" style="background-color: #D0DDD7; width: 400px; height: auto; position: relative;">
+            <div class="card-body">
+                <h1 class="text-center"><span id="LeagueName">League Name</span></h1>
+                <br>
+                <form>
+                    <!-- City Selection -->
+                    <div class="form-group">
+                        <label for="city">Select City</label>
+                        <select class="form-control" id="city">
+                            <!-- Options will be dynamically added here -->
+                        </select>
+                    </div>
+                    <br>
+                    <!-- Skill Level Selection -->
+                    <div class="form-group">
+                        <label for="skillLevel">Select Skill Level</label>
+                        <select class="form-control" id="skillLevel">
+                            <!-- Options will be dynamically added here -->
+                        </select>
+                    </div>
+                    <br>
+                    <!-- Submit Button -->
+                    <div class="d-flex justify-content-end">
+                        <button type="button" id="selectLeagueBtn"
+                            class="btn btn-lg btn-primary btn-custom">Select</button>
+                    </div>
+                </form>
             </div>
-            <br>
-            <!-- Skill Level Selection -->
-            <div class="form-group">
-                <label for="skillLevel">Select Skill Level</label>
-                <select class="form-control" id="skillLevel">
-
-                </select>
-            </div>
-            <br>
-            <!-- Submit Button -->
-            <div class="d-flex justify-content-end">
-                <button type="button" id="selectLeagueBtn" class="btn btn-lg btn-primary pull-right">Select</button>
-            </div>
-        </form>
+        </div>
     </div>
-
 
     <div id="bottomNavPlaceholder"></div>
 
@@ -88,11 +91,9 @@
     <script src="./scripts/utility/utility.js"></script>
     <script src="./scripts/account/account.service.js"></script>
     <script src="./scripts/main/main.templates.js"></script>
-    <!-- <script src="./scripts/league.js"></script> -->
     <script src="./scripts/league/eachLeague.view.js"></script>
     <script src="./scripts/league/leagues.service.js"></script>
     <script src="./scripts/league/league.template.js"></script>
-
 
 </body>
 

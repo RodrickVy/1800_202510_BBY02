@@ -47,47 +47,51 @@
     <!-- Stuff for body goes here -->
     <div id="appBarPlaceholder"></div>
 
-    <div class="container mt-5">
-        <h2>Create New Team</h2>
-
-        <!-- Team Name -->
-        <div class="form-group">
-            <label for="teamName">Team Name</label>
-            <input type="text" class="form-control" id="teamName" placeholder="Enter team name" required>
+    <div class="d-flex justify-content-center" style="margin-top: 50px; position: relative;">
+        <div class="card text-dark" style="background-color: #D0DDD7; width: 400px; height: auto; position: relative;">
+            <div class="card-header text-center">
+                <h2>Create New Team</h2>
+            </div>
+            <div class="card-body">
+                <!-- Team Name -->
+                <div class="form-group">
+                    <label for="teamName">Team Name</label>
+                    <input type="text" class="form-control" id="teamName" placeholder="Enter team name" required>
+                </div>
+                <br>
+                <!-- Select League -->
+                <div class="form-group">
+                    <label for="leagueSelect">Select League</label>
+                    <select class="form-control" id="leagueSelect">
+                        <option value="">Select a league</option>
+                        <option value="league1">League 1</option>
+                        <option value="league2">League 2</option>
+                        <option value="league3">League 3</option>
+                    </select>
+                </div>
+                <br> <br>
+                <!-- Team Description -->
+                <div class="form-group">
+                    <label for="teamDescription">Team Description</label>
+                    <textarea class="form-control" id="teamDescription" rows="3" placeholder="Enter team description"
+                        required></textarea>
+                </div>
+                <br> <br>
+                <!-- Level In League -->
+                <div class="form-group">
+                    <label for="levelInLeague">Level In League</label>
+                    <select class="form-control" id="levelInLeague">
+                        <option value="">Select a level</option>
+                        <option value="level1">Level 1</option>
+                        <option value="level2">Level 2</option>
+                        <option value="level3">Level 3</option>
+                    </select>
+                </div>
+                <br>
+                <!-- Submit Button -->
+                <button id='createTeamBtn' class="btn btn-success btn-block btn-custom">Create Team</button>
+            </div>
         </div>
-        <br>
-
-        <div class="form-group">
-            <label for="leagueSelect">Select League</label>
-            <select class="form-control" id="leagueSelect">
-                <option value="">Select a league</option>
-                <option value="league1">League 1</option>
-                <option value="league2">League 2</option>
-                <option value="league3">League 3</option>
-            </select>
-        </div>
-        <br> <br>
-        <!-- Team Description -->
-        <div class="form-group">
-            <label for="teamDescription">Team Description</label>
-            <textarea class="form-control" id="teamDescription" rows="3" placeholder="Enter team description"
-                required></textarea>
-        </div>
-        <br> <br>
-        <div class="form-group">
-            <label for="levelInLeague">Level In League</label>
-            <select class="form-control" id="levelInLeague">
-                <option value="">Select a league</option>
-                <option value="league1">League 1</option>
-                <option value="league2">League 2</option>
-                <option value="league3">League 3</option>
-            </select>
-        </div>
-
-        <br>
-        <!-- Submit Button -->
-        <button id='createTeamBtn' class="btn btn-success">Create Team</button>
-
     </div>
     <br> <br> <br> <br>
 

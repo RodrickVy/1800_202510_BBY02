@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                        </div>
                    </div>`;
            }
-           
            teamsHTML += `
                <div class="col-md-3 mb-3" id="${team.id}_view">
                    <div style="padding: 10px; box-shadow: none" class="text-center shadow-sm">
@@ -32,17 +31,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                    </div>
                </div>`;
        });
-       
        loadTemplate('teamsContainer',`<div class="row">${teamsHTML}</div>`);
        loadTemplate('myTeamsContainer',`<div class="row">${myTeamsHTML}</div>`);
-
        teams.forEach(team => {
-
            listenToIfExists(`${team.id}_edit`,'click', (e) => {
                localStorage.setItem('teamToEdit', team.id);
                navigateToRoute(___PAGES.addTeam)
            });
-
        })
    })
 });

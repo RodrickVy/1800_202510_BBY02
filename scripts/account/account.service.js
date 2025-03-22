@@ -78,11 +78,8 @@ class RecreateUser {
      */
     static fromJson(json) {
         // If json is a string, parse it.
-
         json = JSON.parse(JSON.stringify(json));
-
         console.log(json['id'])
-
         return new RecreateUser(
             {
                 id: json['id'],
@@ -140,9 +137,7 @@ class RecreateUser {
             lastLogin: this.lastLogin,
         };
     }
-
 }
-
 
 /**
  * Account
@@ -150,10 +145,8 @@ class RecreateUser {
  * @author Rodrick
  */
 class Account {
-
     // A modifiable list of listener functions that are invoked when auth state changes only use the Account.addListener() and .removeListener() methods to modify it.
     static __authListeners = new Map();
-
 
     // Your web app's Firebase configuration
     static firebaseConfig = {
@@ -171,10 +164,7 @@ class Account {
     static auth = firebase.auth();
     static fs = firebase.firestore();
     static st = firebase.storage();
-
-
     static userAccount = new RecreateUser();
-
 
     /**
      * Initializes the Firebase Auth state listener.
@@ -182,46 +172,28 @@ class Account {
      * For example, it runs whenever a user signs in or signs out.
      */
     static initializeAuthStateListener = async () => {
- 
- 
         // Replace 'firebase.auth()' with your auth instance if needed
         Account.auth.onAuthStateChanged(async (user) => {
             console.log("Auth state change!!! ")
             if (user) {
-
-
                 const docExists = (await Account.documentExists('users', user.uid) === true);
-
-
                 if (docExists === false) {
-
                     const timestamp = new Date().toISOString().split('T')[0];
-            
                     Account.createUserInFirestore(user, {
                         lastLogin: timestamp,
                         createdOn: timestamp,
                         phoneNumber:'',
-                        
                     });
-
-
                 }
-
                 let ___accountData = (await Account.loadUserData(user.uid));
                 checkGuardedRoutes(true, ___PAGES.signin, ___PAGES.main);
-       
                 Account.userAccount = ___accountData;
-
-              
-
                 Account.__authListeners.forEach((callBack, _) => {
                     callBack(Account.userAccount);
                 });
             } else {
                 checkGuardedRoutes(false, ___PAGES.signin, ___PAGES.main);
             }
-
-
         });
     }
 
@@ -252,12 +224,8 @@ class Account {
                         ...customData,
                         lastLogin: timestamp,
                         createdOn: timestamp,
-                        
                     });
-                    
                 })
-
-
             })
             .then((userCredential) => {
                 onSuccess(userCredential.user)
@@ -301,7 +269,6 @@ class Account {
             });
     }
 
-
     /**
      * Adds a given callback function to the __listeners object under the specified key.
      * These stored functions can be invoked later (e.g., upon user state changes).
@@ -312,7 +279,6 @@ class Account {
     static addListener(key, fn) {
         Account.__authListeners.set(key, fn);
     }
-
 
     /**
      * Removes the given callback function from the __listeners object under the specified key.
@@ -328,7 +294,6 @@ class Account {
         Account.__authListeners.delete(key);
     }
 
-
     /**
      * Creates a user object in Firebase Firestore firebase auth userCredential
      * Generates a unique user ID and uses it as the document ID.
@@ -340,10 +305,7 @@ class Account {
     static async createUserInFirestore(user, customData) {
         const db = Account.fs;
         const userId = user.uid;
-
         const userDocRef = Account.fs.collection("users").doc(userId);
-
-
         const ____userData = {
             id: userId,
             name: user.displayName,
@@ -363,11 +325,8 @@ class Account {
             badges: [],
             lastLogin: customData.lastLogin,
             createdOn: customData.createdOn,
-
         };
-
         console.log(____userData);
-
         try {
             await userDocRef.set(____userData);
             console.log(`User created successfully with id: ${userId}`);
@@ -377,7 +336,6 @@ class Account {
             throw error;
         }
     }
-
 
     /**
      * Updates a Firestore user document based on a callback that modifies the current user data.
@@ -401,17 +359,12 @@ class Account {
         const db = Account.fs;
         console.log(userId);
         const userDocRef = db.collection("users").doc(userId);
-
-
         // Pass the current data to the callback to obtain the update object.
         const updatedData = updateCallback(Account.userAccount);
-
         // Update the Firestore user document with the returned object.
         await userDocRef.update(updatedData);
-
         return updatedData;
     }
-
 
     /**
      * Logs out the current user using Firebase Authentication.
@@ -428,7 +381,6 @@ class Account {
             });
     }
 
-
     /**
      * Loads user data from Firestore, converts it to a User instance, and returns it.
      *
@@ -437,25 +389,19 @@ class Account {
      */
     static async loadUserData(userId, doesntExistCallBack = (() => {
     })) {
-
         // Reference the user document in the "users" collection
         const userDocRef = Account.fs.collection("users").doc(userId);
-
         // Retrieve the document snapshot
         const userSnapshot = await userDocRef.get();
-
         // If the document doesn't exist, throw an error
         if (!userSnapshot.exists) {
             doesntExistCallBack();
         }
-
         // Get the plain user data from the snapshot
         const userData = userSnapshot.data();
-
         // Convert the plain object to a User instance using your model
         return new RecreateUser(userData);
     }
-
 
     /**
      * Checks if a document with the given id exists in the specified Firestore collection.
@@ -465,13 +411,11 @@ class Account {
      * @returns {Promise<boolean>} - A promise that resolves to true if the document exists, false otherwise.
      */
     static async documentExists(collectionName, docId) {
-
         const docRef = Account.fs.collection(collectionName).doc(docId);
         const docSnapshot = await docRef.get();
         console.log("I think doc exists : " + docSnapshot.exists)
         return docSnapshot.exists;
     }
-
 
     /**
      * Sends a password reset email to the user.
@@ -493,7 +437,6 @@ class Account {
             });
     }
 
-
     /**
      * Deletes a user from Firebase Authentication.
      *
@@ -509,20 +452,8 @@ class Account {
                 console.error("Error deleting user:", error);
             });
     }
-
 }
-
 
 Account.initializeAuthStateListener();
 
-
 //checkGuardedRoutes(!Account.userAccount.isAuthenticated(),___PAGES.signin,___PAGES.main);
-
-
-
-
-
-
-
-
-

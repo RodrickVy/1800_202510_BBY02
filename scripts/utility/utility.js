@@ -288,10 +288,6 @@ class StorageService {
 
 }
 
-
-
-
-
 function toTitleCase(text){
 
     return text.split(" ").map(word => {

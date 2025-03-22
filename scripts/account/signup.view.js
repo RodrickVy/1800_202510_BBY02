@@ -15,8 +15,3 @@ document.getElementById('signUpBtn').addEventListener("click", () => {
         alert(error)
     });
 })
-
-
-
-
-

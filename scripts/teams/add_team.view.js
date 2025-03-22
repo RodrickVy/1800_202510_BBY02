@@ -90,8 +90,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             })
         }else{
-
-
             let leaguesAsOptions = '';
 
             leagues.forEach(league => {
@@ -124,7 +122,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             });
 
-
             createTeamBtn.addEventListener('click', (event) => { 
                 console.log("Create button clicked")
                 TeamsService.createTeam({
@@ -141,17 +138,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }).then((_)=>{
                     navigateToRoute(___PAGES.teams);
                 })
-
-                
-
             });
-
         }
-
-
-
-
-
     });
 
 });

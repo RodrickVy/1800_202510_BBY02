@@ -46,10 +46,6 @@ document.addEventListener("DOMContentLoaded", async (e) => {
             navigateToRoute(___PAGES.leagues);
         })
     })
-
-
-
-
 })
 
 

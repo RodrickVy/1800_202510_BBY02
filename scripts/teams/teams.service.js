@@ -65,7 +65,6 @@ class RecreateTeam {
  */
 class TeamsService {
     static teamsCollection = Account.fs.collection("teams");
-
     /**
      * Verifies if the current user's role is 'captain'. If not, prompts them to change their role.
      * @returns {Promise<boolean>} - Resolves to true if the user is a captain, false otherwise.
@@ -90,20 +89,16 @@ class TeamsService {
      */
     static async createTeam(teamData) {
         const isCaptain = await TeamsService.verifyCaptainRole();
-
-
         const newTeamRef = TeamsService.teamsCollection.doc(teamData.id);
         const team = new RecreateTeam({
             id: newTeamRef.id,
             ...teamData,
             creatorId: Account.userAccount.id
         });
-
         await newTeamRef.set(team.toJson());
         await Account.updateUser(Account.userAccount.id, (user) => ({
             teamsCreated: [...user.teamsCreated, newTeamRef.id]
         }));
-
         console.log("Created new team"+ newTeamRef);
         return newTeamRef.id;
     }
@@ -116,7 +111,6 @@ class TeamsService {
         const teamsSnapshot = await TeamsService.teamsCollection.get();
         return teamsSnapshot.docs.map(doc => RecreateTeam.fromJson(doc.data()));
     }
-
 
     /**
      * Updates an existing team in Firestore.

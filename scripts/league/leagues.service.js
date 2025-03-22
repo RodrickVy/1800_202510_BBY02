@@ -108,7 +108,6 @@ class LeaguesService {
             document.getElementById(`${collection}-go-here`).appendChild(newCard);
         });
     }
-
     /**
      * Saves the league document ID and redirects the user.
      */

@@ -8,6 +8,3 @@ const signInBtn = document.getElementById('signInBtn').addEventListener("click",
     });
 
 })
-
-
-

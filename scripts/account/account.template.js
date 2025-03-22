@@ -1,7 +1,5 @@
 // Loads the common HTML in the sign in, signup and forgot-password pages. 
-
 window.onload = () => {
-
 
     loadTemplate("navPlaceholder", ` <nav class="navbar navbar-expand-lg shadow-sm" style="background-color: #ffffff;">
         <div class="container-fluid">
@@ -85,11 +83,6 @@ window.onload = () => {
             carousel.carousel("next");
         }, 2200);
     });
-
-
-
-
-
 }
 
 

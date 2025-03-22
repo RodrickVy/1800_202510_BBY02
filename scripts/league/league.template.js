@@ -21,9 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
        `;
    });
 
-
    loadTemplate('leaguesTemplate', allLeagues);
-
 
    leagues.forEach((league) => {
       listenToIfExists(league.code + "_card", "click", (e) => {

@@ -87,7 +87,6 @@ function displayCardsDynamically(collection) {
 
                 //attach to gallery, Example: "hikes-go-here"
                 document.getElementById(collection + "-go-here").appendChild(newcard);
-
                 //i++;   //Optional: iterate variable to serve as unique ID
             })
         })

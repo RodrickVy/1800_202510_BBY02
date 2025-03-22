@@ -106,12 +106,6 @@ window.onload = () => {
             carousel.carousel("next");
         }, 2200);
     });
-
-
-
-
-
-
 }
 
 
