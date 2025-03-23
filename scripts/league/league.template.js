@@ -5,9 +5,9 @@ document.addEventListener('DOMContentLoaded', async () => {
    leagues.forEach((league) => {
       console.log(___PAGES.eachLeague + " League page");
       allLeagues += `
-          <div id='${league.code}_card'>
+          <div id='${league.id}_card'>
            <div class="card py-2 mx-2 card-custom" style="width: 18rem">
-           <img class="card-image card-img-top" src="images/${league.code}.jpg" alt="League Image"/>
+           <img class="card-image card-img-top" src="${league.logo}" alt="League Image"/>
            <div class="card-body">
                <h5 class="card-title">${league.name}</h5>
                <a class="card-url" href="${league.url}" target="_blank">Visit Website</a>
@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', async () => {
    loadTemplate('leaguesTemplate', allLeagues);
 
    leagues.forEach((league) => {
-      listenToIfExists(league.code + "_card", "click", (e) => {
-         localStorage.setItem("leagueToView", league.code);
+      listenToIfExists(league.id + "_card", "click", (e) => {
+         localStorage.setItem("leagueToView", league.id);
          navigateToRoute(___PAGES.eachLeague);
       })
    })

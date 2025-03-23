@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async (e) => {
     if (leagueToViewCode !== null) {
         leagueToViewCode;
         allLeagues.forEach(league => {
-            if (league.code === leagueToViewCode) {
+            if (league.id === leagueToViewCode) {
                 currentLeague = league;
             }
         });

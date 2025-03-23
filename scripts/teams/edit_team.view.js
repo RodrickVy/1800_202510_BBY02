@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 if (isInitialLoad) {
                     let leaguesAsOptions = '';
                     leagues.forEach(league => {
-                        leaguesAsOptions += '<option value="' + league.code + '">' + league.name + '</option>';
+                        leaguesAsOptions += '<option value="' + league.id + '">' + league.name + '</option>';
 
                     })
 
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                 leagues.forEach(league => {
 
-                    if (leagueSelect.value === league.code) {
+                    if (leagueSelect.value === league.id) {
                         league.level.forEach(level => {
                             leagueLevelOptions += `<option value="${level}" >${level}</option>`;
                         })
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 })
 
                 function leagueSelected() {
-                    return leagues.find((league) => league.code === leagueSelect.value);
+                    return leagues.find((league) => league.id === leagueSelect.value);
                 }
 
 

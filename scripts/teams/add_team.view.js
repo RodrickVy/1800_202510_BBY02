@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         let leaguesAsOptions = '';
 
         leagues.forEach(league => {
-            leaguesAsOptions += '<option value="' + league.code + '">' + league.name + '</option>';
+            leaguesAsOptions += '<option value="' + league.id + '">' + league.name + '</option>';
         })
 
         loadTemplate('leagueSelect', leaguesAsOptions);
@@ -30,8 +30,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             leagues.forEach(league => {
 
 
-                if (league.code === leagueSelect.value) {
-                    console.log(league.code + "===" + leagueSelect.value + " " + league.level[0])
+                if (league.id === leagueSelect.value) {
+                    console.log(league.id + "===" + leagueSelect.value + " " + league.level[0])
 
                     league.level.forEach(level => {
                         leagueLevelOptions += '<option value="' + level + '">' + level + '</option>';

@@ -9,10 +9,10 @@ document.addEventListener("DOMContentLoaded", async (e) => {
 
         allLeagues.forEach((league) => {
 
-            if (league.code === user.league) {
+            if (league.id === user.league) {
 
                 loadTemplate('userLeaguesContainer', `
-                    <div id='${league.code}_card' class="d-flex justify-content-center">
+                    <div id='${league.id}_card' class="d-flex justify-content-center">
                         <div class="card py-2 mx-2 card-custom" style="width: 12rem;">
                             <div class="card-body p-2 text-center">
                                 <h5 class="card-title">${league.name}</h5>

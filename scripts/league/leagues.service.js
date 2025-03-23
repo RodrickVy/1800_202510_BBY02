@@ -101,7 +101,7 @@ class LeaguesService {
             newCard.querySelector('.card-title').innerHTML = data.name;
             newCard.querySelector('.card-url').innerHTML = `<a href="${data.url}" target="_blank">Visit Website</a>`;
             newCard.querySelector('.card-text').innerHTML = data.details;
-            newCard.querySelector('.card-image').src = `./images/${data.code}.jpg`;
+            newCard.querySelector('.card-image').src = `${data.logo}`;
             newCard.querySelector(".card").classList.add("league-card");
             newCard.querySelector('a').href = `league.html?docID=${doc.id}`;
 
