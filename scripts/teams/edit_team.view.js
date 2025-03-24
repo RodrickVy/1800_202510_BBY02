@@ -19,9 +19,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (teamToEdit !== undefined) {
 
 
+            let teamBannerUrl = teamToEdit.teamBanner;
 
-
-            teamBanner.src = teamToEdit.teamBanner;
+            teamBanner.src = teamBannerUrl;
 
 
             function updateLeagueSelection() {
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 if (isInitialLoad) {
                     let leaguesAsOptions = '';
                     leagues.forEach(league => {
-                        leaguesAsOptions += '<option value="' + league.id + '">' + league.name + '</option>';
+                        leaguesAsOptions += `<option value="${league.id}">${league.name}</option>`;
 
                     })
 
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     description: teamDescription.value,
                     leagueLevel: levelInLeague.value,
                     recLeague: leagueSelect.value,
-                    teamBanner: teamToEdit.teamBanner.length <1 ? DFEAULTS.teamBanner :teamToEdit.teamBanner,
+                    teamBanner: teamBannerUrl <1 ? DFEAULTS.teamBanner : teamBannerUrl,
 
                 }).then(() => {
                     localStorage.setItem('teamToEdit', '');
@@ -108,7 +108,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                     teamBanner: data.downloadUrl,
 
                 }).then(() => {
-                     window.location.reload();
+                     teamBannerUrl = data.downloadUrl;
+                     teamBanner.src = teamBannerUrl;
                 });
             })
         } else {

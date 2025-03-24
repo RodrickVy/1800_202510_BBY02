@@ -100,6 +100,7 @@ class TeamsService {
         TeamsService.teams = _teamsList;
         TeamsService.userOwnedTeams = _teamsList.filter((team)=>team.creatorId === Account.userAccount.id);
 
+
     }
 
     /**

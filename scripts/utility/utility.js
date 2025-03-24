@@ -8,7 +8,14 @@ const ___PAGES = {
     main: 'main',
     addTeam: 'add-team',
     eachLeague: 'eachLeague',
-    editTeam: 'edit-team'
+    editTeam: 'edit-team',
+    games: 'games',
+    addGame: "addGame"   ,
+    gameDetails: "gameDetails",
+    editGameDetails: "editGameDetails" ,
+    teamDetails: "teamDetails"
+
+
 };
 
 
@@ -31,6 +38,10 @@ const _AUTHGOURDEDROUTES = [
     ___PAGES.teams,
     ___PAGES.addTeam,
     ___PAGES.editTeam,
+    ___PAGES.addGame,
+    ___PAGES.games,
+    ___PAGES.gameDetails,
+    ___PAGES.editGameDetails
 ];
 
 
@@ -348,4 +359,13 @@ class StorageService {
             throw error;
         }
     }
+}
+
+
+function removeItemInList(arr, value)  {
+    const index = arr.indexOf(value);
+    if (index > -1) {
+        arr.splice(index, 1);
+    }
+    return arr;
 }

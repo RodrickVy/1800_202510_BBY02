@@ -65,11 +65,10 @@ class GamesService {
     static collectionRef = Account.fs.collection('games');
 
     // Creates a new game
-    static async createGame(gameData) {
+    static async createGame(id,gameData) {
 
-        const gameRef = await this.collectionRef.add(gameData);
-        console.log(`Game created successfully with ID: ${gameRef.id}`);
-        return gameRef.id;
+        const gameRef = await this.collectionRef.doc(id).set(gameData);
+
     }
 
 

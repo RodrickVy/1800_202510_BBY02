@@ -3,36 +3,41 @@ document.addEventListener('DOMContentLoaded', async () => {
        await TeamsService.getAllTeams();
        localStorage.setItem('teamToEdit', '');
 
-       let teamsHTML = "";
-       let myTeamsHTML = "";
+       let teamsHTML = "<br>";
+       let myTeamsHTML = "<br>";
 
-       TeamsService.teams.forEach(team => {
+       for (const team of TeamsService.teams) {
+
+           const allLeagues = await LeaguesService.getAllLeagues();
+           const league = allLeagues.filter((_league)=> _league.id !== team.recLeague)[0];
            if (team.creatorId === user.id) {
                myTeamsHTML += `
-                   <div class="col-md-3 mb-3">
-                       <div style="padding: 10px; box-shadow: none" class="text-center shadow-sm">
-                           <div>
-                               <h5 class="card-title">${team.name}</h5>
-                               <p class="card-text">Skill Level: ${team.skillLevel || "Unknown"}</p>
-                               <button id="${team.id}_edit" class="btn btn-sm btn-custom" type="button">Edit</button>
-                           </div>
-                       </div>
-                   </div>`;
+                <div id="${team.id}_view" class="card bg-light m-2" style="max-width: 18rem;">
+                 <img class="card-img-top" width="100%" src="${team.teamBanner}" alt="Card image cap">
+                  <div class="card-header">${team.name}</div>
+                  <div class="card-body">
+                    <h5 class="card-title">${league.name}</h5>
+                    <p class="card-text">${team.description}</p>
+                    <button id="${team.id}_edit" class="btn btn-sm btn-custom" type="button">Edit</button>
+                  </div>
+                </div>
+                       `;
            }else{
-               teamsHTML += `
-               <div class="col-md-3 mb-3" id="${team.id}_view">
-                   <div style="padding: 10px; box-shadow: none" class="text-center shadow-sm">
-                       <div>
-                           <h5 class="card-title">${team.name}</h5>
-                           <p class="card-text">${team.description || "Unknown"}</p>
-                           <p class="card-text">Skill Level: ${team.skillLevel || "Unknown"}</p>
-                           <button class="btn btn-sm btn-custom" type="button">More</button>
-                       </div>
-                   </div>
-               </div>`;
+               teamsHTML += `<div id="${team.id}_view" class="card bg-light m-2" style="max-width: 18rem;">
+                 <img class="card-img-top" width="100%" src="${team.teamBanner}" alt="Card image cap">
+                  <div class="card-header">${team.name}</div>
+                  <div class="card-body">
+                    <h5 class="card-title">${league.name}</h5>
+                    <p class="card-text">${team.description}</p>
+                  </div>
+                </div>`;
            }
 
-       });
+       }
+
+       if(TeamsService.userOwnedTeams.length === 0){
+           myTeamsHTML = '<h6 class=" text-center"> You haven\'t created any teams click the add team button to create one</h6>'
+       }
        loadTemplate('teamsContainer',`<div class="row">${teamsHTML}</div>`);
        loadTemplate('myTeamsContainer',`<div class="row">${myTeamsHTML}</div>`);
        TeamsService.teams.forEach(team => {
@@ -40,6 +45,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                localStorage.setItem('teamToEdit', team.id);
                navigateToRoute(___PAGES.editTeam)
            });
+
+           listenToIfExists(`${team.id}_view`,'click', (e) => {
+               localStorage.setItem('teamToView', team.id);
+               navigateToRoute(___PAGES.teamDetails)
+           })
        })
    })
 });
