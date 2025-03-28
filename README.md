@@ -1,34 +1,38 @@
 
-# Project Name
+# RECREA-8
 
 ## Overview
-Summarize your project's purpose, problem solved, key features, user benefits, development context, and main technologies used.
+For recreational volleyball players who want to play more games to enhance their skills but struggle to find teams or substitutes on short notice, RECREA-8, streamlines team formation and substitute onboarding. Unlike traditional methods of messaging or manually coordinating players, RECREA-8 provides an intuitive notification system, a centralized team management interface, and a dynamic games schedule, ensuring players can quickly join teams, request substitutes, or find opportunities to play at any moment.
 
-Example:
+### Persona
+<img src="/images/user_persona.png" width="700px">
 
-This client-side JavaScript web application provides real-time weather updates for cities worldwide. It simplifies accessing weather information through an intuitive mobile-first interface, allowing users to input a city name and receive data on temperature, humidity, and conditions.
-
-Developed for the [Course Name] course, applying User-Centred Design practices, agile project management processes, integrating a weather API, and Firebase backend services.
-
----
 
 ## Features
+ Apps features are split into 5:
 
-Example:
-- Real-time weather updates for any city.
-- Responsive design for desktop and mobile.
-- Displays temperature, humidity, and weather conditions.
+- Teams - Display and allow user to create and interact with teams on the app.
+- Leagues - Display the current leagues 
+- Games - Show upcoming games for user to 
+- Account - Allow the user to manage their account , set preferances to personalize their experience. 
+
+### Value Proposition
 
 ---
 
 ## Technologies Used
 
-Example:
 - **Frontend**: HTML, CSS, JavaScript
-- **Backend**: Firebase for hosting
-- **Database**: Firestore
-- **API**: OpenWeatherMap API
-
+- **Backend Authentication**: Firebase Authentication
+- **Backend Database**: Firebase Firestore 
+- **Backend Storage (media, files hosting)**: Firebase Storage
+- **APIs USED**: 
+  - **Geoapify**: Used for location auto suggestions when user is specifies location of a game  [API Homepage](https://www.geoapify.com/).
+- **Libraries & Packages**
+  - **Bootstrap** - Used for simplified css styling. [Bootstrap homepage](https://getbootstrap.com/)
+  - **JQuery** - Only imported as a dependency of bootstrap not used extensively in the code. [JQuery homepage](https://jquery.com/)
+  - **Font Awesome Icons** - Main and only icon library for the entire app, using the free solid (fas fa-) version. [Font Awesome homepage](https://fontawesome.com/v6/icons?o=r&s=solid)
+  - **Google Fonts** - Fonts loaded over network [Google Fonts](https://fonts.googleapis.com/).
 ---
 
 ## Usage
