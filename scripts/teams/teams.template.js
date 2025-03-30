@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
            const league = allLeagues.filter((_league)=> _league.id !== team.recLeague)[0];
            if (team.creatorId === user.id) {
                myTeamsHTML += `
-                <div id="${team.id}_view" class="card bg-light m-2" style="max-width: 18rem;">
+                <div class="card bg-light m-2" style="max-width: 18rem;">
                  <img class="card-img-top" width="100%" src="${team.teamBanner}" alt="Card image cap">
                   <div class="card-header">${team.name}</div>
                   <div class="card-body">
