@@ -85,18 +85,18 @@ window.onload = () => {
 }
 
 loadTemplate("shadowPhotoPlaceholder", `
-    <div id="photoContainer" class="photo-container" style="width: 50%; max-width: 300px; height: 450px; overflow: hidden; position: relative; padding-top: 20px; margin: 0 auto;">
+    <div id="photoContainer" class="photo-container" style=" width: 170px;   overflow: hidden; position: relative; padding-top: 20px; margin: 0 auto;">
         <div class="photo-item active">
-            <img src="./images/shadow1.jpg" class="d-block w-100" alt="shadow1" style="width: 300px; height: 400px; object-fit: cover;">
+            <img src="./images/shadow1.jpg" class="d-block w-100" alt="shadow1" style="width: 100%;object-fit: cover;">
         </div>
         <div class="photo-item">
-            <img src="./images/shadow2.jpg" class="d-block w-100" alt="shadow2" style="width: 300px; height: 400px; object-fit: contain;">
+            <img src="./images/shadow2.jpg" class="d-block w-100" alt="shadow2" style="width: 100%;object-fit: contain;">
         </div>
         <div class="photo-item">
-            <img src="./images/shadow3.jpg" class="d-block w-100" alt="shadow3" style="width: 150px; height: 325px; object-fit: cover;">
+            <img src="./images/shadow3.jpg" class="d-block w-100" alt="shadow3" style="width: 100%;object-fit: cover;">
         </div>
         <div class="photo-item">
-            <img src="./images/shadow4.jpg" class="d-block w-100" alt="shadow4" style="width: 240px; height: 350px; object-fit: cover;">
+            <img src="./images/shadow4.jpg" class="d-block w-100" alt="shadow4" style="width: 100%;object-fit: cover;">
         </div>
     </div>
 `, () => {

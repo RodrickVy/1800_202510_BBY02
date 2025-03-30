@@ -5,19 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const games = [...((await GamesService.loadAllGames()) || []),
         ];
 
-        // {
-        //             "id": "game12345",
-        //             "captainId": "user98765",
-        //             "teamId": "8cc73d0b-cf6a-409a-b0c0-73a2b91a6e3b",
-        //             "gameTime": "2025-04-05T15:30:00Z",
-        //             "location": "Central Park Soccer Field, New York, NY",
-        //             "details": "Friendly match. Please arrive 15 minutes early.",
-        //             "subs": ["user1122", "user3344"],
-        //             "acceptedSubs": ["user3344"],
-        //             "played": false,
-        //             "recLeague": "bdd5bb57-9ca6-44ed-afd6-53981dd8afed",
-        //             "leagueLevel": "Intermediate"
-        //         }
+
         console.log(games)
         const sortedGames = games.sort((a, b) => new Date(a.gameTime) - new Date(b.gameTime));
 
@@ -63,7 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
             container.appendChild(sectionTitle);
 
             for (const game of gamesArray) {
-                await renderGameCard(game);
+                const gameDate = new Date(game.gameTime);
+                const today =  new Date(new Date().getTime() + 60 * 60 * 1000);
+                if(gameDate > today){
+                    await renderGameCard(game);
+                }
             }
         };
 

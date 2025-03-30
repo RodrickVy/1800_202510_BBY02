@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', async () => {
    leagues.forEach((league) => {
       console.log(___PAGES.eachLeague + " League page");
       allLeagues += `
-          <div id='${league.id}_card'>
+          <div id='${league.id}_card' class="league-card">
            <div class="card py-2 mx-2 card-custom" style="width: 18rem">
            <img class="card-image card-img-top" src="${league.logo}" alt="League Image"/>
            <div class="card-body">
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
    leagues.forEach((league) => {
       listenToIfExists(league.id + "_card", "click", (e) => {
          localStorage.setItem("leagueToView", league.id);
-         navigateToRoute(___PAGES.eachLeague);
+         navigateToRoute(___PAGES.games);
       })
    })
 

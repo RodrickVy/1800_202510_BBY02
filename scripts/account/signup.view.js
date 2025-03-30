@@ -14,18 +14,18 @@ document.getElementById('signUpBtn').addEventListener("click", () => {
 })
 
 loadTemplate("shadowPhotoSignUpPlaceholder", `
-    <div id="photoContainer" class="photo-container" style="width: 50%; max-width: 200px; height: 300px; overflow: hidden; position: relative; padding-top: 10px; display: block; margin: 0 auto;">
+    <div id="photoContainer" class="photo-container" style=" width: 170px;   overflow: hidden; position: relative; padding-top: 10px; display: block; margin: 0 auto;">
         <div class="photo-item active">
-            <img src="./images/shadow1.jpg" class="d-block w-100" alt="shadow1" style="width: 180px; height: 275px; object-fit: cover;">
+            <img src="./images/shadow1.jpg" class="d-block w-100" alt="shadow1" style="width: 100%; object-fit: cover;">
         </div>
         <div class="photo-item">
-            <img src="./images/shadow2.jpg" class="d-block w-100" alt="shadow2" style="width: 180px; height: 275px; object-fit: contain;">
+            <img src="./images/shadow2.jpg" class="d-block w-100" alt="shadow2" style="width: 100%;object-fit: contain;">
         </div>
         <div class="photo-item">
-            <img src="./images/shadow3.jpg" class="d-block w-100" alt="shadow3" style="width: 200px; height: 275px; object-fit: cover;">
+            <img src="./images/shadow3.jpg" class="d-block w-100" alt="shadow3" style="width: 100%;object-fit: cover;">
         </div>
         <div class="photo-item">
-            <img src="./images/shadow4.jpg" class="d-block w-100" alt="shadow4" style="width: 180px; height: 300px; object-fit: cover;">
+            <img src="./images/shadow4.jpg" class="d-block w-100" alt="shadow4" style="width: 100%;object-fit: cover;">
         </div>
     </div>
 `, () => {
