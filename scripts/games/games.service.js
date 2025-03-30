@@ -65,7 +65,7 @@ class GamesService {
     static collectionRef = Account.fs.collection('games');
 
     // Creates a new game
-    static async createGame(id,gameData) {
+    static async createGame(id, gameData) {
 
         const gameRef = await this.collectionRef.doc(id).set(gameData);
 
@@ -74,8 +74,7 @@ class GamesService {
 
     // Loads all games
     static async loadAllGames() {
-        const snapshot = await this.collectionRef.get();
-        return snapshot.docs.map(doc => Game.fromJson({id: doc.id, ...doc.data()}));
+        return (await GamesService.getUpcomingGames()).map(doc => Game.fromJson({id: doc.id, ...doc}));
     }
 
     // Updates specific game details
@@ -130,4 +129,33 @@ class GamesService {
 
         return Game.fromJson({id: snapshot.id, ...snapshot.data()});
     }
+
+
+    static async  getUpcomingGames() {
+        const currentTime = new Date();
+        const oneHourLater = new Date(currentTime.getTime() + 60 * 60 * 1000); // Add 1 hour to current time
+
+        // Reference to the 'games' collection
+        const gamesRef = Account.fs.collection('games');
+
+        // Query to filter games that are happening in the future (one hour from now or more)
+        const gamesQuery = gamesRef.where('gameTime', '>=',oneHourLater.toISOString());
+
+        try {
+            const querySnapshot = await gamesQuery.get();
+
+            if (querySnapshot.empty) {
+                console.log('No upcoming games found.');
+                return [];
+            }
+
+            const upcomingGames = querySnapshot.docs.map(doc => doc.data());
+            console.log('Upcoming Games:', upcomingGames);
+            return upcomingGames;
+        } catch (error) {
+            console.error('Error fetching games:', error);
+            return [];
+        }
+    }
+
 }

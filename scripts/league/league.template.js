@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
    leagues.forEach((league) => {
       listenToIfExists(league.id + "_card", "click", (e) => {
-         localStorage.setItem("leagueToView", league.id);
+         localStorage.setItem("query-league", league.id);
          navigateToRoute(___PAGES.games);
       })
    })

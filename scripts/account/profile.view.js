@@ -24,8 +24,7 @@ Account.addListener("profileView", (user) => {
     loadValue('citySelect', user.city);
     loadValue('userRating', user.skillLevel);
     loadText('ratingValue', user.skillLevel);
-    loadValue('lastLoginText', user.lastLogin);
-    loadValue('createdOnText', user.createdOn);
+
     loadValue('userEmailViewOnly', user.email);
 });
 

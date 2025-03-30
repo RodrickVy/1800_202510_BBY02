@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (userAccount.id === game.captainId) {
             document.getElementById('editGameBtn').addEventListener('click', () => {
-                window.location.href = './edit_game.html';
+                navigateToRoute(___PAGES.editGameDetails);
             });
         }
 
@@ -59,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <strong>${user.name}</strong><br>
                     <small>${user.email}</small>
                 </div>
+
                 ${action}
             `;
 
@@ -69,13 +70,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const requestingSubsContainer = document.getElementById('requestingSubs');
 
         for (let subId of game.acceptedSubs) {
-            await renderUserTile(subId, userAccount.id === game.captainId ? `<button class="btn btn-sm btn-danger" onclick="removeSub('${subId}', true)">Remove</button>` : '', acceptedSubsContainer);
+            await renderUserTile(subId, userAccount.id === game.captainId ? `<a href="mailto:${userAccount.email}" class="ms-auto btn btn-outline-primary mx-1"><i class="fas fa-envelope"></i></a><a href="tel:${userAccount.phoneNumber}" class="btn btn-outline-primary mx-1"><i class="fas fa-phone"></i></a> <button class="btn btn-sm btn-danger" onclick="removeSub('${subId}', true)">Remove</button>  ` : '', acceptedSubsContainer);
         }
 
         if (userAccount.id === game.captainId) {
             for (let subId of game.subs) {
                 await renderUserTile(subId, `
-                    <button class="btn btn-sm btn-success mx-1" onclick="acceptSub('${subId}')">Accept</button>
+                  
+                     <a href="mailto:${userAccount.email}" class="ms-auto btn btn-outline-primary mx-1"><i class="fas fa-envelope"></i></a>
+                    <a href="tel:${userAccount.phoneNumber}" class="btn btn-outline-primary mx-1"><i class="fas fa-phone"></i></a>
+                      <button class="btn btn-sm btn-success mx-1" onclick="acceptSub('${subId}')">Accept</button>
                     <button class="btn btn-sm btn-danger mx-1" onclick="removeSub('${subId}', false)">Reject</button>
                 `, requestingSubsContainer);
             }

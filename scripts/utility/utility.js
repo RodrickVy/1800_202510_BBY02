@@ -369,3 +369,15 @@ function removeItemInList(arr, value)  {
     }
     return arr;
 }
+
+
+
+function removeElement(id) {
+    let elem = document.getElementById(id);
+    return elem.parentNode.removeChild(elem);
+}
+
+
+function reload(){
+    window.location.reload();
+}
