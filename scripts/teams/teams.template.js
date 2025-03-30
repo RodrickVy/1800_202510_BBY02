@@ -12,14 +12,18 @@ document.addEventListener('DOMContentLoaded', async () => {
            const league = allLeagues.filter((_league)=> _league.id !== team.recLeague)[0];
            if (team.creatorId === user.id) {
                myTeamsHTML += `
-                <div class="card bg-light m-2" style="max-width: 18rem;">
-                 <img class="card-img-top" width="100%" src="${team.teamBanner}" alt="Card image cap">
+                <div class="rec_card"  >
+                <div class="rec_card_img_holder">
+                 <img class="rec_card_img"  src="${team.teamBanner}" alt="Card image cap">
+                 </div>
+                  <div class="rec_card_body">
                   <div class="card-header">${team.name}</div>
-                  <div class="card-body">
+                  
                     <h5 class="card-title">${league.name}</h5>
                     <p class="card-text">${team.description}</p>
                     <button id="${team.id}_edit" class="btn btn-sm btn-custom" type="button">Edit</button>
-                  </div>
+                
+                </div>
                 </div>
                        `;
            }else{

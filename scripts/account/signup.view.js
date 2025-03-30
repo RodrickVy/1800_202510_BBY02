@@ -6,7 +6,7 @@ document.getElementById('signUpBtn').addEventListener("click", () => {
 
 
     Account.signUp(userName, email, password, () => {
-        navigateToRoute('./main.html');
+        navigateToRoute('./home.html');
 
     }, (error) => {
         console.log(error)

@@ -24,7 +24,7 @@ const DFEAULTS ={
     teamBanner : 'https://images.pexels.com/photos/3067870/pexels-photo-3067870.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 }
 
-// If we are on these pages and the user is authenticated go to the main page
+// If we are on these pages and the user is authenticated go to the home page
 
 const __NOAUTHADVANCEROUTES = [
     ___PAGES.signin,

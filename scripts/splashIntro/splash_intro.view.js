@@ -1,4 +1,4 @@
-// All the dom elements are variables and placed in this constant object for more readablility.
+// All the dom elements are variables and placed in this constant object for more readability.
 const DOMElements = {
     SplashScreen: document.getElementById("splash_screen"),
     SplashLogo: document.getElementById("splash_logo"),
@@ -6,7 +6,7 @@ const DOMElements = {
     IntroPrevBtn: document.getElementById("prev_btn"),
     IntroCarouselSlide: document.getElementById("startIntro"),
 }
-//  Global css valeus changed by JS
+//  Global css values changed by JS
 const Brand = {
     primary: "black",
     accentColor: '#D0DDD7',
@@ -44,8 +44,8 @@ function startSlideShow() {
             ___selectSlot(currentPage);
         }
 
-        if (currentPage == 2) {
-            DOMElements.IntroNextBtn.innerHTML = "<a href='./signin.html' style='text-decoration:none;color:inherit;'>Get Started →</a>";
+        if (currentPage === 2) {
+            DOMElements.IntroNextBtn.innerHTML = `<a href='/${___PAGES.signin}.html' style='text-decoration:none;color:inherit;'>Get Started →</a>`;
         }
 
     });
@@ -58,12 +58,11 @@ function startSlideShow() {
             ___selectSlot(currentPage);
         }
 
-        if (currentPage == 0) {
+        if (currentPage === 0) {
             DOMElements.IntroPrevBtn.style.display = "none";
         }
     });
 }
-// MAIN PROGRAM FLOW
+
 // showing splash screen
 startSplashScreen();
-//sayHello();

@@ -1,14 +1,16 @@
 document.addEventListener('DOMContentLoaded', async () => {
 
    const leagues = await LeaguesService.getAllLeagues();
-   let allLeagues = '';
+   let allLeagues = '<br><br>';
    leagues.forEach((league) => {
       console.log(___PAGES.eachLeague + " League page");
       allLeagues += `
-          <div id='${league.id}_card' class="league-card">
-           <div class="card py-2 mx-2 card-custom" style="width: 18rem">
-           <img class="card-image card-img-top" src="${league.logo}" alt="League Image"/>
-           <div class="card-body">
+
+          <div id='${league.id}_card' class="rec_card">
+      
+           <div class="rec_card_img_holder">    <img class=" rec_card_img " src="${league.logo}" alt="League Image"/></div>
+       
+           <div class="rec_card_body">
                <h5 class="card-title">${league.name}</h5>
                <a class="card-url" href="${league.url}" target="_blank">Visit Website</a>
                <br/>
@@ -16,7 +18,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                   ${league.details}
                </p>
            </div>
-       </div>
+     
           </div>
        `;
    });
