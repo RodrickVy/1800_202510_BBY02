@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", async (e) => {
                             <div class="card-body p-2 text-center">
                                 <h5 class="card-title">${league.name}</h5>
                                 <p class="card-text">
-                                    ${user.city} - ${toTitleCase(user.skillLevel)}
+                                     ${toTitleCase(user.skillLevel)}
                                 </p>
                             </div>
                         </div>

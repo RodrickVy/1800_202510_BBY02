@@ -24,9 +24,9 @@ window.onload = () => {
                    ${loadUserProfileIcon(userData)}
                 </a>
                
-                <div >
-                    <i class="fas fa-envelope" style="font-size: 50px; cursor: pointer;"></i>
-                </div>
+                <a style="text-decoration: none; cursor: pointer; color: #686D76" href="${___PAGES.notifications}.html" >
+                    <i class="fas fa-bell" style="font-size: 38px; cursor: pointer;"></i>
+                </a>
             </div>
         </nav>`, () => {
         });

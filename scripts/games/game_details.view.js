@@ -5,10 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const gameId = localStorage.getItem('gameToView');
         if (!gameId) return alert('No game selected to view.');
 
-        const game = await GamesService.getGameById(gameId);
+        const game = (await GamesService.loadAllGames()).find(
+            game => game.id === gameId
+        );
         const captain = await Account.loadUserData(game.captainId);
         const league = await LeaguesService.getLeagueById(game.recLeague);
-        const team =TeamsService.teams.filter((_team)=> _team.id === game.teamId)[0];
+        const team = TeamsService.teams.filter((_team) => _team.id === game.teamId)[0];
         const userAlreadySubbed = (game.subs.includes(userAccount.id)) || (game.acceptedSubs.includes(userAccount.id));
         const subbedUserAlreadyAccepted = game.acceptedSubs.includes(userAccount.id);
         const container = document.getElementById('gameDetailsContainer');
@@ -16,16 +18,17 @@ document.addEventListener('DOMContentLoaded', () => {
         container.innerHTML = `
             <div class="card p-4">
                 ${userAccount.id === game.captainId ? `<button id="editGameBtn" class="btn btn-warning">Edit Details</button>` :
-            userAlreadySubbed ? ' <button id="unSub" class="btn btn-warning">un-substitute</button>' :  ' <button id="substituteBtn" class="btn btn-success">Substitute</button>'}
+            userAlreadySubbed ? ' <button id="unSub" class="btn btn-warning">un-substitute</button>' : ' <button id="substituteBtn" class="btn btn-success">Substitute</button>'}
               <hr>
-                ${subbedUserAlreadyAccepted  ? '<div class="alert alert-success" role="alert">You\'ve been approved</div>': userAlreadySubbed ? '<div class="alert alert-primary" role="alert">Pending approval</div> ':''}
-                <h3 class="mt-3">${team.name} - ${new Date(game.gameTime).toLocaleString()}</h3> 
+                ${subbedUserAlreadyAccepted ? '<div class="alert alert-success" role="alert">You\'ve been approved</div>' : userAlreadySubbed ? '<div class="alert alert-primary" role="alert">Pending approval</div> ' : ''}
+                <h3 class="mt-3">${toTitleCase(team.name)} - ${humanizeDateTime(new Date(game.gameTime))}</h3> 
+                <p><i class="fas fa-location-dot"></i> ${game.location}</p>
+            
                 <p>${game.details}</p>
-
-                <div class="pb-2 pt-2">
-                    <span class="ms-3">League: ${league.name}</span>
+                <div >
+                    <span class="">League: ${league.name}</span>
                     <br>
-                    <span class="ms-3">Team: ${team.name}</span>
+                    <span class="">Team: ${team.name}</span>
                 </div>
 
                 <div class="d-flex align-items-center my-3">
@@ -44,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (userAccount.id === game.captainId) {
             document.getElementById('editGameBtn').addEventListener('click', () => {
+                localStorage.setItem('gameToEdit',game.id);
                 navigateToRoute(___PAGES.editGameDetails);
             });
         }
@@ -54,10 +58,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const userTile = document.createElement('div');
             userTile.className = 'd-flex align-items-center my-2';
             userTile.innerHTML = `
-                <img src="${user.profileUrl}" style="width: 40px; height: 40px; border-radius: 50%;">
+                <img src="${user.profileUrl}" style="width: 40px; height: 40px; border-radius: 50%; ${userAccount.id === userId ? 'border: green 3px solid;' : ''}">
                 <div class="ms-3 flex-grow-1">
-                    <strong>${user.name}</strong><br>
-                    <small>${user.email}</small>
+                    <strong>${(game.captainId === Account.userAccount.id || userId === userAccount.id) ? user.name : getInitials(user.name)} ${userAccount.id === userId ? '(Me)' : ''}</strong><br>
+                   ${game.captainId === Account.userAccount.id ? ' <small>' + user.email + '</small>' : ''}
                 </div>
 
                 ${action}
@@ -88,6 +92,15 @@ document.addEventListener('DOMContentLoaded', () => {
         window.acceptSub = async (subId) => {
             game.acceptedSubs.push(subId);
             game.subs = game.subs.filter(id => id !== subId);
+            await NotificationService.createNotification({
+                id: '',
+                title: `You have been approved! Playing with ${team.name} ${humanizeDateTime(new Date(game.gameTime))} `,
+                body: '',
+                sensitivity: 2,
+                action: 'Games',
+                actionData: game.id,
+                userIds: [subId]
+            })
             await GamesService.updateGame(gameId, {subs: game.subs, acceptedSubs: game.acceptedSubs});
             window.location.reload();
         };
@@ -96,19 +109,39 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isAccepted) {
                 game.acceptedSubs = game.acceptedSubs.filter(id => id !== subId);
                 game.subs.push(subId);
+
             } else {
                 game.subs = game.subs.filter(id => id !== subId);
+                await NotificationService.createNotification({
+                    id: '',
+                    title: `You've been dropped`,
+                    body: `Game:${team.name} Time:${humanizeDateTime(new Date(game.gameTime))} `,
+                    sensitivity: 2,
+                    action: 'Games',
+                    actionData: game.id,
+                    userIds: [subId]
+                })
             }
 
             await GamesService.updateGame(gameId, {subs: game.subs, acceptedSubs: game.acceptedSubs});
             window.location.reload();
         };
 
-        listenToIfExists('substituteBtn','click',async (e)=>{
-           // console.log('includes:' + (game.subs.includes(userAccount.id))  +" accepted: "+ (game.acceptedSubs.includes(game.id)))
-            if(!(game.subs.includes(userAccount.id)) && !(game.acceptedSubs.includes(game.id))){
+        listenToIfExists('substituteBtn', 'click', async (e) => {
+            // console.log('includes:' + (game.subs.includes(userAccount.id))  +" accepted: "+ (game.acceptedSubs.includes(game.id)))
+            if (!(game.subs.includes(userAccount.id)) && !(game.acceptedSubs.includes(game.id))) {
                 await GamesService.updateGame(gameId, {subs: [...game.subs, userAccount.id]});
-            }else{
+
+                await NotificationService.createNotification({
+                    id: '',
+                    title: `@${userAccount.name} would like to  sub, for ${team.name} @${humanizeDateTime(new Date(game.gameTime))} `,
+                    body: `Game:${team.name} Time:${humanizeDateTime(new Date(game.gameTime))} `,
+                    sensitivity: 2,
+                    action: 'Games',
+                    actionData: game.id,
+                    userIds: [game.captainId]
+                })
+            } else {
                 alert("You are already added as a sub")
             }
 
@@ -117,13 +150,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         })
 
-        listenToIfExists('unSub','click',async (e)=>{
+        listenToIfExists('unSub', 'click', async (e) => {
 
-                const subs = removeItemInList(game.subs,userAccount.id);
-                const acceptedSubs = removeItemInList(game.acceptedSubs,userAccount.id);
+            const subs = removeItemInList(game.subs, userAccount.id);
+            const acceptedSubs = removeItemInList(game.acceptedSubs, userAccount.id);
 
-                await GamesService.updateGame(gameId, {subs: subs,acceptedSubs:acceptedSubs});
-                window.location.reload();
+            await GamesService.updateGame(gameId, {subs: subs, acceptedSubs: acceptedSubs});
+            await NotificationService.createNotification({
+                id: '',
+                title: `@${userAccount.name} canceled his sub role, for ${team.name} @${humanizeDateTime(new Date(game.gameTime))} `,
+                body: `Game:${team.name} Time:${humanizeDateTime(new Date(game.gameTime))}. `,
+                sensitivity: 2,
+                action: 'Games',
+                actionData: game.id,
+                userIds: [game.captainId]
+            })
+            window.location.reload();
 
 
         })

@@ -119,4 +119,8 @@ class TeamsService {
         })
 
     }
+
+    static async getTeamById(teamId) {
+        return TeamsService.teams.find((team)=> team.id === teamId);
+    }
 }

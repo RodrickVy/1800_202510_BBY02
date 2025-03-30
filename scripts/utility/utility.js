@@ -13,7 +13,8 @@ const ___PAGES = {
     addGame: "addGame"   ,
     gameDetails: "gameDetails",
     editGameDetails: "editGameDetails" ,
-    teamDetails: "teamDetails"
+    teamDetails: "teamDetails",
+    notifications: 'notifications'
 
 
 };
@@ -380,4 +381,46 @@ function removeElement(id) {
 
 function reload(){
     window.location.reload();
+}
+
+
+function humanizeDateTime(dateTime) {
+    const inputDate = new Date(dateTime);
+    const now = new Date();
+
+    const stripTime = (date) => new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+    const today = stripTime(now);
+    const tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 1);
+
+    const yesterday = new Date(today);
+    yesterday.setDate(today.getDate() - 1);
+
+    const input = stripTime(inputDate);
+
+    const timeOptions = { hour: 'numeric', minute: '2-digit', hour12: true };
+
+    const timeStr = inputDate.toLocaleTimeString(undefined, timeOptions);
+
+    if (input.getTime() === today.getTime()) return `${timeStr} Today`;
+    if (input.getTime() === tomorrow.getTime()) return `${timeStr} Tomorrow`;
+    if (input.getTime() === yesterday.getTime()) return `${timeStr} Yesterday`;
+
+    const oneWeekAhead = new Date(today);
+    oneWeekAhead.setDate(today.getDate() + 7);
+
+    const weekday = inputDate.toLocaleDateString(undefined, { weekday: 'long' });
+    const shortDate = inputDate.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+    const fullDate = inputDate.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+
+    if (input >= today && input <= oneWeekAhead) {
+        return `${timeStr} on ${weekday}`;
+    }
+
+    if (input.getFullYear() === today.getFullYear()) {
+        return `${timeStr} on ${shortDate}`;
+    }
+
+    return `${timeStr} on ${fullDate}`;
 }
