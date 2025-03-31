@@ -14,7 +14,7 @@ window.onload = () => {
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0"  style="padding: 10px;">
                 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact Us</a>
+                        <a class="nav-link" href="contactus.html">Contact Us</a>
                     </li>
                     <li class="nav-item dropdown ">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -22,8 +22,8 @@ window.onload = () => {
                             View More
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Privacy Policy</a></li>
-                            <li><a class="dropdown-item" href="#">Language Selector</a></li>
+                            <li><a class="dropdown-item" href="privacypolicy.html">Privacy Policy</a></li>
+                            <li><a class="dropdown-item" href="aboutus.html">About Us</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>

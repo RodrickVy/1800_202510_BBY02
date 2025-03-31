@@ -104,6 +104,10 @@ body {
     font-family: 'Oswald', sans-serif;
 }
 
+* {
+    font-family: 'Oswald', sans-serif;
+}
+
 .footer {
     position: fixed;
     bottom: 0;
@@ -313,4 +317,39 @@ body {
     width: 70%;
     height: auto;
     margin: 0px auto;
+}
+
+.back-to-signin {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    font-size: 16px;
+    color: #333;
+    text-decoration: none;
+}
+
+.back-to-signin:hover {
+    text-decoration: underline;
+}
+
+.privacy-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.about-us-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    flex-grow: 1;
+    overflow-y: auto;
 }
