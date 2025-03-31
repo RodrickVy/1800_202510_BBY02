@@ -13,8 +13,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         const leagues = await LeaguesService.getAllLeagues();
         const gameId = generateUniqueId();
         let teamBannerUrl = '';
-
-
         let leaguesAsOptions = '';
 
         leagues.forEach(league => {
@@ -32,8 +30,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         leagueSelect.addEventListener('change', (event) => {
             leagueLevelOptions = '';
             leagues.forEach(league => {
-
-
                 if (league.id === leagueSelect.value) {
 
                     league.level.forEach(level => {
@@ -47,8 +43,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
 
         createTeamBtn.addEventListener('click', (event) => {
-
-
             TeamsService.createTeam({
                 id: gameId,
                 name: teamName.value,
@@ -59,7 +53,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 creatorId: user.id,
                 teamBoard: [],
                 teamTrophies: [],
-                teamBanner: teamBannerUrl.length < 1 ? DFEAULTS.teamBanner :teamBannerUrl,
+                teamBanner: teamBannerUrl.length < 1 ? DFEAULTS.teamBanner : teamBannerUrl,
 
             }).then((_) => {
                 navigateToRoute(___PAGES.teams);

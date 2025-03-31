@@ -23,27 +23,27 @@
  */
 class RecreateUser {
     constructor({
-                    id = '',
-                    name = '',
-                    email = '',
-                    bio = '',
-                    profileUrl = '',
-                    friends = [],
-                    sport = '',
-                    league = '',
-                    preferences = {},
-                    teamsCreated = [],
-                    teamsJoined = [],
-                    gamesSubbed = [],
-                    skillLevel = [],
-                    badges = [],
-                    phoneNumber = '',
-                    gender = '',
-                    city = '',
-                    age = '',
-                    lastLogin = '',
-                    createdOn = '',
-                } = {}) {
+        id = '',
+        name = '',
+        email = '',
+        bio = '',
+        profileUrl = '',
+        friends = [],
+        sport = '',
+        league = '',
+        preferences = {},
+        teamsCreated = [],
+        teamsJoined = [],
+        gamesSubbed = [],
+        skillLevel = [],
+        badges = [],
+        phoneNumber = '',
+        gender = '',
+        city = '',
+        age = '',
+        lastLogin = '',
+        createdOn = '',
+    } = {}) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -421,7 +421,3 @@ class Account {
 }
 
 Account.initializeAuthStateListener();
-
-
-
-

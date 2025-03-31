@@ -1,14 +1,14 @@
 Account.addListener("profileView", (user) => {
-    const accountCircle =  document.getElementById('accountCircle');
-    const accountImageCircle =  document.getElementById('imageCircle');
-    const imgCircleImg =  document.getElementById('imgCircleImg');
-    if(user.profileUrl.length > 3){
+    const accountCircle = document.getElementById('accountCircle');
+    const accountImageCircle = document.getElementById('imageCircle');
+    const imgCircleImg = document.getElementById('imgCircleImg');
+    if (user.profileUrl.length > 3) {
 
         imgCircleImg.src = user.profileUrl;
         accountImageCircle.style.display = 'block';
         accountCircle.style.display = 'none';
         //loadTemplate("accountCircle", `<div style="width;100%;height:100%,border-radius:10rem;background-image:url('${user.profileUrl}.png')" ></div>`);
-    }else{
+    } else {
         accountCircle.style.display = 'block';
         accountImageCircle.style.display = 'none';
         loadText("accountCircle", getInitials(user.name));
@@ -102,14 +102,13 @@ imageInput.addEventListener('change', async (event) => {
 
     const file = event.target.files[0];
     console.log(imageInput.value);
-    const data = await StorageService.uploadMedia(file, Account.userAccount.id+"profile", 'media');
+    const data = await StorageService.uploadMedia(file, Account.userAccount.id + "profile", 'media');
     saveButton.setAttribute('class', "btn btn-success w-100 m-2");
     await Account.updateUser(Account.userAccount.id, (user) => {
-
         return {
             profileUrl: data.downloadUrl,
         }
-    }).then(()=>{
+    }).then(() => {
         window.location.reload();
     })
 })

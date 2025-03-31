@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const teamId = localStorage.getItem('teamToView');
         if (!teamId) return navigateToRoute(___PAGES.teams);
 
-       await TeamsService.getAllTeams();
-        const team = TeamsService.teams.filter((_team)=>_team.id === teamId)[0];
+        await TeamsService.getAllTeams();
+        const team = TeamsService.teams.filter((_team) => _team.id === teamId)[0];
 
         if (!team) return navigateToRoute(___PAGES.teams);
 
@@ -14,12 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const container = document.getElementById('teamDetailsContainer');
 
         container.innerHTML = `
-   <div style="width:100%; height:6rem;overflow-clip: clip">
-                       <img src="${team.teamBanner}" alt="${team.name} banner" width="100%">
+            <div style="width:100%; height:6rem;overflow-clip: clip">
+                <img src="${team.teamBanner}" alt="${team.name} banner" width="100%">
             </div>
             <div class="card p-4">
-         
- 
                 <h2>${team.name}</h2>
                 <p>${team.description || 'No description provided.'}</p>
                 <div class="d-flex align-items-center my-3">
@@ -39,8 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <h4 class="mt-4">Upcoming Games</h4>
                 <div id="upcomingGames" class="list-group mb-4"></div>
-
-              
             </div>
         `;
 
@@ -49,14 +45,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const upcomingGames = allGames.filter(game => !game.played && new Date(game.gameTime) > new Date());
 
             const upcomingGamesContainer = document.getElementById('upcomingGames');
-
             if (upcomingGames.length === 0) {
                 upcomingGamesContainer.innerHTML = '<p class="text-muted">No upcoming games scheduled.</p>';
                 return;
             }
 
             upcomingGames.sort((a, b) => new Date(a.gameTime) - new Date(b.gameTime));
-
             upcomingGames.forEach(game => {
                 upcomingGamesContainer.innerHTML += `
                     <div id="${game.id}_link" class="list-group-item d-flex align-items-center">
@@ -70,10 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             upcomingGames.forEach(game => {
-                listenToIfExists(  `${game.id}_link`,'click', (e) => {
+                listenToIfExists(`${game.id}_link`, 'click', (e) => {
                     localStorage.setItem('gameToView', game.id);
                     navigateToRoute(___PAGES.gameDetails);
-                } )
+                })
             });
         }
 

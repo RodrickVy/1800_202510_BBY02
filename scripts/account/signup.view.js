@@ -1,10 +1,7 @@
 document.getElementById('signUpBtn').addEventListener("click", () => {
-
     const userName = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-
-
     Account.signUp(userName, email, password, () => {
         navigateToRoute('./home.html');
 
@@ -14,18 +11,29 @@ document.getElementById('signUpBtn').addEventListener("click", () => {
 })
 
 loadTemplate("shadowPhotoSignUpPlaceholder", `
-    <div id="photoContainer" class="photo-container" style=" width: 170px;   overflow: hidden; position: relative; padding-top: 10px; display: block; margin: 0 auto;">
-        <div class="photo-item active">
-            <img src="./images/shadow1.jpg" class="d-block w-100" alt="shadow1" style="width: 100%; object-fit: cover;">
+<div id="photoContainer" class="photo-container"
+     style="width: 100%; max-width: 300px; height: auto; min-height: 300px; 
+            overflow: hidden; position: relative; margin: auto; margin-top: 20px; 
+            display: flex; align-items: center; justify-content: center;">
+        
+        <div class="photo-item active" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; height: 100%;">
+            <img src="./images/shadow1.jpg" class="d-block" alt="shadow1" 
+                 style="max-width: 100%; max-height: 100%; object-fit: cover;">
         </div>
-        <div class="photo-item">
-            <img src="./images/shadow2.jpg" class="d-block w-100" alt="shadow2" style="width: 100%;object-fit: contain;">
+        
+        <div class="photo-item" style="position: absolute; top: 50%; left: 50%; transform: translate(-30%, -50%); width: 100%; height: 100%;">
+            <img src="./images/shadow2.jpg" class="d-block" alt="shadow2" 
+                 style="max-width: 100%; max-height: 100%; object-fit: contain;">
         </div>
-        <div class="photo-item">
-            <img src="./images/shadow3.jpg" class="d-block w-100" alt="shadow3" style="width: 100%;object-fit: cover;">
+        
+        <div class="photo-item" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; height: 100%;">
+            <img src="./images/shadow3.jpg" class="d-block" alt="shadow3" 
+                 style="max-width: 90%; max-height: 90%; object-fit: cover;">
         </div>
-        <div class="photo-item">
-            <img src="./images/shadow4.jpg" class="d-block w-100" alt="shadow4" style="width: 100%;object-fit: cover;">
+        
+        <div class="photo-item" style="position: absolute; top: 50%; left: 50%; transform: translate(-40%, -50%); width: 100%; height: 100%;">
+            <img src="./images/shadow4.jpg" class="d-block" alt="shadow4" 
+                 style="max-width: 90%; max-height: 90%; object-fit: cover;">
         </div>
     </div>
 `, () => {

@@ -15,17 +15,17 @@
  */
 class RecreateTeam {
     constructor({
-                    id = '',
-                    name = '',
-                    description = '',
-                    leagueLevel = 0,
-                    creatorId = '',
-                    games = [],
-                    teamBoard = [],
-                    recLeague = '',
-                    teamTrophies = [],
-                    teamBanner = []
-                } = {}) {
+        id = '',
+        name = '',
+        description = '',
+        leagueLevel = 0,
+        creatorId = '',
+        games = [],
+        teamBoard = [],
+        recLeague = '',
+        teamTrophies = [],
+        teamBanner = []
+    } = {}) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -68,7 +68,6 @@ class TeamsService {
     static teams = [];
     static userOwnedTeams = [];
 
-
     /**
      * Creates a new team and adds it to the teams collection.
      * @param {Object} teamData - The data for the new team.
@@ -96,11 +95,9 @@ class TeamsService {
      */
     static async getAllTeams() {
         const teamsSnapshot = await TeamsService.teamsCollection.get();
-        const _teamsList =  teamsSnapshot.docs.map(doc => RecreateTeam.fromJson(doc.data()));
+        const _teamsList = teamsSnapshot.docs.map(doc => RecreateTeam.fromJson(doc.data()));
         TeamsService.teams = _teamsList;
-        TeamsService.userOwnedTeams = _teamsList.filter((team)=>team.creatorId === Account.userAccount.id);
-
-
+        TeamsService.userOwnedTeams = _teamsList.filter((team) => team.creatorId === Account.userAccount.id);
     }
 
     /**
@@ -111,16 +108,15 @@ class TeamsService {
      */
     static async updateTeam(teamId, updateData) {
         const teamRef = TeamsService.teamsCollection.doc(teamId);
-        await teamRef.update(updateData).then(  ()=>{
+        await teamRef.update(updateData).then(() => {
             console.log('Updated team');
-             this.getAllTeams();
-        }).catch((err)=>{
+            this.getAllTeams();
+        }).catch((err) => {
 
         })
-
     }
 
     static async getTeamById(teamId) {
-        return TeamsService.teams.find((team)=> team.id === teamId);
+        return TeamsService.teams.find((team) => team.id === teamId);
     }
 }

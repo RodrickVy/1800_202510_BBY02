@@ -1,10 +1,6 @@
 // A database service that is authentication aware and can handle bad requests/responses gracefully.
-
-
-
 class DataStore {
     constructor() {}
-
     // Create a new document in a given collection.
     // Returns the provided data on success.
     static createDoc(collectionName, docId, data, onSuccess, onError) {
@@ -85,6 +81,5 @@ class DataStore {
             });
     }
 }
-
 
 export default new DataStore();

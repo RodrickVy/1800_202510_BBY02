@@ -1,17 +1,17 @@
 document.addEventListener('DOMContentLoaded', async () => {
-   Account.addListener('teams',async (user)=>{
-       await TeamsService.getAllTeams();
-       localStorage.setItem('teamToEdit', '');
+    Account.addListener('teams', async (user) => {
+        await TeamsService.getAllTeams();
+        localStorage.setItem('teamToEdit', '');
 
-       let teamsHTML = "<br>";
-       let myTeamsHTML = "<br>";
+        let teamsHTML = "<br>";
+        let myTeamsHTML = "<br>";
 
-       for (const team of TeamsService.teams) {
+        for (const team of TeamsService.teams) {
 
-           const allLeagues = await LeaguesService.getAllLeagues();
-           const league = allLeagues.filter((_league)=> _league.id !== team.recLeague)[0];
-           if (team.creatorId === user.id) {
-               myTeamsHTML += `
+            const allLeagues = await LeaguesService.getAllLeagues();
+            const league = allLeagues.filter((_league) => _league.id !== team.recLeague)[0];
+            if (team.creatorId === user.id) {
+                myTeamsHTML += `
                 <div  class="rec_card"  >
                 <div class="rec_card_img_holder">
                  <img class="rec_card_img"  src="${team.teamBanner}" alt="Card image cap">
@@ -26,8 +26,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </div>
                 </div>
                        `;
-           }else{
-               teamsHTML += `
+            } else {
+                teamsHTML += `
                 <div class="rec_card"  id="${team.id}_view">
                 <div class="rec_card_img_holder">
                  <img class="rec_card_img"  src="${team.teamBanner}" alt="Card image cap">
@@ -41,25 +41,25 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </div>
                 </div>
                `;
-           }
+            }
 
-       }
+        }
 
-       if(TeamsService.userOwnedTeams.length === 0){
-           myTeamsHTML = '<h6 class=" text-center"> You haven\'t created any teams click the add team button to create one</h6>'
-       }
-       loadTemplate('teamsContainer',`<div class="row">${teamsHTML}</div>`);
-       loadTemplate('myTeamsContainer',`<div class="row">${myTeamsHTML}</div>`);
-       TeamsService.teams.forEach(team => {
-           listenToIfExists(`${team.id}_edit`,'click', (e) => {
-               localStorage.setItem('teamToEdit', team.id);
-               navigateToRoute(___PAGES.editTeam)
-           });
+        if (TeamsService.userOwnedTeams.length === 0) {
+            myTeamsHTML = '<h6 class=" text-center"> You haven\'t created any teams click the add team button to create one</h6>'
+        }
+        loadTemplate('teamsContainer', `<div class="row">${teamsHTML}</div>`);
+        loadTemplate('myTeamsContainer', `<div class="row">${myTeamsHTML}</div>`);
+        TeamsService.teams.forEach(team => {
+            listenToIfExists(`${team.id}_edit`, 'click', (e) => {
+                localStorage.setItem('teamToEdit', team.id);
+                navigateToRoute(___PAGES.editTeam)
+            });
 
-           listenToIfExists(`${team.id}_view`,'click', (e) => {
-               localStorage.setItem('teamToView', team.id);
-               navigateToRoute(___PAGES.teamDetails)
-           })
-       })
-   })
+            listenToIfExists(`${team.id}_view`, 'click', (e) => {
+                localStorage.setItem('teamToView', team.id);
+                navigateToRoute(___PAGES.teamDetails)
+            })
+        })
+    })
 });

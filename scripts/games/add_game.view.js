@@ -9,8 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const formContainer = document.getElementById('createGameContainer');
 
         formContainer.innerHTML = `
-            <div class="card p-4">
-                <h3>Create New Game</h3>
+            <div class="card p-4" style="background-color: #D0DDD7">
                 <div class="mb-3">
                     <label for="teamSelect" class="form-label">Select Your Team</label>
                     <select class="form-select" id="teamSelect">
@@ -39,9 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     <label for="gameDetailsInput" class="form-label">Details</label>
                     <textarea class="form-control" id="gameDetailsInput" rows="3"></textarea>
                 </div>
-                <button class="btn btn-secondary" id="createGameBtn">Create Game</button>
+                <button class="btn btn-custom" id="createGameBtn">Create Game</button>
                 <br>
-                 <button class="btn btn-secondary" id="cancelBtn">Cancel</button>
+                 <button class="btn btn-custom" id="cancelBtn">Cancel</button>
             </div>
         `;
 
@@ -60,11 +59,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const recLeagueId = selectedOption.getAttribute('data-rec-league');
             const leagueLevel = selectedOption.getAttribute('data-league-level');
 
-            const leagueFromId = leagues.find((_league)=> _league.id === recLeagueId);
+            const leagueFromId = leagues.find((_league) => _league.id === recLeagueId);
             recLeagueSelect.value = leagueFromId.name;
             leagueLevelInput.value = leagueLevel;
         });
-
 
         // Initialize maps API autocomplete for location (Optional: Include your maps API script)
         // Location autocomplete implementation using Geoapify API
@@ -121,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                await GamesService.createGame(gameId,gameData);
+                await GamesService.createGame(gameId, gameData);
                 alert('Game created successfully!');
                 navigateToRoute(___PAGES.games)
             } catch (error) {

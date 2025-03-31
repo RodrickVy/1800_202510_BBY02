@@ -10,22 +10,19 @@ const ___PAGES = {
     eachLeague: 'eachLeague',
     editTeam: 'edit-team',
     games: 'games',
-    addGame: "addGame"   ,
+    addGame: "addGame",
     gameDetails: "gameDetails",
-    editGameDetails: "editGameDetails" ,
+    editGameDetails: "editGameDetails",
     teamDetails: "teamDetails",
     notifications: 'notifications'
-
-
 };
 
 
-const DFEAULTS ={
-    teamBanner : 'https://images.pexels.com/photos/3067870/pexels-photo-3067870.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+const DFEAULTS = {
+    teamBanner: 'https://images.pexels.com/photos/3067870/pexels-photo-3067870.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 }
 
 // If we are on these pages and the user is authenticated go to the home page
-
 const __NOAUTHADVANCEROUTES = [
     ___PAGES.signin,
     ___PAGES.signup
@@ -56,7 +53,6 @@ const elementExists = (id) => {
     // document.getElementById(id) returns null if not found
     return document.getElementById(id) !== null;
 }
-
 
 /**
  * Places the given HTML into the element with the specified ID.
@@ -106,7 +102,6 @@ const loadText = (placeholderId, text, onload = (() => {
     }
 };
 
-
 /**
  * Places the given text into the element as value, should ONLY be used for input elements with value attribute
  * First checks to see if the element exists, and if it does not exist,
@@ -155,7 +150,6 @@ function navigateToRoute(routePath) {
     }
 }
 
-
 /**
  * Returns the initials for a given full name.
  * If the full name consists of exactly two words (first and last), it returns both initials.
@@ -181,7 +175,6 @@ function getInitials(fullName) {
     }
 }
 
-
 /**
  * Generates a Universal Unique Identifier (UUID) for user identification.
  * Uses crypto.randomUUID if available, otherwise falls back to a custom generator.
@@ -197,7 +190,6 @@ function generateUniqueId() {
     });
 
 }
-
 
 /**
  * Returns the current page name by extracting the last part of the URL path.
@@ -217,13 +209,11 @@ function getCurrentPage() {
     return sanitizeRoute(pathname);
 }
 
-
 function sanitizeRoute(url) {
 
     const segments = url.replace(/\/$/, '').replace(".html", '').split('/');
     return segments.length ? segments[segments.length - 1] : '';
 }
-
 
 /**
  * Checks if the current route is guarded and if the user is not authenticated,
@@ -247,7 +237,6 @@ function checkGuardedRoutes(isAuthenticated, needAuthRoute = ___PAGES.signin, au
     }
 }
 
-
 function listenToIfExists(id, trigger, callback) {
     if (elementExists(id)) {
         document.getElementById(id).addEventListener(trigger, (event) => {
@@ -257,7 +246,6 @@ function listenToIfExists(id, trigger, callback) {
     }
 }
 
-
 function toTitleCase(text) {
 
     return text.split(" ").map(word => {
@@ -265,21 +253,17 @@ function toTitleCase(text) {
     }).join(" ");
 }
 
-
 /**
 * Generates a timestamp of the current time.
 * @returns {string} the formated time
 * */
-function createTimeStamp(){
-   return new Date().toISOString().split('T')[0];
+function createTimeStamp() {
+    return new Date().toISOString().split('T')[0];
 }
-
-
-
 
 // Media Model
 class Media {
-    constructor({ downloadUrl = '', mediaId = '' , storageUrl = '', uploaderId = '' } = {}) {
+    constructor({ downloadUrl = '', mediaId = '', storageUrl = '', uploaderId = '' } = {}) {
         this.downloadUrl = downloadUrl;
         this.storageUrl = storageUrl;
         this.uploaderId = uploaderId;
@@ -312,7 +296,7 @@ class StorageService {
     static async uploadMedia(file, storagePath, firestoreCollection = 'media') {
 
         try {
-            const storageRef = Account.st.ref("/"+storagePath);
+            const storageRef = Account.st.ref("/" + storagePath);
             const snapshot = await storageRef.put(file);
             const mediaId = generateUniqueId();
             // Getting the downloadable URL
@@ -362,8 +346,7 @@ class StorageService {
     }
 }
 
-
-function removeItemInList(arr, value)  {
+function removeItemInList(arr, value) {
     const index = arr.indexOf(value);
     if (index > -1) {
         arr.splice(index, 1);
@@ -371,45 +354,32 @@ function removeItemInList(arr, value)  {
     return arr;
 }
 
-
-
 function removeElement(id) {
     let elem = document.getElementById(id);
     return elem.parentNode.removeChild(elem);
 }
 
-
-function reload(){
+function reload() {
     window.location.reload();
 }
-
 
 function humanizeDateTime(dateTime) {
     const inputDate = new Date(dateTime);
     const now = new Date();
-
     const stripTime = (date) => new Date(date.getFullYear(), date.getMonth(), date.getDate());
-
     const today = stripTime(now);
     const tomorrow = new Date(today);
     tomorrow.setDate(today.getDate() + 1);
-
     const yesterday = new Date(today);
     yesterday.setDate(today.getDate() - 1);
-
     const input = stripTime(inputDate);
-
     const timeOptions = { hour: 'numeric', minute: '2-digit', hour12: true };
-
     const timeStr = inputDate.toLocaleTimeString(undefined, timeOptions);
-
     if (input.getTime() === today.getTime()) return `${timeStr} Today`;
     if (input.getTime() === tomorrow.getTime()) return `${timeStr} Tomorrow`;
     if (input.getTime() === yesterday.getTime()) return `${timeStr} Yesterday`;
-
     const oneWeekAhead = new Date(today);
     oneWeekAhead.setDate(today.getDate() + 7);
-
     const weekday = inputDate.toLocaleDateString(undefined, { weekday: 'long' });
     const shortDate = inputDate.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
     const fullDate = inputDate.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });

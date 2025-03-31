@@ -1,18 +1,18 @@
 // Game Model Class
 class Game {
     constructor({
-                    id = '',
-                    captainId = '',
-                    teamId = '',
-                    gameTime = '',
-                    location = '',
-                    details = '',
-                    subs = [],
-                    acceptedSubs = [],
-                    played = false,
-                    recLeague = '',
-                    leagueLevel = '',
-                } = {}) {
+        id = '',
+        captainId = '',
+        teamId = '',
+        gameTime = '',
+        location = '',
+        details = '',
+        subs = [],
+        acceptedSubs = [],
+        played = false,
+        recLeague = '',
+        leagueLevel = '',
+    } = {}) {
         this.id = id;
         this.captainId = captainId;
         this.teamId = teamId;
@@ -71,10 +71,9 @@ class GamesService {
 
     }
 
-
     // Loads all games
     static async loadAllGames() {
-        return (await GamesService.getUpcomingGames()).map(doc => Game.fromJson({id: doc.id, ...doc}));
+        return (await GamesService.getUpcomingGames()).map(doc => Game.fromJson({ id: doc.id, ...doc }));
     }
 
     // Updates specific game details
@@ -106,21 +105,20 @@ class GamesService {
     // Retrieves all games for a specific recLeague
     static async getGamesByRecLeague(recLeague) {
         const snapshot = await this.collectionRef.where('recLeague', '==', recLeague).get();
-        return snapshot.docs.map(doc => Game.fromJson({id: doc.id, ...doc.data()}));
+        return snapshot.docs.map(doc => Game.fromJson({ id: doc.id, ...doc.data() }));
     }
 
     // Retrieves all games created by a specific captainId
     static async getGamesByCaptainId(captainId) {
         const snapshot = await this.collectionRef.where('captainId', '==', captainId).get();
-        return snapshot.docs.map(doc => Game.fromJson({id: doc.id, ...doc.data()}));
+        return snapshot.docs.map(doc => Game.fromJson({ id: doc.id, ...doc.data() }));
     }
 
     // Retrieves all games for a specific teamId
     static async getGamesByTeamId(teamId) {
         const snapshot = await this.collectionRef.where('teamId', '==', teamId).get();
-        return snapshot.docs.map(doc => Game.fromJson({id: doc.id, ...doc.data()}));
+        return snapshot.docs.map(doc => Game.fromJson({ id: doc.id, ...doc.data() }));
     }
-
 
     static async getUpcomingGames() {
         const currentTime = new Date();
@@ -221,7 +219,6 @@ class GamesService {
             return sortedAll.slice(0, 3);
         }
     }
-
 
     static async getGameById(gameId) {
         return (await GamesService.loadAllGames()).find(game => game.id === gameId);

@@ -12,8 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const container = document.getElementById('gameEditor');
 
         container.innerHTML = `
-            <div class="card p-4">
-                <h3>Edit Game</h3>
+            <div class="card p-4" style="background-color: #D0DDD7">
                 <div class="mb-3">
                     <label class="form-label">Team</label>
                     <input type="text" class="form-control" value="${team.name}" disabled>
@@ -28,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Game Time</label>
-                    <input type="datetime-local" class="form-control" id="gameTimeInput" value="${new Date(game.gameTime).toISOString().slice(0,16)}">
+                    <input type="datetime-local" class="form-control" id="gameTimeInput" value="${new Date(game.gameTime).toISOString().slice(0, 16)}">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Location</label>
@@ -39,8 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     <label class="form-label">Details</label>
                     <textarea class="form-control" id="gameDetailsInput" rows="3">${game.details}</textarea>
                 </div>
-                <button class="btn btn-primary" id="saveGameBtn">Save Changes</button>
-                <button class="btn btn-secondary mt-2" id="cancelBtn">Cancel</button>
+                <button class="btn btn-custom" id="saveGameBtn">Save Changes</button>
+                <button class="btn mt-2 btn-custom" id="cancelBtn">Cancel</button>
             </div>
         `;
 

@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         container.innerHTML = `
             <div class="card p-4">
-                ${userAccount.id === game.captainId ? `<button id="editGameBtn" class="btn btn-warning">Edit Details</button>` :
-            userAlreadySubbed ? ' <button id="unSub" class="btn btn-warning">un-substitute</button>' : ' <button id="substituteBtn" class="btn btn-success">Substitute</button>'}
+                ${userAccount.id === game.captainId ? `<button id="editGameBtn" class="btn btn-warning btn-custom">Edit Details</button>` :
+                userAlreadySubbed ? ' <button id="unSub" class="btn btn-custom">Un-Substitute</button>' : ' <button id="substituteBtn" class="btn btn-success btn-custom">Substitute</button>'}
               <hr>
                 ${subbedUserAlreadyAccepted ? '<div class="alert alert-success" role="alert">You\'ve been approved</div>' : userAlreadySubbed ? '<div class="alert alert-primary" role="alert">Pending approval</div> ' : ''}
                 <h3 class="mt-3">${toTitleCase(team.name)} - ${humanizeDateTime(new Date(game.gameTime))}</h3> 
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (userAccount.id === game.captainId) {
             document.getElementById('editGameBtn').addEventListener('click', () => {
-                localStorage.setItem('gameToEdit',game.id);
+                localStorage.setItem('gameToEdit', game.id);
                 navigateToRoute(___PAGES.editGameDetails);
             });
         }
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 actionData: game.id,
                 userIds: [subId]
             })
-            await GamesService.updateGame(gameId, {subs: game.subs, acceptedSubs: game.acceptedSubs});
+            await GamesService.updateGame(gameId, { subs: game.subs, acceptedSubs: game.acceptedSubs });
             window.location.reload();
         };
 
@@ -123,14 +123,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
             }
 
-            await GamesService.updateGame(gameId, {subs: game.subs, acceptedSubs: game.acceptedSubs});
+            await GamesService.updateGame(gameId, { subs: game.subs, acceptedSubs: game.acceptedSubs });
             window.location.reload();
         };
 
         listenToIfExists('substituteBtn', 'click', async (e) => {
             // console.log('includes:' + (game.subs.includes(userAccount.id))  +" accepted: "+ (game.acceptedSubs.includes(game.id)))
             if (!(game.subs.includes(userAccount.id)) && !(game.acceptedSubs.includes(game.id))) {
-                await GamesService.updateGame(gameId, {subs: [...game.subs, userAccount.id]});
+                await GamesService.updateGame(gameId, { subs: [...game.subs, userAccount.id] });
 
                 await NotificationService.createNotification({
                     id: '',
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const subs = removeItemInList(game.subs, userAccount.id);
             const acceptedSubs = removeItemInList(game.acceptedSubs, userAccount.id);
 
-            await GamesService.updateGame(gameId, {subs: subs, acceptedSubs: acceptedSubs});
+            await GamesService.updateGame(gameId, { subs: subs, acceptedSubs: acceptedSubs });
             await NotificationService.createNotification({
                 id: '',
                 title: `@${userAccount.name} canceled his sub role, for ${team.name} @${humanizeDateTime(new Date(game.gameTime))} `,

@@ -9,7 +9,7 @@ function writeLeagues() {
             level: ["recreational", "intermediate", "intermediate plus"],
             details: "Indoor volleyball Co-Ed leagues held across the lower mainland",
             url: "https://vancouver.urbanrec.ca/leagues/indoor-volleyball",
-            last_updated:  firebase.firestore.FieldValue.serverTimestamp()   //current system time
+            last_updated: firebase.firestore.FieldValue.serverTimestamp()   //current system time
         }, {
             logo: "LEAGUE2",
             name: "TFC Volleyball",

@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!userAccount.id) return;
 
         const notifications = await NotificationService.getNotificationsForUser(userAccount.id);
-
         const container = document.getElementById('notificationsContainer');
         const pastContainer = document.getElementById('pastNotificationsContainer');
         container.innerHTML = '';
@@ -28,9 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                 </div>
             `;
-            if(notification.viewed){
+            if (notification.viewed) {
                 pastContainer.appendChild(card);
-            } else{
+            } else {
                 container.appendChild(card);
             }
 

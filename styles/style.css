@@ -22,9 +22,7 @@ body {
     animation: Appear 2s;
 }
 
-
 /* Animation */
-
 @keyframes Appear {
     from {
         opacity: 0;
@@ -34,7 +32,6 @@ body {
         opacity: 1;
     }
 }
-
 
 /* intro_slides */
 #intro_screen {
@@ -94,7 +91,6 @@ body {
 }
 
 .carousel-inner .carousel-item img {
-    /* width: 250px; */
     height: 200px;
     object-fit: cover;
 }
@@ -110,33 +106,28 @@ body {
 
 .footer {
     position: fixed;
-    /* Keeps the footer at the bottom of the screen */
     bottom: 0;
-    /* Aligns it to the bottom */
     width: 100%;
-    /* Ensures the footer spans the full width */
     left: 0;
-    /* Aligns it to the left edge of the screen */
 }
 
 .card-image {
-    width: 100%; /* Makes the image fill the card's width */
-    height: 200px; /* Set a fixed height */
-    object-fit: contain; /* Ensures the image covers the area without distortion */
-    border-radius: 8px; /* Optional: adds rounded corners */
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    border-radius: 8px;
 }
 
 /* Available Leagues Card */
 .available-leagues-card {
     background-color: #D0DDD7;
-    width: 400px; /* Adjust width as needed */
-    max-height: 550px; /* Limit height */
-    overflow-y: auto; /* Enable scrolling if content overflows */
+    width: 400px;
+    max-height: 550px;
+    overflow-y: auto;
     border-radius: 12px;
     padding: 15px;
 }
 
-/* Ensure the container for league cards is scrollable */
 .leagues-container {
     display: flex;
     flex-wrap: wrap;
@@ -146,16 +137,13 @@ body {
     overflow-y: auto;
 }
 
-/* Style for individual league cards */
 .league-card {
-
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     display: inline;
     background-color: #EAEAEA;
 }
 
-/* Make all images uniform in size */
 .card-image {
     width: 100%;
     height: 150px;
@@ -176,7 +164,6 @@ body {
     background-color: #7BB9D7;
 }
 
-/* Styles for the account circle */
 .account-circle {
     width: 100px;
     height: 100px;
@@ -203,22 +190,21 @@ body {
     color: #fff;
     font-size: 2rem;
     font-weight: bold;
-    border:1px solid #6c757d;
+    border: 1px solid #6c757d;
     margin: 0 auto 2rem;
     align-content: center;
     justify-items: center;
 
 }
 
-.account-img-circle img{
-    width:  200px;
+.account-img-circle img {
+    width: 200px;
 }
 
-
- .alignLeft{
-     text-align: left;
-     width:100%;
- }
+.alignLeft {
+    text-align: left;
+    width: 100%;
+}
 
 .routeItem {
     text-align: center;
@@ -232,35 +218,32 @@ body {
 
 .routeItem i {
     font-size: 20px;
- }
+}
 
- .btn-custom {
-    background-color: #B7B7B7;
-    border-color: #BED1CF;
+.btn-custom {
+    background-color: #4CAF50;
+    border-color: #388E3C;
     color: white;
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .btn-custom:hover {
-    background-color: #686D76; /* Dark grey on hover */
-    border-color: #BED1CF; /* Keep the same border color */
+    background-color: #388E3C;
+    border-color: #388E3C;
     color: white;
 }
 
-.card-custom {
-
-}
-.rec_cards_holder{
+.rec_cards_holder {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
 }
 
-.rec_card{
+.rec_card {
     background-color: #ffffff;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
     border-radius: 10px;
     display: inline-block;
     overflow: clip;
@@ -268,19 +251,66 @@ body {
     max-width: 600px;
 
 }
+
 .rec_card:hover {
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
-.rec_card_img_holder{
-    width:100%;
+
+.rec_card_img_holder {
+    width: 100%;
     overflow: clip;
     height: 10rem;
 }
-.rec_card_img{
+
+.rec_card_img {
     width: 100%;
 }
 
 
-.rec_card_body{
-    padding:10px;
+.rec_card_body {
+    padding: 10px;
+}
+
+/* General Container for the Card */
+.container-card {
+    padding: 10px;
+    margin: auto;
+    max-width: 1200px;
+}
+
+/* Card Styling */
+.card-custom {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+/* Card Header Styling */
+.card-header-custom {
+    background-color: #D0DDD7;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Optional: Add styling for the text/icons inside the header */
+.card-header-custom i {
+    margin-right: 8px;
+}
+
+/* Ensure the card content is centered */
+.card-header-custom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+/* Style for the rec_cards_holder */
+.rec_cards_holder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: auto;
+    margin: 0px auto;
 }

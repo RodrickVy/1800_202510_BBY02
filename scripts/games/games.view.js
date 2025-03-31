@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return filterIsSetUp(queryLeague) || filterIsSetUp(queryTeam) || filterIsSetUp(queryTeam);
         }
 
-
         const setUpFilterChips = () => {
 
             let chips = '';
@@ -55,7 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         }
 
-
         function resetAllFilters() {
             localStorage.setItem('query-team', '');
             localStorage.setItem('query-league', '');
@@ -63,7 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         setUpFilterChips();
-
 
         // Checks if the page is loaded with a query in local storage
         const haveLeagueQuery = () => {
@@ -74,16 +71,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const leagueFilterSetup = filterIsSetUp(queryLeague);
             const skillFilterSetup = filterIsSetUp(querySkill);
             const teamFilterSetup = filterIsSetUp(queryTeam);
-
-
             const gameLeague = allLeagues.find((league) => league.id === game.recLeague);
             const gameTeam = TeamsService.teams.find((team) => team.id === game.teamId);
             console.log(`${leagueFilterSetup} && ${game.recLeague === queryLeague} || ${!leagueFilterSetup}`)
             return ((leagueFilterSetup && game.recLeague === queryLeague) || !leagueFilterSetup)
                 && ((skillFilterSetup && gameTeam.leagueLevel === querySkill) || !skillFilterSetup)
                 && ((teamFilterSetup && game.teamId === queryTeam) || !teamFilterSetup);
-
-
         }
 
         // Checks if game has already been played or not based on the date
@@ -93,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             return gameDate > today;
         }
-
 
         const sortedGames = games.sort((a, b) => new Date(a.gameTime) - new Date(b.gameTime)).filter((game) => {
             return gameNotPlayedYet(game) && gamePassesFilters(game);
@@ -126,7 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
             `;
-
             card.addEventListener('click', () => {
                 localStorage.setItem("gameToView", game.id);
                 navigateToRoute(___PAGES.gameDetails)
@@ -151,12 +142,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             await renderGamesSection(allGames.length + ' game/s matched. ', [...gamesThisWeek, ...upcomingGames]);
 
-
         } else {
             await renderGamesSection('Games This Week', gamesThisWeek);
             await renderGamesSection('Upcoming Games', upcomingGames);
         }
-
 
         listenToIfExists('addGameBtn', 'click', (e) => {
             navigateToRoute(___PAGES.addGame);
