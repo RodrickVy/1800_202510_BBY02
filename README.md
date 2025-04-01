@@ -13,12 +13,10 @@ games as he is quite competitive. Lacking player development, wishes to go from 
 his overall community in volleyball.
 How Our App Helps: Providing a simple interface to substitute for other teams to play more volleyball and enhance skills. A create a team function allows Cole to create his team
 but request for substitutes and meet new players if his teammates bail on his games.
-
 <img src="/images/user_persona.png" width="700px">
 
 ## Features
  Apps features are split into 4:
-
 - Teams - Display and allow the user to create their own team and view other available teams on the app.
 - Leagues - Display the current recreational leagues and to filter games specific to that league.
 - Games - Show upcoming games for user to request to sub, as well as adding their own game if in need for subs.
@@ -58,7 +56,7 @@ large demographic of young adult volleyball players with an easy to learn and ea
 3. Click on "Teams" in the navbar and click the "Add Team" button to create a team in the data base with appropriate skill level, league and team banner.
 4. Click on "Games" in the navbar and "Add Game" button to add the next game for your team with time, location and details.
 5. Upon another user requesting to sub for your game, contact them with email or phone if required and accept or reject to notify them.
-6. Click on "Games" in the navbar and click on a game that interests to sub for. Click "Substitute" and wait to hear back for approval from the captain (game creator).
+6. Click on "Games" in the navbar and click on a game that interests to sub for. Click "Substitute" button and wait to hear back for approval from the captain (game creator).
 Call or email the captain if necessary to contact them. Once approval accepted, receive a notification in the top right bell icon.
 
 ---
@@ -66,11 +64,26 @@ Call or email the captain if necessary to contact them. Once approval accepted, 
 ## Project Structure
 1800_202510_BBY02/
 ├── .idea/
-│   ├── index.html
-│   ├── style.css
-│   ├── app.js
-│   └── components/
-├── aboutus.html
+│   ├── xml files
+├── .vscode/
+│   ├── settings.json
+├── images/
+│   ├── all images and test images used for our app in png, jpg, and ico
+├── scripts/
+│   ├── account/
+│       ├── javascript files for account and sign in/up services
+│   ├── games/
+│       ├── javascript files for game page services
+│   ├── home/
+│       ├── javascript files for main page services
+│   ├── league/
+│       ├── javascript files for leagues page services
+│   ├── notifications/
+│       ├── javascript files for notification page services
+│   ├── teams/
+│       ├── javascript files for team page services
+│   ├── utility/
+│       ├── javascript files for database page services
 ├── account.html
 ├── addGame.html
 ├── add-team.html
