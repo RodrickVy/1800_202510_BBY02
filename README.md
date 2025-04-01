@@ -37,6 +37,7 @@ large demographic of young adult volleyball players with an easy to learn and ea
 ---
 
 ## Technologies Used
+ADD VERSION or link to the doc - RODRICK PLS
 - **Frontend**: HTML, CSS, JavaScript
 - **Backend Authentication**: Firebase Authentication
 - **Backend Database**: Firebase Firestore 
@@ -118,12 +119,19 @@ Call or email the captain if necessary to contact them. Once approval accepted, 
 ## Acknowledgments
 - Code snippets for ___ algoirthm were adapted from resources such as [Stack Overflow](https://stackoverflow.com/) and [MDN Web Docs](https://developer.mozilla.org/).
 - Icons sourced from [FontAwesome](https://fontawesome.com/) and images from [Unsplash](https://unsplash.com/).
+Used icons during the front-end process and the navbar
 - Image of Richmond Oval obtained from URL: https://www.centaurproducts.com/project/richmond-olympic-oval/
+Used for the slideshow on the main page as front end UI.
 - Image of Moscrop Secondary Gym obtained from URL: https://www.studyinburnaby.ca/school/moscrop-secondary-school/
+Used for the slideshow on the main page as front end UI.
 - Image of Cambie Community Centre obtained from URL: https://www.mapquest.com/ca/british-columbia/cambie-community-centre-456541330
+Used for the slideshow on the main page as front end UI.
 - Image of Hastings Community Centre obtained from URL: https://hastingscc.ca/?p=27
+Used for the slideshow on the main page as front end UI.
 - Images from Stock Photos obtained from URL: https://www.istockphoto.com/search/2/image-film?family=creative&phrase=volleyball
+Used during the initial loading interface for descriptions of the app
 - Images from Stock Volleyball Silouhette photos obtained from URL: https://stock.adobe.com/ca/search/images?k=volleyball+silhouette
+Used during the the sign in and sign up portion as appearance for a transition effect to the app
 
 ---
 
