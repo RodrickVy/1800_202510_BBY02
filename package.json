@@ -18,6 +18,6 @@
   "homepage": "https://github.com/RodrickVy/1800_202510_BBY02#readme",
   "dependencies": {
     "firebase": "^11.4.0",
-    "firebase-tools": "^13.32.0"
+    "firebase-tools": "^13.35.1"
   }
 }

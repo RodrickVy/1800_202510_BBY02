@@ -17,9 +17,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                  <img class="rec_card_img"  src="${team.teamBanner}" alt="Card image cap">
                  </div>
                   <div class="rec_card_body">
-                  <div class="card-header">${team.name}</div>
+                  <div class="card-header">${toTitleCase(team.name)}</div>
                   
-                    <h5 class="card-title">${league.name}</h5>
+                    <h5 class="card-title">${toTitleCase(league.name)}</h5>
                     <p class="card-text">${team.description}</p>
                     <button id="${team.id}_edit" class="btn btn-sm btn-custom" type="button">Edit</button>
                 
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                  <img class="rec_card_img"  src="${team.teamBanner}" alt="Card image cap">
                  </div>
                   <div class="rec_card_body">
-                  <div class="card-header">${team.name}</div>
+                  <div class="card-header">${toTitleCase(team.name)}</div>
                   
                     <h5 class="card-title">${league.name}</h5>
                     <p class="card-text">${team.description}</p>

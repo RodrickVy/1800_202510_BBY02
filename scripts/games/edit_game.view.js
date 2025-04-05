@@ -98,8 +98,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 for (const subId of allSubs) {
                     await NotificationService.createNotification({
                         id: '',
-                        title: `Game details updated for ${team.name} (${humanizeDateTime(new Date(updatedData.gameTime))})`,
-                        body: `The time, location, or details of your game with ${team.name} may have changed.`,
+                        title: `Game details updated for ${toTitleCase(team.name)} (${humanizeDateTime(new Date(updatedData.gameTime))})`,
+                        body: `The time, location, or details of your game with ${toTitleCase(team.name)} may have changed.`,
                         sensitivity: 2,
                         action: 'Games',
                         actionData: game.id,

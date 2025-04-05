@@ -91,7 +91,7 @@ loadTemplate("shadowPhotoPlaceholder", `
             align-items: center; justify-content: center;">
         
         <div class="photo-item active" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -40%); width: 100%; height: 100%;">
-            <img src="./images/shadow1.jpg" class="d-block" alt="shadow1" 
+            <img src="/images/shadow1.jpg" class="d-block" alt="shadow1" 
                  style="max-width: 100%; max-height: 100%; object-fit: cover;">
         </div>
         

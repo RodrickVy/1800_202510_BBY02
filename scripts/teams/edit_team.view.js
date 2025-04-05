@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                     if (leagueSelect.value === league.id) {
                         league.level.forEach(level => {
-                            leagueLevelOptions += `<option value="${level}" >${level}</option>`;
+                            leagueLevelOptions += `<option value="${level}" >${toTitleCase(level)}</option>`;
                         })
                     }
                 })

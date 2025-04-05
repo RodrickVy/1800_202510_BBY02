@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <label for="teamSelect" class="form-label">Select Your Team</label>
                     <select class="form-select" id="teamSelect">
                         <option value="">Choose your team</option>
-                        ${userTeams.map(team => `<option value="${team.id}" data-rec-league="${team.recLeague}" data-league-level="${team.leagueLevel}">${team.name}</option>`).join('')}
+                        ${userTeams.map(team => `<option value="${team.id}" data-rec-league="${team.recLeague}" data-league-level="${team.leagueLevel}">${toTitleCase(team.name)}</option>`).join('')}
                     </select>
                 </div>
                 <div class="mb-3">

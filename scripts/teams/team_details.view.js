@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <img src="${league.logo}" alt="${league.name}" style="width: 60px; height: 60px; margin-right: 10px;">
                     <div>
                         <h5 class="mb-0">${league.name}</h5>
-                        <small class="text-muted">Level: ${team.leagueLevel}</small>
+                        <small class="text-muted">Level: ${toTitleCase(team.leagueLevel)}</small>
                     </div>
                 </div>
                   <h4>Team Captain</h4>

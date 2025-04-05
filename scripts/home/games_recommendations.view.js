@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div style="display: flex; flex-direction: column;">
                                 <strong style="font-size: 18px;">${team.name}</strong>
                                 <small class="text-muted">League: ${league.name}</small>
-                                <small class="text-muted">League Level: ${team.leagueLevel}</small>
+                                <small class="text-muted">League Level: ${toTitleCase(team.leagueLevel)}</small>
                             </div>
                         </div>
                     `;

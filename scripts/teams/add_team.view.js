@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         let leagueLevelOptions = '';
         leagues[0].level.forEach(level => {
-            leagueLevelOptions += `<option value="${level}">${level}</option>`;
+            leagueLevelOptions += `<option value="${level}">${toTitleCase(level)}</option>`;
         })
 
         loadTemplate('levelInLeague', leagueLevelOptions);
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 if (league.id === leagueSelect.value) {
 
                     league.level.forEach(level => {
-                        leagueLevelOptions += `<option value="${level}">${level}</option>`;
+                        leagueLevelOptions += `<option value="${level}">${toTitleCase(level)}</option>`;
                     })
 
                     loadTemplate('levelInLeague', leagueLevelOptions);
