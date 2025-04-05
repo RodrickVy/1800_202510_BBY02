@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         await TeamsService.getAllTeams();
         localStorage.setItem('teamToEdit', '');
 
-        let teamsHTML = "<br>";
-        let myTeamsHTML = "<br>";
+        let teamsHTML = "";
+        let myTeamsHTML = "";
 
         for (const team of TeamsService.teams) {
 
@@ -17,9 +17,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                  <img class="rec_card_img"  src="${team.teamBanner}" alt="Card image cap">
                  </div>
                   <div class="rec_card_body">
-                  <div class="card-header">${toTitleCase(team.name)}</div>
+                  <div >${toTitleCase(team.name)}</div>
                   
-                    <h5 class="card-title">${toTitleCase(league.name)}</h5>
+                    <h5  >${league.name}</h5>
                     <p class="card-text">${team.description}</p>
                     <button id="${team.id}_edit" class="btn btn-sm btn-custom" type="button">Edit</button>
                 
@@ -33,9 +33,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                  <img class="rec_card_img"  src="${team.teamBanner}" alt="Card image cap">
                  </div>
                   <div class="rec_card_body">
-                  <div class="card-header">${toTitleCase(team.name)}</div>
+                  <div>${toTitleCase(team.name)}</div>
                   
-                    <h5 class="card-title">${league.name}</h5>
+                    <h5 >${league.name}</h5>
                     <p class="card-text">${team.description}</p>
                 
                 </div>
@@ -46,10 +46,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
         if (TeamsService.userOwnedTeams.length === 0) {
-            myTeamsHTML = '<h6 class=" text-center"> You haven\'t created any teams click the add team button to create one</h6>'
+            myTeamsHTML = '<h6 class=" text-center"> <br><br>You haven\'t created any teams click the add team button to create one</h6>'
         }
-        loadTemplate('teamsContainer', `<div class="row">${teamsHTML}</div>`);
-        loadTemplate('myTeamsContainer', `<div class="row">${myTeamsHTML}</div>`);
+        loadTemplate('teamsContainer', `${teamsHTML}`);
+        loadTemplate('myTeamsContainer', `${myTeamsHTML}`);
         TeamsService.teams.forEach(team => {
             listenToIfExists(`${team.id}_edit`, 'click', (e) => {
                 localStorage.setItem('teamToEdit', team.id);

@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (filterIsSetUp(queryTeam)) {
                 const _team = TeamsService.teams.find((team) => team.id === queryTeam);
-                chips += `<span id="query-team" class="badge  bg-info text-dark">Team : ${_team.name}  <i id="query-team-icon" style="cursor: pointer" class="fas fa-times m-2 gameQueryFilter "></i></span>`;
+                chips += `<span id="query-team" class="badge  bg-info text-dark">Team : ${toTitleCase(_team.name)}  <i id="query-team-icon" style="cursor: pointer" class="fas fa-times m-2 gameQueryFilter "></i></span>`;
             }
 
             if (filterIsSetUp(querySkill)) {
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const teamFilterSetup = filterIsSetUp(queryTeam);
             const gameLeague = allLeagues.find((league) => league.id === game.recLeague);
             const gameTeam = TeamsService.teams.find((team) => team.id === game.teamId);
-            console.log(`${leagueFilterSetup} && ${game.recLeague === queryLeague} || ${!leagueFilterSetup}`)
+
             return ((leagueFilterSetup && game.recLeague === queryLeague) || !leagueFilterSetup)
                 && ((skillFilterSetup && gameTeam.leagueLevel === querySkill) || !skillFilterSetup)
                 && ((teamFilterSetup && game.teamId === queryTeam) || !teamFilterSetup);
@@ -104,16 +104,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const renderGameCard = async (game) => {
             const league = await LeaguesService.getLeagueById(game.recLeague);
             const team = TeamsService.teams.filter((_team) => game.teamId === _team.id)[0];
-            console.log();
+
             const card = document.createElement('div');
             card.className = 'game-card';
             card.innerHTML = `
                 <div class="game-tile" style="display: flex; margin: 10px; padding: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); cursor: pointer;">
                     <img src="${league.logo}" alt="${league.name}" style="height: 100%; width: 80px; object-fit: cover; margin-right: 10px;">
-                    <div style="display: flex; flex-direction: column;">
-                        <span style="font-weight: bold; font-size: 18px;">${game.details}</span>
+                    <div style="text-align:left;display: flex; flex-direction: column;align-items: start; justify-content: start;">
+                        <span style="font-weight: bold; font-size: 18px;t">${toTitleCase(game.details)}</span>
                         <span>${new Date(game.gameTime).toLocaleString()}</span>
-                        <span>Team: ${team.name}</span>
+                        <span>Team: ${toTitleCase(team.name)}</span>
                         <span>League: ${league.name}</span>
                     </div>
                 </div>
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const upcoming_games = await GamesService.getUpcomingGames();
 
-        console.log('upcoming games', upcoming_games);
+
         // Once filters have been shown they are reset , so on reload all the games can be displayed.
         resetAllFilters();
     });

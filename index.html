@@ -20,7 +20,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"/>
 
     <!-- Link to styles of your own -->
     <link rel="stylesheet" href="./styles/style.css">
@@ -31,75 +31,75 @@
 </head>
 
 <body>
-    <!-- Splash screen -->
-    <div id="splash_screen">
-        <img id="splash_logo" src="images/logo.jpg" alt="Recreate logo" style="width: 200px; height: auto;">
-    </div>
-    <!-- Intro slides -->
-    <section id="intro_screen">
-        <div id="carouselExampleIndicators" data-bs-interval="false" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner" id="startIntro">
-                <div class="carousel-item active">
-                    <div style="width:100%;max-height:20rem;overflow:clip;">
-                        <img class="d-block w-100" src="images/intro_screen_1.png" alt="First slide"
-                            style="width: 100%; height: auto; object-fit: contain;">
-                    </div>
-                    <h3 class="intro_title">Find Your Team</h3>
-                    <p class="intro_description">
-                        Whether you're missing a player or looking to start fresh, we make it easy to find the right
-                        fit.
-                    </p>
+<!-- Splash screen -->
+<div id="splash_screen">
+    <img id="splash_logo" src="images/logo.jpg" alt="Recreate logo" style="width: 200px; height: auto;">
+</div>
+<!-- Intro slides -->
+<section id="intro_screen">
+    <div id="carouselExampleIndicators" data-bs-interval="false" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" id="startIntro">
+            <div class="carousel-item active">
+                <div style="width:100%;max-height:20rem;overflow:clip;">
+                    <img class="d-block w-100" src="images/intro_screen_1.png" alt="First slide"
+                         style="width: 100%; height: auto; object-fit: contain;">
                 </div>
-                <div class="carousel-item">
-                    <div style="width:100%;max-height:20rem;overflow:clip;">
-                        <img class="d-block w-100" src="images/intro_screen_2.png" alt="Second slide"
-                            style="width: 100%; height: auto; object-fit: contain;">
-                    </div>
-                    <h3 class="intro_title">Skill-Matched Teams</h3>
-                    <p class="intro_description">Whether you're a beginner or a pro, find a league that challenges and
-                        grows your abilities.</p>
+                <h3 class="intro_title">Find Your Team</h3>
+                <p class="intro_description">
+                    Whether you're missing a player or looking to start fresh, we make it easy to find the right
+                    fit.
+                </p>
+            </div>
+            <div class="carousel-item">
+                <div style="width:100%;max-height:20rem;overflow:clip;">
+                    <img class="d-block w-100" src="images/intro_screen_2.png" alt="Second slide"
+                         style="width: 100%; height: auto; object-fit: contain;">
                 </div>
-                <div class="carousel-item">
-                    <div style="width:100%;max-height:20rem;overflow:clip;">
-                        <img class="d-block w-100" src="images/intro_screen_3.png" alt="Third slide"
-                            style="width: 100%; height: auto; object-fit: contain;">
-                    </div>
-                    <h3 class="intro_title">Dynamic Team Management</h3>
-                    <p class="intro_description">Easily manage and adjust your teams and adjust player statuses with
-                        ease when needing to request for substitute players.</p>
+                <h3 class="intro_title">Skill-Matched Teams</h3>
+                <p class="intro_description">Whether you're a beginner or a pro, find a league that challenges and
+                    grows your abilities.</p>
+            </div>
+            <div class="carousel-item">
+                <div style="width:100%;max-height:20rem;overflow:clip;">
+                    <img class="d-block w-100" src="images/intro_screen_3.png" alt="Third slide"
+                         style="width: 100%; height: auto; object-fit: contain;">
                 </div>
-                <br>
-                <div class="indicator-bar">
-                    <div id="intro_slide_slot_0" class="indicator-slot"></div>
-                    <div id="intro_slide_slot_1" class="indicator-slot"></div>
-                    <div id="intro_slide_slot_2" class="indicator-slot"></div>
-                </div>
-                <br><br>
-                <div class="d-flex justify-content-center align-items-center">
-                    <button id="prev_btn" class="intro_btn btn btn-custom ">Previous</button>
-                    <button id="next_btn" class="intro_btn btn btn-custom ">Next</button>
-                </div>
+                <h3 class="intro_title">Dynamic Team Management</h3>
+                <p class="intro_description">Easily manage and adjust your teams and adjust player statuses with
+                    ease when needing to request for substitute players.</p>
+            </div>
+            <br>
+            <div class="indicator-bar">
+                <div id="intro_slide_slot_0" class="indicator-slot"></div>
+                <div id="intro_slide_slot_1" class="indicator-slot"></div>
+                <div id="intro_slide_slot_2" class="indicator-slot"></div>
+            </div>
+            <br><br>
+            <div class="d-flex justify-content-center align-items-center">
+                <button id="prev_btn" class="intro_btn btn btn-custom ">Previous</button>
+                <button id="next_btn" class="intro_btn btn btn-custom ">Next</button>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Bootstrap Library CSS CDN go here -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<!-- Bootstrap Library CSS CDN go here -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <!-- Boostrap Library JS CDN  go here -->
+<!-- Boostrap Library JS CDN  go here -->
 
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-    <script src="scripts/splashIntro/splash_intro.view.js"></script>
-    <script src="scripts/utility/utility.js"></script>
+<script src="scripts/splashIntro/splash_intro.view.js"></script>
+<script src="scripts/utility/utility.js"></script>
 </body>
 
 </html>

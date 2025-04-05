@@ -11,6 +11,7 @@ const Brand = {
     primary: "black",
     accentColor: '#D0DDD7',
 }
+
 // Shows the splash screen and hides it again after it's animation
 function startSplashScreen() {
     DOMElements.SplashScreen.style.display = "flex";

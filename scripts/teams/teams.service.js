@@ -15,17 +15,17 @@
  */
 class RecreateTeam {
     constructor({
-        id = '',
-        name = '',
-        description = '',
-        leagueLevel = 0,
-        creatorId = '',
-        games = [],
-        teamBoard = [],
-        recLeague = '',
-        teamTrophies = [],
-        teamBanner = []
-    } = {}) {
+                    id = '',
+                    name = '',
+                    description = '',
+                    leagueLevel = 0,
+                    creatorId = '',
+                    games = [],
+                    teamBoard = [],
+                    recLeague = '',
+                    teamTrophies = [],
+                    teamBanner = []
+                } = {}) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -109,7 +109,7 @@ class TeamsService {
     static async updateTeam(teamId, updateData) {
         const teamRef = TeamsService.teamsCollection.doc(teamId);
         await teamRef.update(updateData).then(() => {
-            console.log('Updated team');
+
             this.getAllTeams();
         }).catch((err) => {
 
@@ -117,6 +117,7 @@ class TeamsService {
     }
 
     static async getTeamById(teamId) {
+        await TeamsService.getAllTeams();
         return TeamsService.teams.find((team) => team.id === teamId);
     }
 }

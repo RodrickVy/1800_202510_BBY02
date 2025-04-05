@@ -81,7 +81,7 @@ class GamesService {
         if (!gameId || !updatedFields) throw new Error('Game ID and updated fields are required.');
 
         await this.collectionRef.doc(gameId).update(updatedFields);
-        console.log(`Game ${gameId} updated successfully.`);
+        
     }
 
     // Deletes a game by ID
@@ -89,7 +89,7 @@ class GamesService {
         if (!gameId) throw new Error('Game ID is required.');
 
         await this.collectionRef.doc(gameId).delete();
-        console.log(`Game ${gameId} deleted successfully.`);
+        
     }
 
     // Checks whether a game has been played
@@ -134,15 +134,15 @@ class GamesService {
             const querySnapshot = await gamesQuery.get();
 
             if (querySnapshot.empty) {
-                console.log('No upcoming games found.');
+                
                 return [];
             }
 
             const upcomingGames = querySnapshot.docs.map(doc => doc.data());
-            console.log('Upcoming Games:', upcomingGames);
+            
             return upcomingGames;
         } catch (error) {
-            console.error('Error fetching games:', error);
+            
             return [];
         }
     }

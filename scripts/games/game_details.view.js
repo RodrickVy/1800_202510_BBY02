@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         container.innerHTML = `
             <div class="card p-4">
                 ${userAccount.id === game.captainId ? `<button id="editGameBtn" class="btn btn-warning btn-custom">Edit Details</button>` :
-                userAlreadySubbed ? ' <button id="unSub" class="btn btn-custom">Un-Substitute</button>' : ' <button id="substituteBtn" class="btn btn-success btn-custom">Substitute</button>'}
+            userAlreadySubbed ? ' <button id="unSub" class="btn btn-custom">Un-Substitute</button>' : ' <button id="substituteBtn" class="btn btn-success btn-custom">Substitute</button>'}
               <hr>
                 ${subbedUserAlreadyAccepted ? '<div class="alert alert-success" role="alert">You\'ve been approved</div>' : userAlreadySubbed ? '<div class="alert alert-primary" role="alert">Pending approval</div> ' : ''}
                 <h3 class="mt-3">${toTitleCase(team.name)} - ${humanizeDateTime(new Date(game.gameTime))}</h3> 
@@ -28,12 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div >
                     <span class="">League: ${league.name}</span>
                     <br>
-                    <span class="">Team: ${team.name}</span>
+                    <span class="">Team: ${toTitleCase(team.name)}</span>
                 </div>
 
                 <div class="d-flex align-items-center my-3">
                     <img src="${captain.profileUrl}" alt="Captain" style="width: 60px; height: 60px; border-radius: 50%;">
-                    <span class="ms-3">${captain.name}</span>
+                    <span class="ms-3">${toTitleCase(captain.name)}</span>
                     <a href="mailto:${captain.email}" class="ms-auto btn btn-outline-primary mx-1"><i class="fas fa-envelope"></i></a>
                     <a href="tel:${captain.phoneNumber}" class="btn btn-outline-primary mx-1"><i class="fas fa-phone"></i></a>
                 </div>
@@ -94,14 +94,14 @@ document.addEventListener('DOMContentLoaded', () => {
             game.subs = game.subs.filter(id => id !== subId);
             await NotificationService.createNotification({
                 id: '',
-                title: `You have been approved! Playing with ${team.name} ${humanizeDateTime(new Date(game.gameTime))} `,
+                title: `You have been approved! Playing with ${toTitleCase(team.name)} ${humanizeDateTime(new Date(game.gameTime))} `,
                 body: '',
                 sensitivity: 2,
                 action: 'Games',
                 actionData: game.id,
                 userIds: [subId]
             })
-            await GamesService.updateGame(gameId, { subs: game.subs, acceptedSubs: game.acceptedSubs });
+            await GamesService.updateGame(gameId, {subs: game.subs, acceptedSubs: game.acceptedSubs});
             window.location.reload();
         };
 
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 await NotificationService.createNotification({
                     id: '',
                     title: `You've been dropped`,
-                    body: `Game:${team.name} Time:${humanizeDateTime(new Date(game.gameTime))} `,
+                    body: `Game: ${toTitleCase(team.name)} Time:${humanizeDateTime(new Date(game.gameTime))} `,
                     sensitivity: 2,
                     action: 'Games',
                     actionData: game.id,
@@ -123,19 +123,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
             }
 
-            await GamesService.updateGame(gameId, { subs: game.subs, acceptedSubs: game.acceptedSubs });
+            await GamesService.updateGame(gameId, {subs: game.subs, acceptedSubs: game.acceptedSubs});
             window.location.reload();
         };
 
         listenToIfExists('substituteBtn', 'click', async (e) => {
-            // console.log('includes:' + (game.subs.includes(userAccount.id))  +" accepted: "+ (game.acceptedSubs.includes(game.id)))
+            // 
             if (!(game.subs.includes(userAccount.id)) && !(game.acceptedSubs.includes(game.id))) {
-                await GamesService.updateGame(gameId, { subs: [...game.subs, userAccount.id] });
+                await GamesService.updateGame(gameId, {subs: [...game.subs, userAccount.id]});
 
                 await NotificationService.createNotification({
                     id: '',
-                    title: `@${userAccount.name} would like to  sub, for ${team.name} @${humanizeDateTime(new Date(game.gameTime))} `,
-                    body: `Game:${team.name} Time:${humanizeDateTime(new Date(game.gameTime))} `,
+                    title: `@${userAccount.name} would like to  sub, for ${toTitleCase(team.name)} @${humanizeDateTime(new Date(game.gameTime))} `,
+                    body: `Game: ${toTitleCase(team.name)} Time:${humanizeDateTime(new Date(game.gameTime))} `,
                     sensitivity: 2,
                     action: 'Games',
                     actionData: game.id,
@@ -155,11 +155,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const subs = removeItemInList(game.subs, userAccount.id);
             const acceptedSubs = removeItemInList(game.acceptedSubs, userAccount.id);
 
-            await GamesService.updateGame(gameId, { subs: subs, acceptedSubs: acceptedSubs });
+            await GamesService.updateGame(gameId, {subs: subs, acceptedSubs: acceptedSubs});
             await NotificationService.createNotification({
                 id: '',
-                title: `@${userAccount.name} canceled his sub role, for ${team.name} @${humanizeDateTime(new Date(game.gameTime))} `,
-                body: `Game:${team.name} Time:${humanizeDateTime(new Date(game.gameTime))}. `,
+                title: `@${userAccount.name} canceled his sub role, for ${toTitleCase(team.name)} @${humanizeDateTime(new Date(game.gameTime))} `,
+                body: `Game: ${toTitleCase(team.name)} Time:${humanizeDateTime(new Date(game.gameTime))}. `,
                 sensitivity: 2,
                 action: 'Games',
                 actionData: game.id,

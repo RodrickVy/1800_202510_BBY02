@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const league = await LeaguesService.getLeagueById(team.recLeague);
         const captain = await Account.loadUserData(team.creatorId);
-        console.log(JSON.stringify(captain));
+
         const container = document.getElementById('teamDetailsContainer');
 
         container.innerHTML = `
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <img src="${team.teamBanner}" alt="${team.name} banner" width="100%">
             </div>
             <div class="card p-4">
-                <h2>${team.name}</h2>
+                <h2>${toTitleCase(team.name)}</h2>
                 <p>${team.description || 'No description provided.'}</p>
                 <div class="d-flex align-items-center my-3">
                     <img src="${league.logo}" alt="${league.name}" style="width: 60px; height: 60px; margin-right: 10px;">

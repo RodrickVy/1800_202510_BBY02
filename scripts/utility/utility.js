@@ -42,7 +42,7 @@ const _AUTHGOURDEDROUTES = [
     ___PAGES.editGameDetails
 ];
 
-
+const __MINPROFILEPICURLLENGTH = 3;
 /**
  * Checks if an element with the given ID exists in the DOM.
  *
@@ -132,6 +132,7 @@ const loadValue = (placeholderId, value, onload = (() => {
  * @param {string} routePath - The relative URL or route to navigate to (e.g., './signin.html').
  */
 function navigateToRoute(routePath) {
+
     if (getCurrentPage() !== sanitizeRoute(routePath)) {
         // Create an invisible <a> element
         const link = document.createElement('a');
@@ -227,10 +228,10 @@ function sanitizeRoute(url) {
 function checkGuardedRoutes(isAuthenticated, needAuthRoute = ___PAGES.signin, authenticatedRoute = ___PAGES.main) {
     // Assumes a getCurrentPage() function exists that returns the current page (e.g., "profile", "settings", etc.)
     const currentPage = getCurrentPage();
-    console.log(`Current page: ${currentPage} | Authenticated: ${isAuthenticated}`);
+
 
     if (!isAuthenticated && _AUTHGOURDEDROUTES.includes(currentPage)) {
-        console.log(`Access to ${currentPage} is restricted. Redirecting to signin page.`);
+
         navigateToRoute('./' + needAuthRoute + ".html")
     } else if (isAuthenticated && __NOAUTHADVANCEROUTES.includes(currentPage)) {
         navigateToRoute('./' + authenticatedRoute + ".html")
@@ -247,23 +248,25 @@ function listenToIfExists(id, trigger, callback) {
 }
 
 function toTitleCase(text) {
-
+    if (text.split(" ").length <= 1 && text.toUpperCase() === text) {
+        return text;
+    }
     return text.split(" ").map(word => {
         return word.split("")[0].toUpperCase() + word.toLowerCase().substring(1);
     }).join(" ");
 }
 
 /**
-* Generates a timestamp of the current time.
-* @returns {string} the formated time
-* */
+ * Generates a timestamp of the current time.
+ * @returns {string} the formated time
+ * */
 function createTimeStamp() {
     return new Date().toISOString().split('T')[0];
 }
 
 // Media Model
 class Media {
-    constructor({ downloadUrl = '', mediaId = '', storageUrl = '', uploaderId = '' } = {}) {
+    constructor({downloadUrl = '', mediaId = '', storageUrl = '', uploaderId = ''} = {}) {
         this.downloadUrl = downloadUrl;
         this.storageUrl = storageUrl;
         this.uploaderId = uploaderId;
@@ -314,12 +317,11 @@ class StorageService {
 
             await mediaDoc.set(mediaData.toJson());
 
-            console.log('Media uploaded and Firestore document created:', mediaData);
 
             return mediaData;
 
         } catch (error) {
-            console.error('Error uploading media:', error);
+
             throw error;
         }
     }
@@ -335,12 +337,12 @@ class StorageService {
             }
 
             const mediaData = Media.fromJson(snapshot.data());
-            console.log('Media retrieved:', mediaData);
+
 
             return mediaData;
 
         } catch (error) {
-            console.error('Error retrieving media:', error);
+
             throw error;
         }
     }
@@ -373,16 +375,16 @@ function humanizeDateTime(dateTime) {
     const yesterday = new Date(today);
     yesterday.setDate(today.getDate() - 1);
     const input = stripTime(inputDate);
-    const timeOptions = { hour: 'numeric', minute: '2-digit', hour12: true };
+    const timeOptions = {hour: 'numeric', minute: '2-digit', hour12: true};
     const timeStr = inputDate.toLocaleTimeString(undefined, timeOptions);
     if (input.getTime() === today.getTime()) return `${timeStr} Today`;
     if (input.getTime() === tomorrow.getTime()) return `${timeStr} Tomorrow`;
     if (input.getTime() === yesterday.getTime()) return `${timeStr} Yesterday`;
     const oneWeekAhead = new Date(today);
     oneWeekAhead.setDate(today.getDate() + 7);
-    const weekday = inputDate.toLocaleDateString(undefined, { weekday: 'long' });
-    const shortDate = inputDate.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
-    const fullDate = inputDate.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+    const weekday = inputDate.toLocaleDateString(undefined, {weekday: 'long'});
+    const shortDate = inputDate.toLocaleDateString(undefined, {month: 'short', day: 'numeric'});
+    const fullDate = inputDate.toLocaleDateString(undefined, {month: 'short', day: 'numeric', year: 'numeric'});
 
     if (input >= today && input <= oneWeekAhead) {
         return `${timeStr} on ${weekday}`;

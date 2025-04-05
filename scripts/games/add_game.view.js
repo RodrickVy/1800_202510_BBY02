@@ -120,10 +120,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
                 await GamesService.createGame(gameId, gameData);
-                alert('Game created successfully!');
                 navigateToRoute(___PAGES.games)
             } catch (error) {
-                console.error('Error creating game:', error);
+                
                 alert('Error creating game, please try again.');
             }
         });

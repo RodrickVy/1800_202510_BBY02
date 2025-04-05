@@ -2,14 +2,13 @@ Account.addListener("profileView", (user) => {
     const accountCircle = document.getElementById('accountCircle');
     const accountImageCircle = document.getElementById('imageCircle');
     const imgCircleImg = document.getElementById('imgCircleImg');
-    if (user.profileUrl.length > 3) {
 
+    if (user.profileUrl.length > __MINPROFILEPICURLLENGTH) {
         imgCircleImg.src = user.profileUrl;
         accountImageCircle.style.display = 'block';
         accountCircle.style.display = 'none';
-        //loadTemplate("accountCircle", `<div style="width;100%;height:100%,border-radius:10rem;background-image:url('${user.profileUrl}.png')" ></div>`);
     } else {
-        accountCircle.style.display = 'block';
+        accountCircle.style.display = 'flex';
         accountImageCircle.style.display = 'none';
         loadText("accountCircle", getInitials(user.name));
     }
@@ -22,9 +21,6 @@ Account.addListener("profileView", (user) => {
     loadValue('genderSelect', user.gender);
     loadValue('roleSelect', user.role);
     loadValue('citySelect', user.city);
-    loadValue('userRating', user.skillLevel);
-    loadText('ratingValue', user.skillLevel);
-
     loadValue('userEmailViewOnly', user.email);
 });
 
@@ -32,14 +28,14 @@ const logoutBtn = document.getElementById("logoutBtn");
 const userNameInput = document.getElementById("userNameInput");
 const userPhoneInput = document.getElementById("userPhone");
 const userGender = document.getElementById("genderSelect");
-
 const cityInput = document.getElementById("citySelect");
 const bioInput = document.getElementById("bioEditor");
-const userRating = document.getElementById("userRating");
 const saveButton = document.getElementById("saveButton");
 const imageInput = document.getElementById("imageInput");
 const passwordResetBtn = document.getElementById("resetPasswordBtn");
 const deleteButton = document.getElementById("deleteAccountBtn");
+
+
 logoutBtn.addEventListener("click", () => {
     Account.logout();
 })
@@ -68,7 +64,7 @@ function enableSaveOnInputChange() {
         userGender,
         cityInput,
         bioInput,
-        userRating
+
     ];
 
     inputs.forEach(input => {
@@ -88,10 +84,8 @@ saveButton.addEventListener('click', () => {
             name: userNameInput.value,
             phoneNumber: userPhoneInput.value,
             gender: userGender.value,
-
             city: cityInput.value,
             bio: bioInput.value,
-            skillLevel: userRating.value
         }
     }).then(() => {
         saveButton.setAttribute('class', "btn btn-disabled w-100 m-2");
@@ -101,7 +95,7 @@ saveButton.addEventListener('click', () => {
 imageInput.addEventListener('change', async (event) => {
 
     const file = event.target.files[0];
-    console.log(imageInput.value);
+    
     const data = await StorageService.uploadMedia(file, Account.userAccount.id + "profile", 'media');
     saveButton.setAttribute('class', "btn btn-success w-100 m-2");
     await Account.updateUser(Account.userAccount.id, (user) => {
@@ -112,9 +106,3 @@ imageInput.addEventListener('change', async (event) => {
         window.location.reload();
     })
 })
-const ratingSlider = document.getElementById('userRating');
-const ratingValue = document.getElementById('ratingValue');
-
-ratingSlider.addEventListener('input', function () {
-    ratingValue.textContent = ratingSlider.value;
-});

@@ -199,7 +199,7 @@ Used during the sign in and sign up portion as appearance for a transition effec
 This project is licensed under the BSD License. See the [LICENSE](/LICENCE.txt) file for details.
 
 
-## Link
+## Links
 - [Web application](https://bby02-1800.web.app/)
 - [Figma prototypes](https://www.figma.com/design/ojJg6ApruygbLukPiNpe4a/COMP-1800-Projects?node-id=0-1&t=xvhUKlzqClVW5RUP-1)
 - [Figma brainstorm board](https://www.figma.com/board/lrPwQbswbuhzpH9HJvbkiF/Brainstorm?node-id=145-724&t=38zcqa8GLpx5VcRy-1)

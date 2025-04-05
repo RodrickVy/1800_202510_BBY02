@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", async (e) => {
 
     const allLeagues = await LeaguesService.getAllLeagues();

@@ -11,7 +11,7 @@ function writeLeagues() {
             url: "https://vancouver.urbanrec.ca/leagues/indoor-volleyball",
             last_updated: firebase.firestore.FieldValue.serverTimestamp()   //current system time
         }, {
-            logo: "LEAGUE2",
+            logo: "https://recsportsteam.com/wp-content/uploads/2024/03/tfc-logo.png",
             name: "TFC Volleyball",
             city: "Burnaby",
             level: ["B", "A", "A+", "AA"],
@@ -19,7 +19,7 @@ function writeLeagues() {
             url: "https://tfcvolleyball.com/indoor-leagues/",
             last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
         }, {
-            logo: "LEAGUE3",
+            logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYOhzLmigj2V6qH7RHQ5AE7C_OiXVMLx9LYg&s",
             name: "Volleyball BC",
             city: ["Burnaby", "Vancouver", "Richmond"],
             level: ["recreational", "intermediate", "advanced"],
@@ -27,7 +27,7 @@ function writeLeagues() {
             url: "https://volleyballbc.org/play/adult/indoor/leagues/",
             last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
         }, {
-            logo: "LEAGUE4",
+            logo: "https://i.ytimg.com/vi/J6ge8DJsSWc/hqdefault.jpg",
             name: "Neighbours & Friends Volleyball League",
             city: "Vancouver",
             level: ["recreational", "recreational plus", "intermediate", "intermediate plus", "advanced"],
@@ -35,7 +35,7 @@ function writeLeagues() {
             url: "https://www.nfvl.ca/leagues/custom_page.cfm?clientID=2768&leagueID=6972&pageID=15869",
             last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
         }, {
-            logo: "LEAGUE5",
+            logo: "https://vancouvervolleyball.com/images/logos/cambie.jpg",
             name: "Cambie Sports Volleyball League",
             city: "Vancouver",
             level: ["recreational", "intermediate", "advanced"],
@@ -43,7 +43,7 @@ function writeLeagues() {
             url: "https://www.cambiesports.com/leagues/",
             last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
         }, {
-            logo: "LEAGUE6",
+            logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIQODNqGcsx_hyqLUgPW2jM_VyUJG9mnFq9w&s",
             name: "Surrey Volleyball League",
             city: "Surrey",
             level: ["recreational", "intermediate", "upper-intermediate", "competitive"],
@@ -61,3 +61,5 @@ function writeLeagues() {
         });
     }
 }
+
+writeLeagues();

@@ -13,12 +13,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         const leagues = await LeaguesService.getAllLeagues();
 
 
-
         const teamToEdit = TeamsService.userOwnedTeams.find((team) => team.id === editTeam);
-        console.log(teamToEdit);
+
         if (teamToEdit !== undefined) {
             let teamBannerUrl = teamToEdit.teamBanner;
             teamBanner.src = teamBannerUrl;
+
             function updateLeagueSelection() {
                 const isInitialLoad = leagueSelect.value === 'league1';
                 if (isInitialLoad) {
@@ -38,9 +38,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                         })
                     }
                 })
+
                 function leagueSelected() {
                     return leagues.find((league) => league.id === leagueSelect.value);
                 }
+
                 loadTemplate('levelInLeague', leagueLevelOptions);
                 loadValue('levelInLeague', leagueSelected().level[0]);
                 if (isInitialLoad) {
@@ -48,8 +50,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 } else {
                     loadValue('levelInLeague', leagueSelected().level[0]);
                 }
-                console.log(leagueLevelOptions)
-                console.log(levelInLeague.value);
+
+
             }
 
             updateLeagueSelection();

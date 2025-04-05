@@ -1,5 +1,3 @@
-//   Models
-
 
 /**
  * User model that holds user-related properties.
@@ -77,7 +75,7 @@ class RecreateUser {
     static fromJson(json) {
         // If json is a string, parse it.
         json = JSON.parse(JSON.stringify(json));
-        console.log(json['id'])
+        
         return new RecreateUser(
             {
                 id: json['id'],
@@ -299,13 +297,13 @@ class Account {
             lastLogin: customData.lastLogin,
             createdOn: customData.createdOn,
         };
-        console.log(____userData);
+        
         try {
             await userDocRef.set(____userData);
-            console.log(`User created successfully with id: ${userId}`);
+            
             return userId;
         } catch (error) {
-            console.error("Error creating user in Firestore:", error);
+            
             throw error;
         }
     }
@@ -330,7 +328,7 @@ class Account {
         //     throw new Error("Firestore instance not properly initialized in Account.fs");
         //   }
         const db = Account.fs;
-        console.log(userId);
+        
         const userDocRef = db.collection("users").doc(userId);
         // Pass the current data to the callback to obtain the update object.
         const updatedData = updateCallback(Account.userAccount);
@@ -379,7 +377,7 @@ class Account {
     static async documentExists(collectionName, docId) {
         const docRef = Account.fs.collection(collectionName).doc(docId);
         const docSnapshot = await docRef.get();
-        console.log("I think doc exists : " + docSnapshot.exists)
+        
         return docSnapshot.exists;
     }
 
@@ -394,11 +392,11 @@ class Account {
     static sendPasswordResetEmail(email, onSuccess, onError) {
         return Account.auth.sendPasswordResetEmail(email)
             .then(() => {
-                console.log("Password reset email sent successfully.");
+                
                 onSuccess(email);
             })
             .catch(error => {
-                console.error("Error sending password reset email:", error);
+                
                 onError("Error sending password reset email: " + error);
             });
     }
@@ -411,11 +409,11 @@ class Account {
     static deleteUser(userId) {
         return Account.auth.currentUser.delete()
             .then(() => {
-                console.log("User deleted successfully.");
+                
                 Account.fs.collection("users").doc(userId).delete()
             })
             .catch(error => {
-                console.error("Error deleting user:", error);
+                
             });
     }
 }

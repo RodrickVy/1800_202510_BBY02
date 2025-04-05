@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 teamBannerUrl = data.downloadUrl;
                 teamBanner.src = data.downloadUrl;
             } catch (error) {
-                console.error(error);
+
             }
 
         });

@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', async () => {
    const leagues = await LeaguesService.getAllLeagues();
    let allLeagues = '<br><br>';
    leagues.forEach((league) => {
-      console.log(___PAGES.eachLeague + " League page");
+      
       allLeagues += `
 
           <div id='${league.id}_card' class="rec_card">

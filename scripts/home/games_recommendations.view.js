@@ -20,12 +20,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = document.createElement('div');
             card.className = 'game-card';
             card.innerHTML = `
-                <div class="game-tile" style="display: flex; margin: 10px; padding: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); cursor: pointer;">
+              <div class="game-tile" style="display: flex; margin: 10px; padding: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); cursor: pointer;">
                     <img src="${league.logo}" alt="${league.name}" style="height: 100%; width: 80px; object-fit: cover; margin-right: 10px;">
-                    <div style="display: flex; flex-direction: column;">
-                        <span style="font-weight: bold; font-size: 18px;">${game.details}</span>
-                        <span>${humanizeDateTime(new Date(game.gameTime))}</span>
-                        <span>Team: ${team.name}</span>
+                    <div style="text-align:left;display: flex; flex-direction: column;align-items: start; justify-content: start;">
+                        <span style="font-weight: bold; font-size: 18px;t">${toTitleCase(game.details)}</span>
+                        <span>${new Date(game.gameTime).toLocaleString()}</span>
+                        <span>Team: ${toTitleCase(team.name)}</span>
                         <span>League: ${league.name}</span>
                     </div>
                 </div>
@@ -61,14 +61,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     const card = document.createElement('div');
                     card.className = 'team-card';
                     card.innerHTML = `
-                        <div class="team-tile" style="display: flex; align-items: center; margin: 10px; padding: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); cursor: pointer;">
-                            <img src="${team.teamBanner}" alt="${team.name}" style="height: 60px; width: 80px; object-fit: cover; margin-right: 10px;">
-                            <div style="display: flex; flex-direction: column;">
-                                <strong style="font-size: 18px;">${team.name}</strong>
-                                <small class="text-muted">League: ${league.name}</small>
-                                <small class="text-muted">League Level: ${toTitleCase(team.leagueLevel)}</small>
-                            </div>
-                        </div>
+                   <div class="game-tile" style="display: flex; margin: 10px; padding: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); cursor: pointer;">
+                    <img src="${team.teamBanner}" alt="${team.name}" style="height: 100%; width: 80px; object-fit: cover; margin-right: 10px;">
+                    <div style="text-align:left;display: flex; flex-direction: column;align-items: start; justify-content: start;">
+                        <span style="font-weight: bold; font-size: 18px;t">${toTitleCase(team.name)}</span>
+                        <span>League: ${league.name}</span>
+                        <span>League Level: ${toTitleCase(team.leagueLevel)}</span>
+                    </div>
+                </div>
                     `;
                     card.addEventListener('click', () => {
                         localStorage.setItem("teamToView", team.id);

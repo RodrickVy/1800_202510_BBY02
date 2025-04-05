@@ -75,7 +75,11 @@ class NotificationService {
     }
 
     static async getNotificationsForUser(userId) {
-        const snapshot = await this.collection.where('userIds', 'array-contains', userId).get();
+        const snapshot = this.collection
+            .where('userIds', 'array-contains', userId)
+            .orderBy('sensitivity', 'desc')
+            .limit(50);
+
         return snapshot.docs.map(doc => Notification.fromJson(doc.data()));
     }
 

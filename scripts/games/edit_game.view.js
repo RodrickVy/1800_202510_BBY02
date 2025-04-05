@@ -3,11 +3,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!userAccount.id) return;
 
         const gameId = localStorage.getItem('gameToEdit');
-        if (!gameId) return navigateToRoute(___PAGES.games);
+
 
         const game = await GamesService.getGameById(gameId);
         const team = await TeamsService.getTeamById(game.teamId);
+
         const leagues = await LeaguesService.getAllLeagues();
+
+        if (!gameId || team === undefined) return navigateToRoute(___PAGES.games);
 
         const container = document.getElementById('gameEditor');
 
@@ -110,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('Game updated and notifications sent.');
                 navigateToRoute(___PAGES.gameDetails);
             } catch (err) {
-                console.error('Error updating game:', err);
+
                 alert('Failed to update game. Please try again.');
             }
         });

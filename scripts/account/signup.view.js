@@ -6,7 +6,7 @@ document.getElementById('signUpBtn').addEventListener("click", () => {
         navigateToRoute('./home.html');
 
     }, (error) => {
-        console.log(error)
+        
     });
 })
 
