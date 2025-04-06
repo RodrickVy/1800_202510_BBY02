@@ -1,3 +1,4 @@
+// Event listener for DOMContentLoaded to handle team editing functionality
 document.addEventListener('DOMContentLoaded', async () => {
 
     Account.addListener('teams', async (user) => {
@@ -11,8 +12,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         const teamBannerInput = document.getElementById("teamBannerInput");
         const editTeam = localStorage.getItem('teamToEdit');
         const leagues = await LeaguesService.getAllLeagues();
-
-
         const teamToEdit = TeamsService.userOwnedTeams.find((team) => team.id === editTeam);
 
         if (teamToEdit !== undefined) {
@@ -50,8 +49,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 } else {
                     loadValue('levelInLeague', leagueSelected().level[0]);
                 }
-
-
             }
 
             updateLeagueSelection();

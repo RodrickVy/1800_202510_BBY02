@@ -1,3 +1,4 @@
+/* On DOM load, listens for 'gameDetailsLoader' to display detailed info about a selected game, including team, league, and sub status. */
 document.addEventListener('DOMContentLoaded', () => {
     Account.addListener('gameDetailsLoader', async (userAccount) => {
         if (!userAccount.id) return;
@@ -89,6 +90,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        /* Handles sub management:
+        * - acceptSub(subId): Moves user to accepted subs, notifies them, updates game.
+        * - removeSub(subId, isAccepted): Removes user from subs or accepted subs, optionally notifies, updates game.
+        */
         window.acceptSub = async (subId) => {
             game.acceptedSubs.push(subId);
             game.subs = game.subs.filter(id => id !== subId);
@@ -146,8 +151,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             window.location.reload();
-
-
         })
 
         listenToIfExists('unSub', 'click', async (e) => {
@@ -166,8 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 userIds: [game.captainId]
             })
             window.location.reload();
-
-
         })
     });
 });

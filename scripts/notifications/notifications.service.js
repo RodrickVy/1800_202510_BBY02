@@ -1,15 +1,15 @@
 // Notification Model
 class Notification {
     constructor({
-                    id = '',
-                    title = '',
-                    body = '',
-                    sensitivity = 2,
-                    action = '',
-                    actionData = {},
-                    userIds = [],
-                    viewed = false
-                } = {}) {
+        id = '',
+        title = '',
+        body = '',
+        sensitivity = 2,
+        action = '',
+        actionData = {},
+        userIds = [],
+        viewed = false
+    } = {}) {
         this.id = id;
         this.title = title;
         this.body = body;
@@ -54,7 +54,7 @@ class NotificationService {
     static async createNotification(notificationData) {
         const notification = new Notification(notificationData);
         const docRef = await this.collection.add(notification.toJson());
-        await docRef.update({id: docRef.id});
+        await docRef.update({ id: docRef.id });
         return docRef.id;
     }
 
@@ -92,7 +92,7 @@ class NotificationService {
         const data = doc.data();
         const updatedUserIds = (data.userIds || []).filter(id => id !== userIdToRemove);
 
-        await docRef.update({userIds: updatedUserIds});
+        await docRef.update({ userIds: updatedUserIds });
         return true;
     }
 }

@@ -78,7 +78,6 @@ const loadTemplate = (placeholderId, html, onload = (() => {
     }
 };
 
-
 /**
  * Places the given text into the element as innerText
  * First checks to see if the element exists, and if it does not exist,
@@ -228,8 +227,6 @@ function sanitizeRoute(url) {
 function checkGuardedRoutes(isAuthenticated, needAuthRoute = ___PAGES.signin, authenticatedRoute = ___PAGES.main) {
     // Assumes a getCurrentPage() function exists that returns the current page (e.g., "profile", "settings", etc.)
     const currentPage = getCurrentPage();
-
-
     if (!isAuthenticated && _AUTHGOURDEDROUTES.includes(currentPage)) {
 
         navigateToRoute('./' + needAuthRoute + ".html")
@@ -266,7 +263,7 @@ function createTimeStamp() {
 
 // Media Model
 class Media {
-    constructor({downloadUrl = '', mediaId = '', storageUrl = '', uploaderId = ''} = {}) {
+    constructor({ downloadUrl = '', mediaId = '', storageUrl = '', uploaderId = '' } = {}) {
         this.downloadUrl = downloadUrl;
         this.storageUrl = storageUrl;
         this.uploaderId = uploaderId;
@@ -316,10 +313,7 @@ class StorageService {
             });
 
             await mediaDoc.set(mediaData.toJson());
-
-
             return mediaData;
-
         } catch (error) {
 
             throw error;
@@ -337,8 +331,6 @@ class StorageService {
             }
 
             const mediaData = Media.fromJson(snapshot.data());
-
-
             return mediaData;
 
         } catch (error) {
@@ -365,6 +357,9 @@ function reload() {
     window.location.reload();
 }
 
+// Converts a DateTime into a human-readable format based on its proximity to the current date
+// If the input date is today, tomorrow, or yesterday, it adds the respective label (Today, Tomorrow, Yesterday).
+// For dates within the next week, it adds the weekday name. Otherwise, it displays the date in a short or full format.
 function humanizeDateTime(dateTime) {
     const inputDate = new Date(dateTime);
     const now = new Date();
@@ -375,16 +370,16 @@ function humanizeDateTime(dateTime) {
     const yesterday = new Date(today);
     yesterday.setDate(today.getDate() - 1);
     const input = stripTime(inputDate);
-    const timeOptions = {hour: 'numeric', minute: '2-digit', hour12: true};
+    const timeOptions = { hour: 'numeric', minute: '2-digit', hour12: true };
     const timeStr = inputDate.toLocaleTimeString(undefined, timeOptions);
     if (input.getTime() === today.getTime()) return `${timeStr} Today`;
     if (input.getTime() === tomorrow.getTime()) return `${timeStr} Tomorrow`;
     if (input.getTime() === yesterday.getTime()) return `${timeStr} Yesterday`;
     const oneWeekAhead = new Date(today);
     oneWeekAhead.setDate(today.getDate() + 7);
-    const weekday = inputDate.toLocaleDateString(undefined, {weekday: 'long'});
-    const shortDate = inputDate.toLocaleDateString(undefined, {month: 'short', day: 'numeric'});
-    const fullDate = inputDate.toLocaleDateString(undefined, {month: 'short', day: 'numeric', year: 'numeric'});
+    const weekday = inputDate.toLocaleDateString(undefined, { weekday: 'long' });
+    const shortDate = inputDate.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+    const fullDate = inputDate.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
 
     if (input >= today && input <= oneWeekAhead) {
         return `${timeStr} on ${weekday}`;

@@ -23,11 +23,9 @@ For recreational volleyball players who want to play more games to enhance their
 - Lacking player development, wishes to go from beginner to intermediate skill level leagues but lacks consistent teammates. 
 - Wants to improve his overall community in volleyball.
 
-**How Our App Help**: 
+**How Our App Can Help**: 
 - Providing a simple interface to substitute for other teams to play more volleyball and enhance skills. 
 - A create a team function allows Cole to create his team but request for substitutes and meet new players if his teammates bail on his games.
-
-
 
 ## Features
  Apps features are split into 4:
@@ -69,7 +67,7 @@ large demographic of young adult volleyball players with an easy to learn and ea
 ---
 
 ## Usage
-1. Open your browser and visit `http://localhost:3000`.
+1. Open your browser and visit `https://bby02-1800.web.app/`.
 2. Sign up if an account hasn't been created, sign in if an account already exists.
 3. Click on "Teams" in the navbar and click the "Add Team" button to create a team in the data base with appropriate skill level, league and team banner.
 4. Click on "Games" in the navbar and "Add Game" button to add the next game for your team with time, location and details.
@@ -86,7 +84,7 @@ The project was structured to resemble a screaming architecture where possible. 
 - And there is only one source of truth for css and that in `./styles/style.css`
 
 ### Structure Of Scripts
-- Every feature has its own folder e.g. account,games, teams etc.
+- Every feature has its own folder (e.g. account, games, teams etc).
 - Every feature folder contains a [feature].service.js class e.g. `./scripts/account/account.service.js`, this class hold static variables and methods that abstract that feature's business logic.
 - Every feature has [page].view.js scripts for handling DOM manipulation for each given html page in that feature. E.g. `./scripts/account/signin.view.js` for the `./signin.html`
 - In cases where HTML is dynamically loaded over more than 1 page a [feature].template.js file is created. For instance the app bar is dynamically loaded instead of rewriting the html in every-file we use `./scripts/home/main.template.js` to handle this and all the files that need to use the appbar just need to reference the script.
@@ -157,7 +155,7 @@ Below is an example of how the teams feature was implemented, all the other feat
 
 ## Contributors
 - **Ken Lee** - BCIT CST Student in Term 1 with a passion for sports, exercise, and bringing people together. First year learning how to code!
-- **Rodrick Vy** - A Term 1 CST student at BCIT, passionate about briging 💻 software, 🏢 business and 🎨 design together to solve problems.
+- **Rodrick Vyizigiro** - A Term 1 CST student at BCIT, passionate about bridging 💻 software, 🏢 business and 🎨 design together to solve problems.
 
 ---
 

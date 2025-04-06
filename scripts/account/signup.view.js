@@ -1,3 +1,4 @@
+/* Sign-up button handler: collects input, signs up user, navigates to home on success. */
 document.getElementById('signUpBtn').addEventListener("click", () => {
     const userName = document.getElementById('name').value;
     const email = document.getElementById('email').value;
@@ -10,6 +11,7 @@ document.getElementById('signUpBtn').addEventListener("click", () => {
     });
 })
 
+/* Shadow photo function for sign up page, transition for aesethetic UI. */
 loadTemplate("shadowPhotoSignUpPlaceholder", `
 <div id="photoContainer" class="photo-container"
      style="width: 100%; max-width: 300px; height: auto; min-height: 300px; 

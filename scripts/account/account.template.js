@@ -1,6 +1,6 @@
 // Loads the common HTML in the sign in, signup and forgot-password pages. 
 window.onload = () => {
-
+    // Function for the navbar as a placeholder to load as JS onto the html pages
     loadTemplate("navPlaceholder", ` <nav class="navbar navbar-expand-lg shadow-sm" style="background-color: #ffffff;">
         <div class="container-fluid">
             <a class="navbar-brand" href="./index.html" style="font-size: 32px;">
@@ -34,6 +34,8 @@ window.onload = () => {
             </div>
         </div>
     </nav>`, () => { });
+
+    // Function for the carousel photo slideshow to load as JS onto html pages
     loadTemplate("carouselPlaceholder", `
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
         <div class="carousel-indicators">
@@ -84,6 +86,7 @@ window.onload = () => {
     });
 }
 
+// Loading a function for the shadow photo transitions in the front-end sign-in page for aesthetic UI
 loadTemplate("shadowPhotoPlaceholder", `
 <div id="photoContainer" class="photo-container"
      style="width: 100%; max-width: 300px; height: auto; min-height: 400px; 

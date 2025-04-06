@@ -1,3 +1,4 @@
+// Event listener for DOMContentLoaded to load and display notifications for the user
 document.addEventListener('DOMContentLoaded', () => {
     Account.addListener('notificationsLoader', async (userAccount) => {
         if (!userAccount.id) return;

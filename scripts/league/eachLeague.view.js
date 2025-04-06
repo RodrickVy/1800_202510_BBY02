@@ -1,3 +1,4 @@
+// Event listener for DOMContentLoaded that loads league details and sets up user preferences
 document.addEventListener("DOMContentLoaded", async (e) => {
 
     const allLeagues = await LeaguesService.getAllLeagues();

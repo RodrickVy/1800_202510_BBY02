@@ -1,3 +1,4 @@
+// Event listener for DOMContentLoaded to load and manage team creation process
 document.addEventListener('DOMContentLoaded', async () => {
 
     Account.addListener('teams', async (user) => {
@@ -35,11 +36,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                     league.level.forEach(level => {
                         leagueLevelOptions += `<option value="${level}">${toTitleCase(level)}</option>`;
                     })
-
                     loadTemplate('levelInLeague', leagueLevelOptions);
                 }
             });
-
         });
 
         createTeamBtn.addEventListener('click', (event) => {
@@ -68,9 +67,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             } catch (error) {
 
             }
-
         });
-
     });
-
 });

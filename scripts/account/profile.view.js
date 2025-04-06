@@ -1,3 +1,7 @@
+/* Handles the "profileView" event by updating the UI with the user's profile data.
+ * - Displays the user's profile picture if the URL is valid; otherwise, shows initials.
+ * - Populates user details such as name, email, bio, phone number, gender, role, and city
+ *   into the respective display elements and input fields. */
 Account.addListener("profileView", (user) => {
     const accountCircle = document.getElementById('accountCircle');
     const accountImageCircle = document.getElementById('imageCircle');
@@ -35,7 +39,8 @@ const imageInput = document.getElementById("imageInput");
 const passwordResetBtn = document.getElementById("resetPasswordBtn");
 const deleteButton = document.getElementById("deleteAccountBtn");
 
-
+/* Adding some on click event listener functions for log out button, password reset button,
+and delete account button. */
 logoutBtn.addEventListener("click", () => {
     Account.logout();
 })

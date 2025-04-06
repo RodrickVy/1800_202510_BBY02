@@ -1,3 +1,4 @@
+// Event listener to load and display team details, including upcoming games
 document.addEventListener('DOMContentLoaded', () => {
     Account.addListener('teamDetailsLoader', async (userAccount) => {
         const teamId = localStorage.getItem('teamToView');

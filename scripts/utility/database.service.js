@@ -1,6 +1,6 @@
 // A database service that is authentication aware and can handle bad requests/responses gracefully.
 class DataStore {
-    constructor() {}
+    constructor() { }
     // Create a new document in a given collection.
     // Returns the provided data on success.
     static createDoc(collectionName, docId, data, onSuccess, onError) {
@@ -18,7 +18,7 @@ class DataStore {
 
     // Read a single document from a given collection.
     // Returns the document's data as a JSON object if found.
-    static  readDoc(collectionName, docId, onSuccess, onError) {
+    static readDoc(collectionName, docId, onSuccess, onError) {
         fs.collection(collectionName)
             .doc(docId)
             .get()
@@ -65,7 +65,7 @@ class DataStore {
 
     // Read all documents in a collection.
     // Returns an array of JSON objects, each representing a document.
-   static readCollection(collectionName, onSuccess, onError) {
+    static readCollection(collectionName, onSuccess, onError) {
         fs.collection(collectionName)
             .get()
             .then((querySnapshot) => {

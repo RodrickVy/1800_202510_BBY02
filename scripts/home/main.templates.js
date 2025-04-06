@@ -18,6 +18,7 @@ window.onload = () => {
 
         }
 
+        // Loads the app bar placeholder as a template
         loadTemplate("appBarPlaceholder", `<nav class="navbar navbar-expand-lg" style="background-color: #D0DDD7; height: 10vh; min-width: 100%;">
             <div class="container-fluid d-flex justify-content-between align-items-center px-3" style="height: 100%;">
                 <a href="./account.html" style="text-decoration:none; cursor:pointer;" class="d-flex flex-column align-items-center"  >
@@ -32,6 +33,7 @@ window.onload = () => {
         });
     });
 
+    // Loads the bottom sticky footer nav bar as a template
     loadTemplate("bottomNavPlaceholder", `
             <br><br><br><br><br>
            <footer class="footer"
@@ -65,6 +67,7 @@ window.onload = () => {
         `, () => {
     });
 
+    // Loads the carousel slideshow photo placeholder in the main page
     loadTemplate("carouselPlaceholder", `
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
     <div class="carousel-indicators">

@@ -1,3 +1,4 @@
+/* On DOM load, listens for 'gameCreationLoader' to render the game creation form with user's teams and leagues. */
 document.addEventListener('DOMContentLoaded', () => {
     Account.addListener('gameCreationLoader', async (userAccount) => {
         if (!userAccount.id) return;
@@ -99,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Upon click, event listener for the create a game button. 
         createGameBtn.addEventListener('click', async () => {
             const gameId = generateUniqueId();
 
@@ -122,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 await GamesService.createGame(gameId, gameData);
                 navigateToRoute(___PAGES.games)
             } catch (error) {
-                
+
                 alert('Error creating game, please try again.');
             }
         });

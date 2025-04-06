@@ -1,3 +1,4 @@
+// Event listener for DOMContentLoaded that loads all leagues and displays them in cards
 document.addEventListener('DOMContentLoaded', async () => {
 
    const leagues = await LeaguesService.getAllLeagues();

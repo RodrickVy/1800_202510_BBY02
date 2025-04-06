@@ -168,6 +168,7 @@ body {
     background-color: #7BB9D7;
 }
 
+/* Changing the styling of the account photo circle */
 .account-circle {
     width: 100px;
     height: 100px;
@@ -225,6 +226,7 @@ body {
     font-size: 20px;
 }
 
+/* Green custom button color for most buttons on pages. */
 .btn-custom {
     background-color: #4CAF50;
     border-color: #388E3C;
@@ -238,6 +240,7 @@ body {
     color: white;
 }
 
+/* Styling to the recreational league cards. */
 .rec_cards_holder {
     width: 100%;
     display: flex;
@@ -340,6 +343,7 @@ body {
     text-decoration: underline;
 }
 
+/* Privacy page styling. */
 .privacy-container {
     max-width: 800px;
     margin: 20px auto;
@@ -351,6 +355,7 @@ body {
     overflow-y: auto;
 }
 
+/* About us page styling. */
 .about-us-container {
     max-width: 800px;
     margin: 20px auto;

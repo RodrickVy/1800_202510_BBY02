@@ -1,3 +1,4 @@
+// Function to write predefined league data to Firestore
 function writeLeagues() {
     const leaguesRef = Account.fs.collection("leagues");
 

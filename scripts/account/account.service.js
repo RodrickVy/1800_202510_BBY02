@@ -75,7 +75,7 @@ class RecreateUser {
     static fromJson(json) {
         // If json is a string, parse it.
         json = JSON.parse(JSON.stringify(json));
-        
+
         return new RecreateUser(
             {
                 id: json['id'],
@@ -297,13 +297,13 @@ class Account {
             lastLogin: customData.lastLogin,
             createdOn: customData.createdOn,
         };
-        
+
         try {
             await userDocRef.set(____userData);
-            
+
             return userId;
         } catch (error) {
-            
+
             throw error;
         }
     }
@@ -328,7 +328,7 @@ class Account {
         //     throw new Error("Firestore instance not properly initialized in Account.fs");
         //   }
         const db = Account.fs;
-        
+
         const userDocRef = db.collection("users").doc(userId);
         // Pass the current data to the callback to obtain the update object.
         const updatedData = updateCallback(Account.userAccount);
@@ -377,7 +377,7 @@ class Account {
     static async documentExists(collectionName, docId) {
         const docRef = Account.fs.collection(collectionName).doc(docId);
         const docSnapshot = await docRef.get();
-        
+
         return docSnapshot.exists;
     }
 
@@ -392,11 +392,11 @@ class Account {
     static sendPasswordResetEmail(email, onSuccess, onError) {
         return Account.auth.sendPasswordResetEmail(email)
             .then(() => {
-                
+
                 onSuccess(email);
             })
             .catch(error => {
-                
+
                 onError("Error sending password reset email: " + error);
             });
     }
@@ -409,11 +409,11 @@ class Account {
     static deleteUser(userId) {
         return Account.auth.currentUser.delete()
             .then(() => {
-                
+
                 Account.fs.collection("users").doc(userId).delete()
             })
             .catch(error => {
-                
+
             });
     }
 }

@@ -1,3 +1,5 @@
+/* On DOM load, listens for 'gamesLoader' to load games and set up filters based on stored values for league, team, and skill.
+* Displays active filter chips and handles removing them, reloading the list of games accordingly. */
 document.addEventListener('DOMContentLoaded', () => {
     Account.addListener('gamesLoader', async (userAccount) => {
         if (!userAccount.id) return;
@@ -86,7 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             return gameDate > today;
         }
-
         const sortedGames = games.sort((a, b) => new Date(a.gameTime) - new Date(b.gameTime)).filter((game) => {
             return gameNotPlayedYet(game) && gamePassesFilters(game);
         });
@@ -152,7 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const upcoming_games = await GamesService.getUpcomingGames();
-
 
         // Once filters have been shown they are reset , so on reload all the games can be displayed.
         resetAllFilters();

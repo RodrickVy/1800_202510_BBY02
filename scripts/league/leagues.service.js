@@ -7,7 +7,7 @@ class LeaguesService {
      */
     static async getAllLeagues() {
         const leaguesSnapshot = await LeaguesService.leaguesCollection.get();
-        return leaguesSnapshot.docs.map(doc => ({id: doc.id, ...doc.data()}));
+        return leaguesSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     }
 
     /**
@@ -17,7 +17,7 @@ class LeaguesService {
      */
     static async getLeagueById(leagueId) {
         const leagueDoc = await LeaguesService.leaguesCollection.doc(leagueId).get();
-        return leagueDoc.exists ? {id: leagueDoc.id, ...leagueDoc.data()} : null;
+        return leagueDoc.exists ? { id: leagueDoc.id, ...leagueDoc.data() } : null;
     }
 
     /**

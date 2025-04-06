@@ -1,3 +1,4 @@
+// Event listener to load and display the user's teams, including edit and view functionality
 document.addEventListener('DOMContentLoaded', async () => {
     Account.addListener('teams', async (user) => {
         await TeamsService.getAllTeams();
@@ -42,7 +43,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </div>
                `;
             }
-
         }
 
         if (TeamsService.userOwnedTeams.length === 0) {

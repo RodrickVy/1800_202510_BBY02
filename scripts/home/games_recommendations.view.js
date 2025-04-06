@@ -1,3 +1,6 @@
+/* On DOM load, listens for 'recommendGameLoader' to display recommended games and hot teams.
+* - Loads recommended games for the user and displays them in a list.
+* - Shows hot teams based on the number of games played and navigates to respective details pages on click. */
 document.addEventListener('DOMContentLoaded', () => {
     Account.addListener('recommendGameLoader', async (userAccount) => {
         if (!userAccount.id) return;
@@ -40,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const hotTeamsContainer = document.getElementById('hotTeamsContainer');
-        const loadHotTeams =  async () => {
+        const loadHotTeams = async () => {
             const allGames = await GamesService.loadAllGames();
             const teamGameCounts = {};
 

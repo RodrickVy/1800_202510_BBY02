@@ -1,3 +1,4 @@
+/* On DOM load, listens for 'editGameLoader' to render a pre-filled game edit form based on the selected game ID. */
 document.addEventListener('DOMContentLoaded', () => {
     Account.addListener('editGameLoader', async (userAccount) => {
         if (!userAccount.id) return;
@@ -86,6 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Adding event listener upon clicking the save game button.
         saveGameBtn.addEventListener('click', async () => {
             const updatedData = {
                 gameTime: new Date(gameTimeInput.value).toISOString(),

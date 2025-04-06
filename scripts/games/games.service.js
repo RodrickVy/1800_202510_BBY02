@@ -66,9 +66,7 @@ class GamesService {
 
     // Creates a new game
     static async createGame(id, gameData) {
-
         const gameRef = await this.collectionRef.doc(id).set(gameData);
-
     }
 
     // Loads all games
@@ -79,25 +77,19 @@ class GamesService {
     // Updates specific game details
     static async updateGame(gameId, updatedFields) {
         if (!gameId || !updatedFields) throw new Error('Game ID and updated fields are required.');
-
         await this.collectionRef.doc(gameId).update(updatedFields);
-        
     }
 
     // Deletes a game by ID
     static async deleteGame(gameId) {
         if (!gameId) throw new Error('Game ID is required.');
-
         await this.collectionRef.doc(gameId).delete();
-        
     }
 
     // Checks whether a game has been played
     static async hasGameBeenPlayed(gameId) {
         const snapshot = await this.collectionRef.doc(gameId).get();
-
         if (!snapshot.exists) throw new Error('Game does not exist.');
-
         const game = snapshot.data();
         return game.played === true;
     }
@@ -132,17 +124,12 @@ class GamesService {
 
         try {
             const querySnapshot = await gamesQuery.get();
-
             if (querySnapshot.empty) {
-                
                 return [];
             }
-
             const upcomingGames = querySnapshot.docs.map(doc => doc.data());
-            
             return upcomingGames;
         } catch (error) {
-            
             return [];
         }
     }
@@ -152,7 +139,6 @@ class GamesService {
             .collection('games')
             .where('teamId', '==', teamId)
             .get();
-
         return snapshot.docs.map(doc => Game.fromJson(doc.data()));
     }
 
@@ -162,7 +148,6 @@ class GamesService {
             .collection('games')
             .where('recLeague', '==', recLeagueId)
             .get();
-
         return snapshot.docs.map(doc => doc.data());
     }
 
@@ -174,7 +159,6 @@ class GamesService {
             (game.subs || []).includes(userId) ||
             (game.acceptedSubs || []).includes(userId)
         );
-
         return filteredGames;
     }
 
@@ -198,7 +182,6 @@ class GamesService {
 
 
                 // Get all other games with same team
-
                 const teamGames = GamesService.getGamesByTeamId(game.teamId);
                 for (const teamGame of teamGames) {
                     if (!alreadyRecommended.includes(teamGame.id)) {

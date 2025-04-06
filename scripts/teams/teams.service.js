@@ -15,17 +15,17 @@
  */
 class RecreateTeam {
     constructor({
-                    id = '',
-                    name = '',
-                    description = '',
-                    leagueLevel = 0,
-                    creatorId = '',
-                    games = [],
-                    teamBoard = [],
-                    recLeague = '',
-                    teamTrophies = [],
-                    teamBanner = []
-                } = {}) {
+        id = '',
+        name = '',
+        description = '',
+        leagueLevel = 0,
+        creatorId = '',
+        games = [],
+        teamBoard = [],
+        recLeague = '',
+        teamTrophies = [],
+        teamBanner = []
+    } = {}) {
         this.id = id;
         this.name = name;
         this.description = description;
