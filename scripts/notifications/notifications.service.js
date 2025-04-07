@@ -53,34 +53,47 @@ class NotificationService {
 
     static async createNotification(notificationData) {
         const notification = new Notification(notificationData);
-        const docRef = await this.collection.add(notification.toJson());
+        const docRef = await NotificationService.collection.add(notification.toJson());
         await docRef.update({ id: docRef.id });
         return docRef.id;
     }
 
     static async getNotificationById(notificationId) {
-        const snapshot = await this.collection.doc(notificationId).get();
+        const snapshot = await NotificationService.collection.doc(notificationId).get();
         if (!snapshot.exists) throw new Error('Notification not found');
         return Notification.fromJson(snapshot.data());
     }
 
     static async updateNotification(notificationId, updatedFields) {
-        await this.collection.doc(notificationId).update(updatedFields);
+        await NotificationService.collection.doc(notificationId).update(updatedFields);
         return true;
     }
 
     static async deleteNotification(notificationId) {
-        await this.collection.doc(notificationId).delete();
+        await NotificationService.collection.doc(notificationId).delete();
         return true;
     }
 
     static async getNotificationsForUser(userId) {
-        const snapshot = this.collection
-            .where('userIds', 'array-contains', userId)
-            .orderBy('sensitivity', 'desc')
-            .limit(50);
+        try {
+            // Build the query filtering notifications by the userId.
+            const query = NotificationService.collection
+                .where('userIds', 'array-contains', userId)
+            // Uncomment to order by sensitivity and limit the results.
+            // .orderBy('sensitivity', 'desc')
+            // .limit(50);
 
-        return snapshot.docs.map(doc => Notification.fromJson(doc.data()));
+            // Execute the query and get the snapshot of documents.
+            const snapshot = await query.get();
+
+            // Convert each document to a Notification instance using the fromJson method.
+            const notifications = snapshot.docs.map(doc => Notification.fromJson(doc.data()));
+
+            return notifications;
+        } catch (error) {
+            console.error("Error loading notifications:", error);
+            throw error;
+        }
     }
 
     static async removeUserFromNotification(notificationId, userIdToRemove) {

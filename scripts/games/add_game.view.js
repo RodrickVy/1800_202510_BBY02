@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="mb-3">
                     <label for="teamSelect" class="form-label">Select Your Team</label>
                     <select class="form-select" id="teamSelect">
-                        <option value="">Choose your team</option>
+                        <option value="">Choose Your Team</option>
                         ${userTeams.map(team => `<option value="${team.id}" data-rec-league="${team.recLeague}" data-league-level="${team.leagueLevel}">${toTitleCase(team.name)}</option>`).join('')}
                     </select>
                 </div>
@@ -61,8 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const leagueLevel = selectedOption.getAttribute('data-league-level');
 
             const leagueFromId = leagues.find((_league) => _league.id === recLeagueId);
-            recLeagueSelect.value = leagueFromId.name;
-            leagueLevelInput.value = leagueLevel;
+            recLeagueSelect.value =  toTitleCase(leagueFromId.name);
+            leagueLevelInput.value  = toTitleCase(leagueLevel);
         });
 
         // Initialize maps API autocomplete for location (Optional: Include your maps API script)
@@ -106,12 +106,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const selectedOption = teamSelect.options[teamSelect.selectedIndex];
             const recLeagueId = selectedOption.getAttribute('data-rec-league');
+            const leagueLevel = selectedOption.getAttribute('data-league-level');
             const gameData = {
                 id: gameId,
                 captainId: userAccount.id,
                 teamId: teamSelect.value,
                 recLeague: recLeagueId,
-                leagueLevel: leagueLevelInput.value,
+                leagueLevel: leagueLevel,
                 gameTime: (new Date(gameTimeInput.value)).toISOString(),
                 location: gameLocationInput.value,
                 details: gameDetailsInput.value,

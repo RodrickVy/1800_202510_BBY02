@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         listenToIfExists('substituteBtn', 'click', async (e) => {
             // 
-            if (!(game.subs.includes(userAccount.id)) && !(game.acceptedSubs.includes(game.id))) {
+            if (!(game.subs.includes(userAccount.id)) && !(game.acceptedSubs.includes(userAccount.id))) {
                 await GamesService.updateGame(gameId, {subs: [...game.subs, userAccount.id]});
 
                 await NotificationService.createNotification({
@@ -146,6 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     actionData: game.id,
                     userIds: [game.captainId]
                 })
+
             } else {
                 alert("You are already added as a sub")
             }

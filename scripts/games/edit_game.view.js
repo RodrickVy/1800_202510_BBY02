@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="card p-4" style="background-color: #D0DDD7">
                 <div class="mb-3">
                     <label class="form-label">Team</label>
-                    <input type="text" class="form-control" value="${team.name}" disabled>
+                    <input type="text" class="form-control" value="${toTitleCase(team.name)}" disabled>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Rec League</label>
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="mb-3">
                     <label class="form-label">League Level</label>
-                    <input type="text" class="form-control" value="${team.leagueLevel}" disabled>
+                    <input type="text" class="form-control" value="${toTitleCase(team.leagueLevel)}" disabled>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Game Time</label>

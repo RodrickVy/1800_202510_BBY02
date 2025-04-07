@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     Account.addListener('notificationsLoader', async (userAccount) => {
         if (!userAccount.id) return;
-
+        console.log(userAccount.toJson())
         const notifications = await NotificationService.getNotificationsForUser(userAccount.id);
         const container = document.getElementById('notificationsContainer');
         const pastContainer = document.getElementById('pastNotificationsContainer');
