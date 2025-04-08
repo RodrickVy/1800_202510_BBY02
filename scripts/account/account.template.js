@@ -94,22 +94,22 @@ loadTemplate("shadowPhotoPlaceholder", `
             align-items: center; justify-content: center;">
         
         <div class="photo-item active" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -40%); width: 100%; height: 100%;">
-            <img src="/images/shadow1.jpg" class="d-block" alt="shadow1" 
+            <img src="/images/shadow1.JPG" class="d-block" alt="shadow1" 
                  style="max-width: 100%; max-height: 100%; object-fit: cover;">
         </div>
         
         <div class="photo-item" style="position: absolute; top: 50%; left: 50%; transform: translate(-30%, -45%); width: 100%; height: 100%;">
-            <img src="./images/shadow2.jpg" class="d-block" alt="shadow2" 
+            <img src="./images/shadow2.JPG" class="d-block" alt="shadow2" 
                  style="max-width: 100%; max-height: 100%; object-fit: contain;">
         </div>
         
         <div class="photo-item" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -40%); width: 100%; height: 100%;">
-            <img src="./images/shadow3.jpg" class="d-block" alt="shadow3" 
+            <img src="./images/shadow3.JPG" class="d-block" alt="shadow3" 
                  style="max-width: 90%; max-height: 90%; object-fit: cover;">
         </div>
         
         <div class="photo-item" style="position: absolute; top: 50%; left: 50%; transform: translate(-40%, -40%); width: 100%; height: 100%;">
-            <img src="./images/shadow4.jpg" class="d-block" alt="shadow4" 
+            <img src="./images/shadow4.JPG" class="d-block" alt="shadow4" 
                  style="max-width: 90%; max-height: 90%; object-fit: cover;">
         </div>
     </div>

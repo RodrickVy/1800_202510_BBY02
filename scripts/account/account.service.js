@@ -207,18 +207,19 @@ class Account {
      * @param onError
      */
     static async signUp(name, email, password, onSuccess, onError) {
-        Account.auth.createUserWithEmailAndPassword(email, password)
-            .then((userCredential) => {
-                userCredential.user.updateProfile({
-                    displayName: name
-                });
-            })
-            .then((userCredential) => {
-                onSuccess(userCredential.user)
-            })
-            .catch((error) => {
-                onError(error.message);
-            });
+        // Account.auth.createUserWithEmailAndPassword(email, password)
+        //     .then((userCredential) => {
+        //         userCredential.user.updateProfile({
+        //             displayName: name
+        //         });
+        //     })
+        //     .then((userCredential) => {
+        //         onSuccess(userCredential.user)
+        //     })
+        //     .catch((error) => {
+        //         onError(error.message);
+        //     });
+        alert("Creation Of New Accounts Has Been Disabled For Today.")
     }
 
     /**
