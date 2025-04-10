@@ -91,7 +91,6 @@ class NotificationService {
 
             return notifications;
         } catch (error) {
-            console.error("Error loading notifications:", error);
             throw error;
         }
     }

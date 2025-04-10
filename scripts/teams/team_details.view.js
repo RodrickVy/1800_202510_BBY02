@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const container = document.getElementById('teamDetailsContainer');
 
         container.innerHTML = `
-            <div style="width:100%; height:6rem;overflow-clip: clip">
+            <div class="clippedImgCardHolder">
                 <img src="${team.teamBanner}" alt="${team.name} banner" width="100%">
             </div>
             <div class="card p-4">
